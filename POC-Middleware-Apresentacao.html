@@ -1,0 +1,2064 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POC Middleware - Datainfo</title>
+        <style>
+            :root {
+                --bg-primary: #0f172a;
+                --bg-secondary: #1e293b;
+                --bg-card: #1e293b;
+                --text-primary: #f1f5f9;
+                --text-secondary: #94a3b8;
+                --accent-blue: #3b82f6;
+                --accent-purple: #8b5cf6;
+                --accent-green: #10b981;
+                --accent-red: #ef4444;
+                --accent-orange: #f59e0b;
+                --accent-cyan: #06b6d4;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    "Segoe UI",
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                background: linear-gradient(
+                    135deg,
+                    var(--bg-primary),
+                    var(--bg-secondary)
+                );
+                color: var(--text-primary);
+                height: 100vh;
+                overflow: hidden;
+                user-select: none;
+            }
+
+            /* ── Presentation Container ── */
+            #presentation {
+                width: 100vw;
+                height: 100vh;
+                position: relative;
+            }
+
+            /* ── Slides ── */
+            .slide {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 60px 80px 100px;
+                opacity: 0;
+                visibility: hidden;
+                transition:
+                    opacity 0.5s ease,
+                    visibility 0.5s ease;
+            }
+
+            .slide.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .slide h1 {
+                font-size: 2.8em;
+                font-weight: 700;
+                margin-bottom: 10px;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent-blue),
+                    var(--accent-purple)
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .slide h2 {
+                font-size: 2em;
+                font-weight: 600;
+                margin-bottom: 20px;
+                color: var(--accent-blue);
+            }
+
+            .slide h3 {
+                font-size: 1.3em;
+                color: var(--text-secondary);
+                margin-bottom: 30px;
+                font-weight: 400;
+            }
+
+            /* ── Animated Steps ── */
+            .step {
+                opacity: 0;
+                transform: translateY(20px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+
+            .step.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* ── Controls Bar ── */
+            #controls {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 70px;
+                background: rgba(15, 23, 42, 0.95);
+                border-top: 1px solid rgba(59, 130, 246, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 30px;
+                z-index: 100;
+                backdrop-filter: blur(10px);
+            }
+
+            #controls .nav-group {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            #controls button {
+                background: rgba(59, 130, 246, 0.15);
+                border: 1px solid rgba(59, 130, 246, 0.3);
+                color: var(--text-primary);
+                padding: 8px 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 0.9em;
+                font-family: inherit;
+                transition: all 0.2s;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            #controls button:hover {
+                background: rgba(59, 130, 246, 0.3);
+                border-color: var(--accent-blue);
+            }
+
+            #controls button:active {
+                transform: scale(0.96);
+            }
+
+            #controls button.primary {
+                background: var(--accent-blue);
+                border-color: var(--accent-blue);
+            }
+
+            #controls button.primary:hover {
+                background: #2563eb;
+            }
+
+            #controls button.danger {
+                background: rgba(239, 68, 68, 0.15);
+                border-color: rgba(239, 68, 68, 0.3);
+            }
+
+            #controls button.danger:hover {
+                background: rgba(239, 68, 68, 0.3);
+                border-color: var(--accent-red);
+            }
+
+            #controls button:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+
+            /* ── Dots ── */
+            #dots {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: rgba(148, 163, 184, 0.3);
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .dot.active {
+                background: var(--accent-blue);
+                box-shadow: 0 0 8px var(--accent-blue);
+                width: 12px;
+                height: 12px;
+            }
+
+            .dot:hover {
+                background: rgba(59, 130, 246, 0.6);
+            }
+
+            /* ── Slide Counter ── */
+            #slide-counter {
+                color: var(--text-secondary);
+                font-size: 0.85em;
+                min-width: 80px;
+                text-align: right;
+            }
+
+            /* ── Step indicator ── */
+            #step-info {
+                color: var(--text-secondary);
+                font-size: 0.8em;
+                min-width: 120px;
+            }
+
+            /* ── Progress bar ── */
+            #progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent-blue),
+                    var(--accent-purple)
+                );
+                transition: width 0.4s ease;
+                z-index: 101;
+            }
+
+            /* ── Keyboard hints ── */
+            #keyboard-hint {
+                position: fixed;
+                top: 15px;
+                right: 20px;
+                color: var(--text-secondary);
+                font-size: 0.7em;
+                opacity: 0.5;
+                z-index: 101;
+                text-align: right;
+                line-height: 1.6;
+            }
+
+            kbd {
+                background: rgba(148, 163, 184, 0.15);
+                border: 1px solid rgba(148, 163, 184, 0.2);
+                border-radius: 4px;
+                padding: 1px 6px;
+                font-family: inherit;
+                font-size: 0.9em;
+            }
+
+            /* ══════════════════════════════════════════
+     SLIDE-SPECIFIC STYLES
+     ══════════════════════════════════════════ */
+
+            /* ── Slide 1: Title ── */
+            .title-badges {
+                display: flex;
+                gap: 20px;
+                margin-top: 30px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .badge {
+                padding: 12px 24px;
+                border-radius: 12px;
+                font-size: 1em;
+                font-weight: 500;
+                border: 1px solid;
+            }
+
+            .badge.blue {
+                background: rgba(59, 130, 246, 0.1);
+                border-color: rgba(59, 130, 246, 0.3);
+                color: #60a5fa;
+            }
+            .badge.green {
+                background: rgba(16, 185, 129, 0.1);
+                border-color: rgba(16, 185, 129, 0.3);
+                color: #34d399;
+            }
+            .badge.purple {
+                background: rgba(139, 92, 246, 0.1);
+                border-color: rgba(139, 92, 246, 0.3);
+                color: #a78bfa;
+            }
+            .badge.cyan {
+                background: rgba(6, 182, 212, 0.1);
+                border-color: rgba(6, 182, 212, 0.3);
+                color: #22d3ee;
+            }
+
+            /* ── Diagram boxes ── */
+            .diagram {
+                display: flex;
+                align-items: center;
+                gap: 0;
+                margin: 20px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .box {
+                padding: 18px 28px;
+                border-radius: 12px;
+                font-weight: 600;
+                text-align: center;
+                min-width: 130px;
+                border: 2px solid;
+            }
+
+            .box.protheus {
+                background: rgba(59, 130, 246, 0.15);
+                border-color: rgba(59, 130, 246, 0.4);
+                color: #60a5fa;
+            }
+            .box.eme4 {
+                background: rgba(16, 185, 129, 0.15);
+                border-color: rgba(16, 185, 129, 0.4);
+                color: #34d399;
+            }
+            .box.kong {
+                background: rgba(139, 92, 246, 0.15);
+                border-color: rgba(139, 92, 246, 0.4);
+                color: #a78bfa;
+            }
+            .box.nats {
+                background: rgba(6, 182, 212, 0.15);
+                border-color: rgba(6, 182, 212, 0.4);
+                color: #22d3ee;
+            }
+            .box.worker {
+                background: rgba(245, 158, 11, 0.15);
+                border-color: rgba(245, 158, 11, 0.4);
+                color: #fbbf24;
+            }
+            .box.ai {
+                background: rgba(236, 72, 153, 0.15);
+                border-color: rgba(236, 72, 153, 0.4);
+                color: #f472b6;
+            }
+            .box.error {
+                background: rgba(239, 68, 68, 0.15);
+                border-color: rgba(239, 68, 68, 0.4);
+                color: #f87171;
+            }
+            .box.system {
+                background: rgba(148, 163, 184, 0.1);
+                border-color: rgba(148, 163, 184, 0.3);
+                color: #94a3b8;
+            }
+
+            .arrow {
+                font-size: 1.8em;
+                color: var(--text-secondary);
+                margin: 0 8px;
+            }
+
+            .arrow-down {
+                font-size: 1.8em;
+                color: var(--text-secondary);
+                margin: 8px 0;
+            }
+
+            /* ── Info cards ── */
+            .cards {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            .card {
+                background: rgba(30, 41, 59, 0.8);
+                border: 1px solid rgba(148, 163, 184, 0.15);
+                border-radius: 12px;
+                padding: 20px 24px;
+                min-width: 200px;
+                max-width: 300px;
+                flex: 1;
+            }
+
+            .card h4 {
+                font-size: 1em;
+                margin-bottom: 8px;
+                color: var(--accent-blue);
+            }
+
+            .card p,
+            .card li {
+                font-size: 0.85em;
+                color: var(--text-secondary);
+                line-height: 1.5;
+            }
+
+            .card ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .card ul li::before {
+                content: "→ ";
+                color: var(--accent-green);
+            }
+
+            .card.red {
+                border-color: rgba(239, 68, 68, 0.3);
+            }
+            .card.red h4 {
+                color: var(--accent-red);
+            }
+            .card.green {
+                border-color: rgba(16, 185, 129, 0.3);
+            }
+            .card.green h4 {
+                color: var(--accent-green);
+            }
+            .card.blue {
+                border-color: rgba(59, 130, 246, 0.3);
+            }
+
+            /* ── Comparison table ── */
+            .comparison {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                width: 100%;
+                max-width: 1000px;
+                margin-top: 10px;
+            }
+
+            .comp-col {
+                border-radius: 12px;
+                padding: 20px;
+                border: 1px solid;
+            }
+
+            .comp-col.old {
+                background: rgba(239, 68, 68, 0.05);
+                border-color: rgba(239, 68, 68, 0.2);
+            }
+
+            .comp-col.new {
+                background: rgba(16, 185, 129, 0.05);
+                border-color: rgba(16, 185, 129, 0.2);
+            }
+
+            .comp-col h4 {
+                font-size: 1em;
+                margin-bottom: 12px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            }
+
+            .comp-col.old h4 {
+                color: var(--accent-red);
+            }
+            .comp-col.new h4 {
+                color: var(--accent-green);
+            }
+
+            .comp-col ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .comp-col ul li {
+                font-size: 0.85em;
+                color: var(--text-secondary);
+                line-height: 1.7;
+                padding-left: 20px;
+                position: relative;
+            }
+
+            .comp-col.old ul li::before {
+                content: "✗ ";
+                color: var(--accent-red);
+                position: absolute;
+                left: 0;
+            }
+            .comp-col.new ul li::before {
+                content: "✓ ";
+                color: var(--accent-green);
+                position: absolute;
+                left: 0;
+            }
+
+            /* ── Stats ── */
+            .stats {
+                display: flex;
+                gap: 24px;
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stat {
+                text-align: center;
+                padding: 16px 24px;
+                background: rgba(30, 41, 59, 0.8);
+                border-radius: 12px;
+                border: 1px solid rgba(148, 163, 184, 0.15);
+                min-width: 140px;
+            }
+
+            .stat .value {
+                font-size: 1.8em;
+                font-weight: 700;
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .stat .label {
+                font-size: 0.75em;
+                color: var(--text-secondary);
+            }
+
+            .stat.blue .value {
+                color: var(--accent-blue);
+            }
+            .stat.green .value {
+                color: var(--accent-green);
+            }
+            .stat.cyan .value {
+                color: var(--accent-cyan);
+            }
+            .stat.purple .value {
+                color: var(--accent-purple);
+            }
+            .stat.orange .value {
+                color: var(--accent-orange);
+            }
+
+            /* ── Timeline ── */
+            .timeline {
+                display: flex;
+                align-items: flex-start;
+                gap: 0;
+                margin-top: 20px;
+                width: 100%;
+                max-width: 900px;
+                justify-content: center;
+            }
+
+            .tl-item {
+                flex: 1;
+                text-align: center;
+                position: relative;
+                padding: 0 10px;
+            }
+
+            .tl-item::after {
+                content: "";
+                position: absolute;
+                top: 20px;
+                right: -1px;
+                width: calc(100%);
+                height: 2px;
+                background: rgba(148, 163, 184, 0.2);
+            }
+
+            .tl-item:last-child::after {
+                display: none;
+            }
+
+            .tl-dot {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 10px;
+                font-weight: 700;
+                font-size: 0.9em;
+                position: relative;
+                z-index: 1;
+            }
+
+            .tl-dot.blue {
+                background: var(--accent-blue);
+            }
+            .tl-dot.green {
+                background: var(--accent-green);
+            }
+            .tl-dot.purple {
+                background: var(--accent-purple);
+            }
+
+            .tl-title {
+                font-weight: 600;
+                font-size: 0.9em;
+                margin-bottom: 6px;
+            }
+
+            .tl-desc {
+                font-size: 0.75em;
+                color: var(--text-secondary);
+                line-height: 1.4;
+            }
+
+            /* ── Flow animation ── */
+            .flow-msg {
+                opacity: 0;
+                transition:
+                    opacity 0.4s,
+                    transform 0.4s;
+            }
+
+            .flow-msg.show {
+                opacity: 1;
+            }
+
+            .flow-line {
+                position: relative;
+                margin: 10px 0;
+                padding: 8px 16px;
+                font-size: 0.85em;
+                color: var(--text-secondary);
+                border-left: 3px solid rgba(148, 163, 184, 0.2);
+                margin-left: 20px;
+            }
+
+            .flow-line.blue {
+                border-left-color: var(--accent-blue);
+                color: #60a5fa;
+            }
+            .flow-line.green {
+                border-left-color: var(--accent-green);
+                color: #34d399;
+            }
+            .flow-line.red {
+                border-left-color: var(--accent-red);
+                color: #f87171;
+            }
+            .flow-line.orange {
+                border-left-color: var(--accent-orange);
+                color: #fbbf24;
+            }
+            .flow-line.cyan {
+                border-left-color: var(--accent-cyan);
+                color: #22d3ee;
+            }
+            .flow-line.purple {
+                border-left-color: var(--accent-purple);
+                color: #a78bfa;
+            }
+
+            /* ── Pulse animation ── */
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            .pulse {
+                animation: pulse 2s infinite;
+            }
+
+            /* ── Data flow animation ── */
+            @keyframes flowRight {
+                0% {
+                    transform: translateX(-10px);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateX(10px);
+                    opacity: 0;
+                }
+            }
+
+            .flow-anim {
+                display: inline-block;
+            }
+
+            .flow-anim.active {
+                animation: flowRight 1.5s infinite;
+            }
+
+            /* ── Subtitle bar ── */
+            .subtitle-bar {
+                font-size: 0.85em;
+                color: var(--text-secondary);
+                margin-bottom: 20px;
+                padding: 8px 16px;
+                background: rgba(148, 163, 184, 0.05);
+                border-radius: 8px;
+                border-left: 3px solid var(--accent-blue);
+            }
+
+            /* ── Auto-play indicator ── */
+            #autoplay-indicator {
+                position: fixed;
+                top: 15px;
+                left: 20px;
+                font-size: 0.75em;
+                color: var(--accent-green);
+                opacity: 0;
+                transition: opacity 0.3s;
+                z-index: 101;
+            }
+
+            #autoplay-indicator.visible {
+                opacity: 1;
+            }
+
+            /* ── Fullscreen hint ── */
+            .slide-number {
+                position: absolute;
+                top: 20px;
+                left: 30px;
+                font-size: 0.75em;
+                color: rgba(148, 163, 184, 0.3);
+                font-weight: 600;
+            }
+
+            /* ── Responsive ── */
+            @media (max-width: 900px) {
+                .slide {
+                    padding: 40px 30px 100px;
+                }
+                .slide h1 {
+                    font-size: 2em;
+                }
+                .slide h2 {
+                    font-size: 1.5em;
+                }
+                .comparison {
+                    grid-template-columns: 1fr;
+                }
+                .cards {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .stats {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .timeline {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                .tl-item::after {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="progress" style="width: 0%"></div>
+        <div id="autoplay-indicator">&#9654; Auto</div>
+        <div id="keyboard-hint">
+            <kbd>&larr;</kbd> <kbd>&rarr;</kbd> navegar &nbsp;|&nbsp;
+            <kbd>Space</kbd> pr&oacute;ximo passo<br />
+            <kbd>A</kbd> auto-play &nbsp;|&nbsp; <kbd>R</kbd> resetar
+            &nbsp;|&nbsp; <kbd>F</kbd> fullscreen
+        </div>
+
+        <div id="presentation">
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 1 — Título
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-0">
+                <span class="slide-number">01</span>
+                <div class="step" data-step="0">
+                    <h1>Integra&ccedil;&atilde;o Protheus x EME4</h1>
+                    <h3>Modelo Atual vs Middleware</h3>
+                </div>
+                <div class="step" data-step="1">
+                    <p
+                        style="
+                            color: var(--text-secondary);
+                            margin-bottom: 25px;
+                        "
+                    >
+                        POC &mdash; Prova de Conceito para infraestrutura de
+                        Middleware
+                    </p>
+                </div>
+                <div class="title-badges step" data-step="2">
+                    <div class="badge blue">Kong / APISIX</div>
+                    <div class="badge green">NATS JetStream</div>
+                    <div class="badge purple">Load Balancing</div>
+                    <div class="badge cyan">Alta Disponibilidade</div>
+                </div>
+                <div class="step" data-step="3" style="margin-top: 30px">
+                    <p style="font-size: 0.85em; color: var(--text-secondary)">
+                        Datainfo &bull; Mar&ccedil;o 2026 &bull; Vers&atilde;o
+                        2.0
+                    </p>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 2 — Modelo Atual
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-1">
+                <span class="slide-number">02</span>
+                <h2 class="step" data-step="0">Como funciona HOJE</h2>
+                <div class="subtitle-bar step" data-step="0">
+                    Modelo Direto &mdash; API para API &mdash;
+                    &quot;Liga&ccedil;&atilde;o telef&ocirc;nica&quot;
+                </div>
+
+                <div class="diagram step" data-step="1">
+                    <div class="box protheus">PROTHEUS</div>
+                    <span class="arrow"
+                        >&mdash;&mdash; POST /Incluir_API
+                        &mdash;&mdash;&gt;</span
+                    >
+                    <div class="box eme4">
+                        EME4<br /><small>(1 servidor)</small>
+                    </div>
+                </div>
+
+                <div
+                    class="step"
+                    data-step="2"
+                    style="width: 100%; max-width: 700px"
+                >
+                    <div class="flow-line blue">
+                        1. Protheus monta o JSON com os dados
+                    </div>
+                    <div class="flow-line blue">
+                        2. Faz chamada HTTP direta ao EME4
+                    </div>
+                    <div class="flow-line orange">
+                        3. Protheus AGUARDA... 2s, 5s, 10s, timeout?
+                    </div>
+                    <div class="flow-line green">
+                        4. EME4 responde { "Sucesso": true }
+                    </div>
+                    <div class="flow-line red">
+                        Se EME4 estiver fora &rarr; ERRO! Dados podem se perder
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="3">
+                    <div class="card red">
+                        <h4>Problemas</h4>
+                        <ul>
+                            <li>Protheus fica travado esperando</li>
+                            <li>Se EME4 cai, tudo para</li>
+                            <li>Sem retry autom&aacute;tico</li>
+                            <li>
+                                Servidor &uacute;nico = ponto &uacute;nico de
+                                falha
+                            </li>
+                            <li>Sem distribui&ccedil;&atilde;o de carga</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Exemplo: 500 OPs</h4>
+                        <ul>
+                            <li>Envia uma por uma, esperando cada resposta</li>
+                            <li>
+                                Se a 300&ordf; falhar, as 200 restantes param
+                            </li>
+                            <li>EME4 pode sobrecarregar</li>
+                            <li>Lento e fr&aacute;gil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 3 — Modo 1: Passthrough
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-2">
+                <span class="slide-number">03</span>
+                <h2 class="step" data-step="0">
+                    Modelo Novo &mdash; Modo 1: Passagem Direta
+                </h2>
+                <div class="subtitle-bar step" data-step="0">
+                    Sem tradutor &mdash; quando quem pede j&aacute; fala a
+                    l&iacute;ngua do destino
+                </div>
+
+                <div class="diagram step" data-step="1">
+                    <div class="box ai">
+                        Agente IA<br /><small>(futuro)</small>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                    <div class="box kong">
+                        KONG / APISIX<br /><small>portaria + LB</small>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                    <div
+                        style="display: flex; flex-direction: column; gap: 8px"
+                    >
+                        <div class="box eme4" style="padding: 10px 20px">
+                            EME4 Srv 1
+                        </div>
+                        <div class="box eme4" style="padding: 10px 20px">
+                            EME4 Srv 2
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="step"
+                    data-step="2"
+                    style="width: 100%; max-width: 700px"
+                >
+                    <div class="flow-line purple">
+                        1. Sistema faz requisi&ccedil;&atilde;o ao Middleware
+                    </div>
+                    <div class="flow-line purple">
+                        2. Kong/APISIX autentica e escolhe melhor servidor
+                    </div>
+                    <div class="flow-line green">
+                        3. EME4 responde, Kong devolve a resposta
+                    </div>
+                    <div class="flow-line green">
+                        4. Pronto. Sem fila, sem tradutor, sem espera.
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="3">
+                    <div class="card green">
+                        <h4>O que se ganha</h4>
+                        <ul>
+                            <li>Load Balancing entre servidores</li>
+                            <li>Failover autom&aacute;tico</li>
+                            <li>Autentica&ccedil;&atilde;o centralizada</li>
+                            <li>Controle de vaz&atilde;o</li>
+                            <li>Registro de tudo (Logging)</li>
+                        </ul>
+                    </div>
+                    <div class="card blue">
+                        <h4>Quando usar</h4>
+                        <ul>
+                            <li>Agentes de IA consultando status</li>
+                            <li>Dashboards buscando dados</li>
+                            <li>
+                                Qualquer sistema que j&aacute; fale
+                                &quot;EME4&quot;
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 4 — Modo 2: Com Worker
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-3">
+                <span class="slide-number">04</span>
+                <h2 class="step" data-step="0">
+                    Modelo Novo &mdash; Modo 2: Com Tradutor
+                </h2>
+                <div class="subtitle-bar step" data-step="0">
+                    Quando h&aacute; trabalho real &mdash;
+                    tradu&ccedil;&atilde;o, orquestra&ccedil;&atilde;o, garantia
+                    de entrega
+                </div>
+
+                <div class="diagram step" data-step="1">
+                    <div class="box protheus">PROTHEUS</div>
+                    <span class="arrow">&rarr;</span>
+                    <div class="box kong">
+                        KONG<br /><small>portaria</small>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                    <div class="box nats">NATS<br /><small>fila</small></div>
+                    <span class="arrow">&rarr;</span>
+                    <div class="box worker">
+                        Worker<br /><small>tradutor</small>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                    <div
+                        style="display: flex; flex-direction: column; gap: 8px"
+                    >
+                        <div class="box eme4" style="padding: 10px 20px">
+                            EME4 1
+                        </div>
+                        <div class="box eme4" style="padding: 10px 20px">
+                            EME4 2
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="step"
+                    data-step="2"
+                    style="width: 100%; max-width: 750px"
+                >
+                    <div class="flow-line blue">
+                        1. Protheus envia para o Kong/APISIX
+                    </div>
+                    <div class="flow-line cyan">
+                        2. Kong autentica e coloca na fila (NATS)
+                    </div>
+                    <div class="flow-line green">
+                        3. Protheus recebe &quot;Recebido!&quot; (202) e segue
+                        em frente
+                    </div>
+                    <div class="flow-line orange">
+                        4. Worker pega da fila e traduz campos (DE-PARA)
+                    </div>
+                    <div class="flow-line purple">
+                        5. Load Balancer escolhe melhor inst&acirc;ncia do EME4
+                    </div>
+                    <div class="flow-line green">
+                        6. Se der erro &rarr; retry autom&aacute;tico
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="3">
+                    <div class="card green">
+                        <h4>Quando usar</h4>
+                        <ul>
+                            <li>
+                                Traduzir campos (SG1 &rarr;
+                                ListaMateriaisProduto)
+                            </li>
+                            <li>
+                                Garantir entrega (m&eacute;dica, financeira)
+                            </li>
+                            <li>Respeitar ordem de depend&ecirc;ncia</li>
+                            <li>Retry autom&aacute;tico com backoff</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Resultado</h4>
+                        <ul>
+                            <li>Protheus n&atilde;o trava mais</li>
+                            <li>Nenhum dado se perde</li>
+                            <li>Processamento em paralelo</li>
+                            <li>Rastreabilidade total</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 5 — Os dois modos coexistem
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-4">
+                <span class="slide-number">05</span>
+                <h2 class="step" data-step="0">Os dois modos coexistem</h2>
+                <div class="subtitle-bar step" data-step="0">
+                    Mesmo Middleware, dois caminhos. Worker s&oacute; existe
+                    quando h&aacute; trabalho real.
+                </div>
+
+                <div
+                    class="step"
+                    data-step="1"
+                    style="width: 100%; max-width: 800px; margin-top: 10px"
+                >
+                    <div
+                        style="
+                            background: rgba(30, 41, 59, 0.6);
+                            border: 1px solid rgba(139, 92, 246, 0.2);
+                            border-radius: 16px;
+                            padding: 30px;
+                            position: relative;
+                        "
+                    >
+                        <div
+                            style="
+                                position: absolute;
+                                top: -12px;
+                                left: 30px;
+                                background: var(--accent-purple);
+                                padding: 4px 16px;
+                                border-radius: 20px;
+                                font-size: 0.8em;
+                                font-weight: 600;
+                            "
+                        >
+                            MIDDLEWARE
+                        </div>
+
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 20px;
+                                margin-top: 10px;
+                            "
+                        >
+                            <!-- Mode 1 -->
+                            <div
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    flex-wrap: wrap;
+                                "
+                            >
+                                <div
+                                    class="box ai"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    Agente IA
+                                </div>
+                                <span class="arrow">&rarr;</span>
+                                <div
+                                    class="box kong"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    KONG/APISIX
+                                </div>
+                                <span
+                                    class="arrow"
+                                    style="color: var(--accent-green)"
+                                    >&mdash; direto &rarr;</span
+                                >
+                                <div
+                                    class="box eme4"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    EME4
+                                </div>
+                                <span
+                                    style="
+                                        font-size: 0.8em;
+                                        color: var(--accent-green);
+                                        margin-left: 10px;
+                                    "
+                                    >Modo 1 &mdash; r&aacute;pido, sem
+                                    fila</span
+                                >
+                            </div>
+                            <!-- Mode 2 -->
+                            <div
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    flex-wrap: wrap;
+                                "
+                            >
+                                <div
+                                    class="box protheus"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    Protheus
+                                </div>
+                                <span class="arrow">&rarr;</span>
+                                <div
+                                    class="box kong"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    KONG/APISIX
+                                </div>
+                                <span class="arrow">&rarr;</span>
+                                <div
+                                    class="box nats"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    NATS
+                                </div>
+                                <span class="arrow">&rarr;</span>
+                                <div
+                                    class="box worker"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    Worker
+                                </div>
+                                <span class="arrow">&rarr;</span>
+                                <div
+                                    class="box eme4"
+                                    style="
+                                        padding: 10px 16px;
+                                        font-size: 0.85em;
+                                    "
+                                >
+                                    EME4
+                                </div>
+                            </div>
+                            <div
+                                style="
+                                    font-size: 0.8em;
+                                    color: var(--accent-orange);
+                                    margin-left: 40px;
+                                "
+                            >
+                                Modo 2 &mdash; com fila + tradu&ccedil;&atilde;o
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="comparison step"
+                    data-step="2"
+                    style="margin-top: 20px"
+                >
+                    <div class="card green" style="max-width: none">
+                        <h4>Modo 1 &mdash; Passagem Direta</h4>
+                        <ul>
+                            <li>Sem fila, sem Worker</li>
+                            <li>Resposta s&iacute;ncrona</li>
+                            <li>Ideal para consultas e IA</li>
+                            <li>Lat&ecirc;ncia m&iacute;nima (~1ms extra)</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="card"
+                        style="
+                            max-width: none;
+                            border-color: rgba(245, 158, 11, 0.3);
+                        "
+                    >
+                        <h4 style="color: var(--accent-orange)">
+                            Modo 2 &mdash; Com Worker
+                        </h4>
+                        <ul>
+                            <li>Fila NATS + tradu&ccedil;&atilde;o DE-PARA</li>
+                            <li>Resposta ass&iacute;ncrona (202 Accepted)</li>
+                            <li>
+                                Ideal para integra&ccedil;&otilde;es Protheus
+                            </li>
+                            <li>Garantia de entrega + retry</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 6 — Comparação: Cenários
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-5">
+                <span class="slide-number">06</span>
+                <h2 class="step" data-step="0">
+                    Compara&ccedil;&atilde;o: Cen&aacute;rio a Cen&aacute;rio
+                </h2>
+
+                <div class="comparison step" data-step="1">
+                    <div class="comp-col old">
+                        <h4>Modelo Atual (Direto)</h4>
+                        <ul>
+                            <li>
+                                EME4 fora do ar &rarr;
+                                <strong>erro e perda de dados</strong>
+                            </li>
+                            <li>500 OPs &rarr; uma por uma, lento</li>
+                            <li>
+                                Formato mudou &rarr; altera ambos os sistemas
+                            </li>
+                            <li>
+                                Servidor caiu &rarr; <strong>tudo para</strong>
+                            </li>
+                            <li>Sem rastreabilidade</li>
+                            <li>Sem distribui&ccedil;&atilde;o de carga</li>
+                        </ul>
+                    </div>
+                    <div class="comp-col new">
+                        <h4>Modelo Novo (Middleware)</h4>
+                        <ul>
+                            <li>
+                                EME4 fora do ar &rarr; fila guarda, entrega
+                                depois
+                            </li>
+                            <li>500 OPs &rarr; todas na fila, paralelo</li>
+                            <li>
+                                Formato mudou &rarr; s&oacute; altera o Tradutor
+                            </li>
+                            <li>
+                                Servidor caiu &rarr;
+                                <strong>failover autom&aacute;tico</strong>
+                            </li>
+                            <li>Rastreabilidade total</li>
+                            <li>Load Balancing entre servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="2" style="margin-top: 15px">
+                    <div class="card green" style="max-width: none; flex: 1">
+                        <h4>Resultado com Middleware</h4>
+                        <p style="font-size: 0.95em">
+                            Nenhum dado se perde. Se um cai, o outro continua.
+                            Cada sistema evolui independentemente. Monitoramento
+                            centralizado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 7 — Tecnologias
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-6">
+                <span class="slide-number">07</span>
+                <h2 class="step" data-step="0">
+                    Por que confiamos nessas tecnologias?
+                </h2>
+
+                <div class="stats step" data-step="1">
+                    <div class="stat cyan">
+                        <span class="value">25M</span>
+                        <span class="label">mensagens/seg (NATS)</span>
+                    </div>
+                    <div class="stat blue">
+                        <span class="value">18K</span>
+                        <span class="label">req/seg (Kong/APISIX)</span>
+                    </div>
+                    <div class="stat green">
+                        <span class="value">18 MB</span>
+                        <span class="label">RAM do NATS</span>
+                    </div>
+                    <div class="stat purple">
+                        <span class="value">0.2ms</span>
+                        <span class="label">lat&ecirc;ncia NATS</span>
+                    </div>
+                    <div class="stat orange">
+                        <span class="value">280 MB</span>
+                        <span class="label">RAM total middleware</span>
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="2">
+                    <div
+                        class="card"
+                        style="border-color: rgba(6, 182, 212, 0.3)"
+                    >
+                        <h4 style="color: var(--accent-cyan)">NATS</h4>
+                        <ul>
+                            <li>Escrito em Go (Google)</li>
+                            <li>Usado por Tesla, Mastercard, Walmart</li>
+                            <li>
+                                CNCF (mesma funda&ccedil;&atilde;o do
+                                Kubernetes)
+                            </li>
+                            <li>Para nosso volume: 0.000002% da capacidade</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="card"
+                        style="border-color: rgba(139, 92, 246, 0.3)"
+                    >
+                        <h4 style="color: var(--accent-purple)">
+                            Kong / APISIX
+                        </h4>
+                        <ul>
+                            <li>
+                                Constru&iacute;do sobre NGINX (30% da internet)
+                            </li>
+                            <li>NGINX existe desde 2004 (20+ anos)</li>
+                            <li>Usado por Netflix, Samsung, NASA</li>
+                            <li>LB + Auth + Failover + Logs gr&aacute;tis</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="card"
+                        style="border-color: rgba(16, 185, 129, 0.3)"
+                    >
+                        <h4 style="color: var(--accent-green)">
+                            Infraestrutura Total
+                        </h4>
+                        <ul>
+                            <li>280 MB RAM (menos que Chrome)</li>
+                            <li>&lt; 7% CPU</li>
+                            <li>~1 GB disco</li>
+                            <li>Cabe em qualquer VM ou container</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 8 — Visão IA
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-7">
+                <span class="slide-number">08</span>
+                <h2 class="step" data-step="0">
+                    Vis&atilde;o Estrat&eacute;gica: Pista de Decolagem para IA
+                </h2>
+                <div class="subtitle-bar step" data-step="0">
+                    A POC de hoje &eacute; o piloto. O Middleware &eacute; a
+                    pista de decolagem.
+                </div>
+
+                <div
+                    class="step"
+                    data-step="1"
+                    style="width: 100%; max-width: 850px"
+                >
+                    <div
+                        style="
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                        "
+                    >
+                        <div class="box ai" style="padding: 12px 18px">
+                            Agente IA
+                        </div>
+                        <span class="arrow">&rarr;</span>
+                        <div class="box kong" style="padding: 12px 18px">
+                            MIDDLEWARE<br /><small>Kong + NATS</small>
+                        </div>
+                        <span class="arrow">&rarr;</span>
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 6px;
+                            "
+                        >
+                            <div
+                                class="box eme4"
+                                style="padding: 8px 16px; font-size: 0.85em"
+                            >
+                                EME4
+                            </div>
+                            <div
+                                class="box protheus"
+                                style="padding: 8px 16px; font-size: 0.85em"
+                            >
+                                Protheus
+                            </div>
+                            <div
+                                class="box system"
+                                style="padding: 8px 16px; font-size: 0.85em"
+                            >
+                                Sistema X
+                            </div>
+                            <div
+                                class="box system"
+                                style="padding: 8px 16px; font-size: 0.85em"
+                            >
+                                Sistema Y
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline step" data-step="2">
+                    <div class="tl-item">
+                        <div class="tl-dot blue">1</div>
+                        <div class="tl-title">POC</div>
+                        <div class="tl-desc">
+                            Protheus &harr; EME4<br />Validar conceito<br />1
+                            cadastro + 1 fluxo OP
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-dot green">2</div>
+                        <div class="tl-title">Expans&atilde;o</div>
+                        <div class="tl-desc">
+                            Mais integra&ccedil;&otilde;es<br />Outros sistemas
+                            Datainfo<br />Dashboard de monitoramento
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-dot purple">3</div>
+                        <div class="tl-title">IA</div>
+                        <div class="tl-desc">
+                            Agentes de IA consumindo<br />APIs via Middleware<br />Centenas
+                            de consultas/min
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards step" data-step="3">
+                    <div
+                        class="card"
+                        style="
+                            max-width: none;
+                            flex: 1;
+                            border-color: rgba(236, 72, 153, 0.3);
+                        "
+                    >
+                        <h4 style="color: #f472b6">
+                            Por que IA precisa de Middleware?
+                        </h4>
+                        <ul>
+                            <li>
+                                Agente IA fala com
+                                <strong>uma porta &uacute;nica</strong> em vez
+                                de conhecer cada sistema
+                            </li>
+                            <li>
+                                Sem saber a autentica&ccedil;&atilde;o de cada
+                                sistema (sess&atilde;o, token, API key...)
+                            </li>
+                            <li>
+                                Sem lidar com falhas, timeouts e retentativas
+                            </li>
+                            <li>
+                                Alto volume: centenas de consultas por minuto
+                                para montar an&aacute;lises
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════
+       SLIDE 9 — Recomendação
+       ══════════════════════════════════════════════════════════ -->
+            <div class="slide" id="slide-8">
+                <span class="slide-number">09</span>
+                <h2 class="step" data-step="0">Recomenda&ccedil;&atilde;o</h2>
+                <div class="subtitle-bar step" data-step="0">
+                    Aprova&ccedil;&atilde;o da POC do Middleware com escopo
+                    reduzido
+                </div>
+
+                <div class="cards step" data-step="1">
+                    <div class="card green" style="max-width: 260px">
+                        <h4>Escopo da POC</h4>
+                        <p>
+                            1 cadastro de engenharia (Centro de Trabalho) + 1
+                            fluxo de OP (criar + apontar)
+                        </p>
+                    </div>
+                    <div class="card blue" style="max-width: 260px">
+                        <h4>Risco</h4>
+                        <p>
+                            Baixo &mdash; a POC n&atilde;o afeta os sistemas
+                            atuais em produ&ccedil;&atilde;o
+                        </p>
+                    </div>
+                    <div
+                        class="card"
+                        style="
+                            max-width: 260px;
+                            border-color: rgba(139, 92, 246, 0.3);
+                        "
+                    >
+                        <h4 style="color: var(--accent-purple)">
+                            Infraestrutura
+                        </h4>
+                        <p>
+                            ~280 MB RAM em qualquer servidor existente. NATS e
+                            Kong/APISIX s&atilde;o gratuitos.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="step"
+                    data-step="2"
+                    style="
+                        margin-top: 20px;
+                        text-align: center;
+                        max-width: 700px;
+                    "
+                >
+                    <div
+                        style="
+                            background: rgba(16, 185, 129, 0.1);
+                            border: 1px solid rgba(16, 185, 129, 0.3);
+                            border-radius: 12px;
+                            padding: 24px;
+                        "
+                    >
+                        <p
+                            style="
+                                font-size: 1.1em;
+                                color: var(--accent-green);
+                                font-weight: 600;
+                                margin-bottom: 8px;
+                            "
+                        >
+                            Resultado Esperado
+                        </p>
+                        <p
+                            style="
+                                color: var(--text-secondary);
+                                font-size: 0.95em;
+                            "
+                        >
+                            Demonstrar que o Middleware funciona, medir
+                            performance real, e ter base concreta para
+                            decis&atilde;o de expans&atilde;o rumo &agrave; IA.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="step"
+                    data-step="3"
+                    style="margin-top: 20px; text-align: center"
+                >
+                    <p
+                        style="
+                            font-size: 1.05em;
+                            color: var(--text-secondary);
+                            font-style: italic;
+                            max-width: 600px;
+                        "
+                    >
+                        &ldquo;A POC &eacute; um investimento pequeno para uma
+                        decis&atilde;o informada.<br />
+                        Melhor testar antes de comprometer do que comprometer
+                        antes de testar.&rdquo;
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Controls ── -->
+        <div id="controls">
+            <div class="nav-group">
+                <button
+                    id="btn-prev"
+                    onclick="prevSlide()"
+                    title="Slide anterior (←)"
+                >
+                    &#9664; Anterior
+                </button>
+                <button
+                    id="btn-next"
+                    onclick="nextSlide()"
+                    title="Próximo slide (→)"
+                >
+                    Pr&oacute;ximo &#9654;
+                </button>
+                <span
+                    style="
+                        color: var(--text-secondary);
+                        font-size: 0.8em;
+                        margin-left: 8px;
+                    "
+                    >|</span
+                >
+                <button
+                    id="btn-step"
+                    onclick="nextStep()"
+                    class="primary"
+                    title="Próximo passo (Space)"
+                >
+                    &#9654; Passo
+                </button>
+                <button
+                    id="btn-reset-slide"
+                    onclick="resetCurrentSlide()"
+                    title="Resetar slide (R)"
+                >
+                    &#8635; Resetar
+                </button>
+            </div>
+
+            <div id="dots"></div>
+
+            <div class="nav-group">
+                <button
+                    id="btn-auto"
+                    onclick="toggleAutoPlay()"
+                    title="Auto-play (A)"
+                >
+                    &#9654; Auto
+                </button>
+                <button
+                    id="btn-fullscreen"
+                    onclick="toggleFullscreen()"
+                    title="Fullscreen (F)"
+                >
+                    &#9974; Tela cheia
+                </button>
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                    "
+                >
+                    <span id="slide-counter">1 / 9</span>
+                    <span id="step-info">Passo 0 / 0</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                // ── State ──
+                const slides = document.querySelectorAll(".slide");
+                const totalSlides = slides.length;
+                let currentSlide = 0;
+                let currentStep = -1;
+                let autoPlayInterval = null;
+                let autoPlayStepDelay = 1500; // ms between auto-steps
+                let autoPlaySlideDelay = 2000; // ms pause before next slide
+
+                // ── Init ──
+                function init() {
+                    createDots();
+                    showSlide(0);
+                    document.addEventListener("keydown", handleKeydown);
+                }
+
+                // ── Dots ──
+                function createDots() {
+                    const dotsContainer = document.getElementById("dots");
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement("div");
+                        dot.className = "dot" + (i === 0 ? " active" : "");
+                        dot.onclick = () => goToSlide(i);
+                        dot.title = "Slide " + (i + 1);
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function updateDots() {
+                    document.querySelectorAll(".dot").forEach((d, i) => {
+                        d.className =
+                            "dot" + (i === currentSlide ? " active" : "");
+                    });
+                }
+
+                // ── Slide Navigation ──
+                function showSlide(index) {
+                    slides.forEach((s, i) => {
+                        s.classList.toggle("active", i === index);
+                    });
+                    currentSlide = index;
+                    currentStep = -1;
+
+                    // Reset all steps in this slide
+                    const steps = getSteps();
+                    steps.forEach((s) => s.classList.remove("visible"));
+
+                    updateUI();
+                }
+
+                function goToSlide(index) {
+                    if (index < 0 || index >= totalSlides) return;
+                    stopAutoPlay();
+                    showSlide(index);
+                }
+
+                window.nextSlide = function () {
+                    if (currentSlide < totalSlides - 1) {
+                        stopAutoPlay();
+                        showSlide(currentSlide + 1);
+                    }
+                };
+
+                window.prevSlide = function () {
+                    if (currentSlide > 0) {
+                        stopAutoPlay();
+                        showSlide(currentSlide - 1);
+                    }
+                };
+
+                // ── Steps ──
+                function getSteps() {
+                    const slide = slides[currentSlide];
+                    return Array.from(slide.querySelectorAll(".step"));
+                }
+
+                function getMaxStep() {
+                    const steps = getSteps();
+                    if (steps.length === 0) return -1;
+                    let max = -1;
+                    steps.forEach((s) => {
+                        const v = parseInt(s.dataset.step, 10);
+                        if (v > max) max = v;
+                    });
+                    return max;
+                }
+
+                window.nextStep = function () {
+                    const maxStep = getMaxStep();
+                    if (maxStep < 0) return;
+
+                    if (currentStep < maxStep) {
+                        currentStep++;
+                        revealStep(currentStep);
+                        updateUI();
+                    } else {
+                        // All steps shown, advance slide
+                        if (currentSlide < totalSlides - 1) {
+                            showSlide(currentSlide + 1);
+                        }
+                    }
+                };
+
+                function prevStep() {
+                    if (currentStep < 0) return;
+                    hideStep(currentStep);
+                    currentStep--;
+                    updateUI();
+                }
+
+                function revealStep(stepIndex) {
+                    const steps = getSteps();
+                    steps.forEach((s) => {
+                        if (parseInt(s.dataset.step, 10) === stepIndex) {
+                            s.classList.add("visible");
+                        }
+                    });
+                }
+
+                function hideStep(stepIndex) {
+                    const steps = getSteps();
+                    steps.forEach((s) => {
+                        if (parseInt(s.dataset.step, 10) === stepIndex) {
+                            s.classList.remove("visible");
+                        }
+                    });
+                }
+
+                function showAllSteps() {
+                    const steps = getSteps();
+                    const maxStep = getMaxStep();
+                    steps.forEach((s) => s.classList.add("visible"));
+                    currentStep = maxStep;
+                    updateUI();
+                }
+
+                window.resetCurrentSlide = function () {
+                    stopAutoPlay();
+                    const steps = getSteps();
+                    steps.forEach((s) => s.classList.remove("visible"));
+                    currentStep = -1;
+                    updateUI();
+                };
+
+                // ── Auto-play ──
+                window.toggleAutoPlay = function () {
+                    if (autoPlayInterval) {
+                        stopAutoPlay();
+                    } else {
+                        startAutoPlay();
+                    }
+                };
+
+                function startAutoPlay() {
+                    const btn = document.getElementById("btn-auto");
+                    const indicator =
+                        document.getElementById("autoplay-indicator");
+                    btn.textContent = "⏸ Parar";
+                    btn.classList.add("danger");
+                    indicator.classList.add("visible");
+
+                    autoPlayInterval = setInterval(() => {
+                        const maxStep = getMaxStep();
+                        if (currentStep < maxStep) {
+                            currentStep++;
+                            revealStep(currentStep);
+                            updateUI();
+                        } else {
+                            // All steps done, wait then next slide
+                            if (currentSlide < totalSlides - 1) {
+                                clearInterval(autoPlayInterval);
+                                setTimeout(() => {
+                                    if (
+                                        !autoPlayInterval &&
+                                        document
+                                            .getElementById("btn-auto")
+                                            .classList.contains("danger")
+                                    ) {
+                                        // still in auto mode after the timeout
+                                        showSlide(currentSlide + 1);
+                                        startAutoPlay();
+                                    }
+                                }, autoPlaySlideDelay);
+                                autoPlayInterval = null; // clear so we don't double-stop
+                                return;
+                            } else {
+                                // Last slide, last step — stop
+                                stopAutoPlay();
+                            }
+                        }
+                    }, autoPlayStepDelay);
+                }
+
+                function stopAutoPlay() {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                    const btn = document.getElementById("btn-auto");
+                    const indicator =
+                        document.getElementById("autoplay-indicator");
+                    btn.textContent = "▶ Auto";
+                    btn.classList.remove("danger");
+                    indicator.classList.remove("visible");
+                }
+
+                // ── Update UI ──
+                function updateUI() {
+                    const maxStep = getMaxStep();
+
+                    document.getElementById("slide-counter").textContent =
+                        currentSlide + 1 + " / " + totalSlides;
+
+                    document.getElementById("step-info").textContent =
+                        "Passo " + (currentStep + 1) + " / " + (maxStep + 1);
+
+                    document.getElementById("btn-prev").disabled =
+                        currentSlide === 0;
+                    document.getElementById("btn-next").disabled =
+                        currentSlide === totalSlides - 1;
+
+                    const allStepsShown = currentStep >= maxStep;
+                    const btnStep = document.getElementById("btn-step");
+                    if (allStepsShown && currentSlide < totalSlides - 1) {
+                        btnStep.textContent = "▶ Próximo slide";
+                    } else if (allStepsShown) {
+                        btnStep.textContent = "✓ Fim";
+                        btnStep.disabled = true;
+                    } else {
+                        btnStep.textContent = "▶ Passo";
+                        btnStep.disabled = false;
+                    }
+
+                    // Progress bar
+                    const progress = (currentSlide / (totalSlides - 1)) * 100;
+                    document.getElementById("progress").style.width =
+                        progress + "%";
+
+                    updateDots();
+                }
+
+                // ── Keyboard ──
+                function handleKeydown(e) {
+                    switch (e.key) {
+                        case "ArrowRight":
+                            e.preventDefault();
+                            nextSlide();
+                            break;
+                        case "ArrowLeft":
+                            e.preventDefault();
+                            prevSlide();
+                            break;
+                        case " ":
+                        case "Enter":
+                            e.preventDefault();
+                            nextStep();
+                            break;
+                        case "Backspace":
+                            e.preventDefault();
+                            prevStep();
+                            break;
+                        case "a":
+                        case "A":
+                            e.preventDefault();
+                            toggleAutoPlay();
+                            break;
+                        case "r":
+                        case "R":
+                            e.preventDefault();
+                            resetCurrentSlide();
+                            break;
+                        case "f":
+                        case "F":
+                            e.preventDefault();
+                            toggleFullscreen();
+                            break;
+                        case "Home":
+                            e.preventDefault();
+                            goToSlide(0);
+                            break;
+                        case "End":
+                            e.preventDefault();
+                            goToSlide(totalSlides - 1);
+                            showAllSteps();
+                            break;
+                        case "s":
+                        case "S":
+                            e.preventDefault();
+                            showAllSteps();
+                            break;
+                    }
+
+                    // Number keys to jump to slide
+                    const num = parseInt(e.key, 10);
+                    if (num >= 1 && num <= totalSlides) {
+                        e.preventDefault();
+                        goToSlide(num - 1);
+                    }
+                }
+
+                // ── Fullscreen ──
+                window.toggleFullscreen = function () {
+                    if (!document.fullscreenElement) {
+                        document.documentElement
+                            .requestFullscreen()
+                            .catch(() => {});
+                    } else {
+                        document.exitFullscreen().catch(() => {});
+                    }
+                };
+
+                // ── Touch support ──
+                let touchStartX = 0;
+                let touchStartY = 0;
+
+                document.addEventListener(
+                    "touchstart",
+                    (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                        touchStartY = e.changedTouches[0].screenY;
+                    },
+                    { passive: true },
+                );
+
+                document.addEventListener(
+                    "touchend",
+                    (e) => {
+                        const dx = e.changedTouches[0].screenX - touchStartX;
+                        const dy = e.changedTouches[0].screenY - touchStartY;
+
+                        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+                            if (dx > 0) prevSlide();
+                            else nextSlide();
+                        } else if (Math.abs(dy) > 50 && dy < 0) {
+                            // Swipe up = next step
+                            nextStep();
+                        }
+                    },
+                    { passive: true },
+                );
+
+                // ── Start ──
+                init();
+            })();
+        </script>
+    </body>
+</html>

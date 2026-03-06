@@ -1,0 +1,838 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f87171"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <style>
+    .slide { opacity: 0; }
+    .slide1 { animation: slideShow 56s infinite; }
+    .slide2 { animation: slideShow 56s 8s infinite; }
+    .slide3 { animation: slideShow 56s 16s infinite; }
+    .slide4 { animation: slideShow 56s 24s infinite; }
+    .slide5 { animation: slideShow 56s 32s infinite; }
+    .slide6 { animation: slideShow 56s 40s infinite; }
+    .slide7 { animation: slideShow 56s 48s infinite; }
+
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      1.5% { opacity: 1; }
+      14.28% { opacity: 1; }
+      15.78% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes dataFlow {
+      0% { stroke-dashoffset: 20; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes moveRight {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes blink {
+      0%, 100% { fill: #ef4444; }
+      50% { fill: #fee2e2; }
+    }
+    @keyframes successPulse {
+      0%, 100% { fill: #10b981; }
+      50% { fill: #6ee7b7; }
+    }
+    @keyframes flowDot {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes progressBar {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes countUp {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .flow-line {
+      stroke-dasharray: 8 4;
+      animation: dataFlow 1s linear infinite;
+    }
+    .pulse-dot {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .blink-red {
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    .success-pulse {
+      animation: successPulse 2s ease-in-out infinite;
+    }
+    .move-right {
+      animation: moveRight 2s ease-in-out infinite;
+    }
+
+    text { fill: #e2e8f0; }
+    .title { font-size: 32px; font-weight: 700; fill: white; }
+    .subtitle { font-size: 20px; font-weight: 400; fill: #94a3b8; }
+    .heading { font-size: 24px; font-weight: 600; fill: white; }
+    .subheading { font-size: 18px; font-weight: 600; }
+    .body { font-size: 15px; fill: #cbd5e1; }
+    .body-sm { font-size: 13px; fill: #94a3b8; }
+    .label { font-size: 12px; font-weight: 600; }
+    .number-big { font-size: 42px; font-weight: 800; }
+    .number-med { font-size: 28px; font-weight: 700; }
+    .tag { font-size: 11px; font-weight: 600; }
+
+    .card {
+      fill: #1e293b;
+      stroke: #334155;
+      stroke-width: 1;
+      rx: 12;
+    }
+    .card-accent {
+      fill: #1e293b;
+      stroke: #3b82f6;
+      stroke-width: 1.5;
+      rx: 12;
+    }
+    .card-green {
+      fill: rgba(16, 185, 129, 0.1);
+      stroke: #10b981;
+      stroke-width: 1.5;
+      rx: 12;
+    }
+    .card-red {
+      fill: rgba(239, 68, 68, 0.1);
+      stroke: #ef4444;
+      stroke-width: 1.5;
+      rx: 12;
+    }
+
+    .progress-track {
+      fill: #334155;
+      rx: 4;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+
+  <!-- Bottom bar -->
+  <rect y="680" width="1200" height="20" fill="#0f172a" opacity="0.8"/>
+  <text x="600" y="694" text-anchor="middle" class="body-sm" font-size="11">POC Middleware Kong/APISIX + NATS | Datainfo | 2026</text>
+
+  <!-- ==================== SLIDE 1: TITLE ==================== -->
+  <g class="slide slide1">
+    <!-- Decorative circles -->
+    <circle cx="150" cy="200" r="120" fill="#3b82f6" opacity="0.05"/>
+    <circle cx="1050" cy="500" r="150" fill="#8b5cf6" opacity="0.05"/>
+    <circle cx="600" cy="350" r="200" fill="#3b82f6" opacity="0.03"/>
+
+    <!-- Logo area -->
+    <rect x="480" y="120" width="240" height="50" rx="25" fill="url(#accentGrad)" opacity="0.2"/>
+    <text x="600" y="152" text-anchor="middle" font-size="16" font-weight="600" fill="#60a5fa">DATAINFO</text>
+
+    <!-- Title -->
+    <text x="600" y="240" text-anchor="middle" class="title" font-size="38">Integra&#231;&#227;o Protheus x EME4</text>
+    <text x="600" y="280" text-anchor="middle" class="subtitle" font-size="22">Modelo Atual vs Middleware</text>
+
+    <!-- Divider -->
+    <rect x="450" y="305" width="300" height="3" rx="2" fill="url(#accentGrad)"/>
+
+    <!-- Subtitle cards -->
+    <g transform="translate(180, 340)">
+      <rect width="250" height="80" class="card" filter="url(#shadow)"/>
+      <text x="125" y="35" text-anchor="middle" font-size="14" font-weight="600" fill="#60a5fa">API GATEWAY</text>
+      <text x="125" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="white">Kong / APISIX</text>
+    </g>
+    <g transform="translate(475, 340)">
+      <rect width="250" height="80" class="card" filter="url(#shadow)"/>
+      <text x="125" y="35" text-anchor="middle" font-size="14" font-weight="600" fill="#a78bfa">MENSAGERIA</text>
+      <text x="125" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="white">NATS JetStream</text>
+    </g>
+    <g transform="translate(770, 340)">
+      <rect width="250" height="80" class="card" filter="url(#shadow)"/>
+      <text x="125" y="35" text-anchor="middle" font-size="14" font-weight="600" fill="#34d399">LOAD BALANCING</text>
+      <text x="125" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="white">Alta Disponibilidade</text>
+    </g>
+
+    <!-- Bottom tagline -->
+    <text x="600" y="490" text-anchor="middle" class="body" font-size="16">Por que estamos propondo uma mudan&#231;a?</text>
+    <text x="600" y="520" text-anchor="middle" class="body-sm" font-size="14" fill="#64748b">Apresenta&#231;&#227;o para a Diretoria</text>
+
+    <!-- Version -->
+    <rect x="520" y="560" width="160" height="30" rx="15" fill="#334155"/>
+    <text x="600" y="580" text-anchor="middle" font-size="12" fill="#94a3b8">Vers&#227;o 2.0 | Mar&#231;o 2026</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 2: MODELO ATUAL ==================== -->
+  <g class="slide slide2">
+    <text x="600" y="55" text-anchor="middle" class="heading" font-size="26">Como funciona HOJE</text>
+    <text x="600" y="80" text-anchor="middle" class="subtitle" font-size="16">Modelo Direto &#8212; API para API</text>
+
+    <!-- Protheus box -->
+    <g transform="translate(100, 130)">
+      <rect width="200" height="120" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="2"/>
+      <text x="100" y="40" text-anchor="middle" font-size="18" font-weight="700" fill="white">PROTHEUS</text>
+      <text x="100" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">ERP TOTVS</text>
+      <text x="100" y="90" text-anchor="middle" font-size="11" fill="#64748b">Envia e AGUARDA</text>
+      <text x="100" y="105" text-anchor="middle" font-size="11" fill="#64748b">resposta...</text>
+    </g>
+
+    <!-- Arrow with animated dots -->
+    <line x1="310" y1="190" x2="860" y2="190" stroke="#ef4444" stroke-width="2" stroke-dasharray="8 4" class="flow-line"/>
+    <text x="585" y="175" text-anchor="middle" font-size="12" fill="#f87171">POST /Incluir_API (chamada direta)</text>
+    <text x="585" y="215" text-anchor="middle" font-size="11" fill="#fca5a5" class="pulse-dot">esperando... 3s... 5s... timeout?</text>
+
+    <!-- EME4 box (single) -->
+    <g transform="translate(870, 130)">
+      <rect width="200" height="120" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+      <text x="100" y="40" text-anchor="middle" font-size="18" font-weight="700" fill="white">EME4</text>
+      <text x="100" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">1 servidor &#250;nico</text>
+      <circle cx="100" cy="95" r="8" class="blink-red"/>
+      <text x="100" y="110" text-anchor="middle" font-size="10" fill="#fca5a5">ponto &#250;nico de falha</text>
+    </g>
+
+    <!-- Problems section -->
+    <text x="600" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#f87171">Problemas deste modelo:</text>
+
+    <!-- Problem cards -->
+    <g transform="translate(60, 320)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Sistema cai = tudo para</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Sem servidor backup</text>
+    </g>
+    <g transform="translate(320, 320)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Dados podem se perder</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Sem garantia de entrega</text>
+    </g>
+    <g transform="translate(580, 320)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Protheus fica travado</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Esperando resposta do EME4</text>
+    </g>
+    <g transform="translate(840, 320)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Sem rastreabilidade</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Dif&#237;cil saber o que aconteceu</text>
+    </g>
+
+    <g transform="translate(60, 400)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Sem distribui&#231;&#227;o de carga</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">1 servidor faz tudo</text>
+    </g>
+    <g transform="translate(320, 400)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Sem retry autom&#225;tico</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Reprocessamento manual</text>
+    </g>
+    <g transform="translate(580, 400)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Acoplamento forte</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Mudan&#231;a em 1 quebra o outro</text>
+    </g>
+    <g transform="translate(840, 400)">
+      <rect width="240" height="70" class="card-red"/>
+      <text x="20" y="30" font-size="22" fill="#ef4444">&#10060;</text>
+      <text x="50" y="30" font-size="13" font-weight="600" fill="#fca5a5">Sem controle de vaz&#227;o</text>
+      <text x="50" y="50" font-size="11" fill="#94a3b8">Pode sobrecarregar</text>
+    </g>
+
+    <!-- Analogy -->
+    <rect x="300" y="510" width="600" height="60" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="600" y="537" text-anchor="middle" font-size="14" fill="#94a3b8">&#127828; Analogia: &#201; como ir at&#233; a cozinha e pedir direto ao &#250;nico cozinheiro.</text>
+    <text x="600" y="557" text-anchor="middle" font-size="13" fill="#64748b">Se ele estiver no banheiro, voc&#234; fica esperando.</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 3: MODELO NOVO ==================== -->
+  <g class="slide slide3">
+    <text x="600" y="50" text-anchor="middle" class="heading" font-size="26">Como funcionaria com o MIDDLEWARE</text>
+    <text x="600" y="75" text-anchor="middle" class="subtitle" font-size="15">Dois modos: o Worker s&#243; existe quando h&#225; trabalho a fazer</text>
+
+    <!-- MODE 1: Passthrough -->
+    <rect x="40" y="100" width="540" height="260" rx="12" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="0"/>
+    <rect x="40" y="100" width="540" height="32" rx="12" fill="#06b6d4" opacity="0.15"/>
+    <text x="310" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#22d3ee">MODO 1: PASSAGEM DIRETA (sem Worker)</text>
+
+    <!-- Mode 1 diagram -->
+    <g transform="translate(70, 155)">
+      <rect width="120" height="55" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="60" y="25" text-anchor="middle" font-size="13" font-weight="600" fill="white">Agente IA</text>
+      <text x="60" y="42" text-anchor="middle" font-size="10" fill="#94a3b8">(futuro)</text>
+    </g>
+    <line x1="200" y1="182" x2="260" y2="182" stroke="#22d3ee" stroke-width="2" class="flow-line"/>
+    <g transform="translate(265, 150)">
+      <rect width="140" height="65" rx="8" fill="url(#cyanGrad)" opacity="0.15" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="#22d3ee">KONG/APISIX</text>
+      <text x="70" y="42" text-anchor="middle" font-size="10" fill="#94a3b8">Auth + LB</text>
+      <text x="70" y="55" text-anchor="middle" font-size="9" fill="#64748b">Direto, sem fila</text>
+    </g>
+    <line x1="410" y1="175" x2="445" y2="160" stroke="#22d3ee" stroke-width="2" class="flow-line"/>
+    <line x1="410" y1="190" x2="445" y2="205" stroke="#22d3ee" stroke-width="2" class="flow-line"/>
+    <g transform="translate(450, 140)">
+      <rect width="110" height="40" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="55" y="16" text-anchor="middle" font-size="10" font-weight="600" fill="#6ee7b7">EME4 Srv 1</text>
+      <circle cx="90" cy="28" r="5" class="success-pulse"/>
+    </g>
+    <g transform="translate(450, 190)">
+      <rect width="110" height="40" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="55" y="16" text-anchor="middle" font-size="10" font-weight="600" fill="#6ee7b7">EME4 Srv 2</text>
+      <circle cx="90" cy="28" r="5" class="success-pulse"/>
+    </g>
+
+    <text x="310" y="270" text-anchor="middle" font-size="12" fill="#94a3b8">Sem fila. Sem tradutor. R&#225;pido e direto.</text>
+    <text x="310" y="290" text-anchor="middle" font-size="11" fill="#64748b">Quando os sistemas falam a mesma l&#237;ngua.</text>
+    <text x="310" y="310" text-anchor="middle" font-size="11" fill="#06b6d4">Ganha: Auth, LB, Failover, Logging, Rate Limit</text>
+    <text x="310" y="335" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">Ex: IA consulta status de OP, Dashboard busca dados</text>
+
+    <!-- MODE 2: With Worker -->
+    <rect x="620" y="100" width="540" height="260" rx="12" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect x="620" y="100" width="540" height="32" rx="12" fill="#8b5cf6" opacity="0.15"/>
+    <text x="890" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#a78bfa">MODO 2: COM WORKER (quando h&#225; trabalho)</text>
+
+    <!-- Mode 2 diagram -->
+    <g transform="translate(645, 155)">
+      <rect width="100" height="55" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="50" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Protheus</text>
+      <text x="50" y="42" text-anchor="middle" font-size="10" fill="#94a3b8">ERP</text>
+    </g>
+    <line x1="750" y1="182" x2="785" y2="182" stroke="#a78bfa" stroke-width="2" class="flow-line"/>
+    <g transform="translate(790, 160)">
+      <rect width="75" height="45" rx="6" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="38" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#a78bfa">KONG</text>
+      <text x="38" y="34" text-anchor="middle" font-size="8" fill="#64748b">Auth</text>
+    </g>
+    <line x1="868" y1="182" x2="890" y2="182" stroke="#a78bfa" stroke-width="2" class="flow-line"/>
+    <g transform="translate(893, 160)">
+      <rect width="65" height="45" rx="6" fill="#1a1a2e" stroke="#6366f1" stroke-width="1"/>
+      <text x="33" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#818cf8">NATS</text>
+      <text x="33" y="34" text-anchor="middle" font-size="8" fill="#64748b">Fila</text>
+    </g>
+    <line x1="961" y1="182" x2="983" y2="182" stroke="#a78bfa" stroke-width="2" class="flow-line"/>
+    <g transform="translate(986, 155)">
+      <rect width="80" height="55" rx="6" fill="#1c1917" stroke="#f59e0b" stroke-width="1"/>
+      <text x="40" y="20" text-anchor="middle" font-size="10" font-weight="600" fill="#fbbf24">Worker</text>
+      <text x="40" y="35" text-anchor="middle" font-size="8" fill="#94a3b8">Traduz</text>
+      <text x="40" y="47" text-anchor="middle" font-size="8" fill="#94a3b8">DE-PARA</text>
+    </g>
+    <line x1="1070" y1="175" x2="1095" y2="160" stroke="#a78bfa" stroke-width="2" class="flow-line"/>
+    <line x1="1070" y1="190" x2="1095" y2="205" stroke="#a78bfa" stroke-width="2" class="flow-line"/>
+    <g transform="translate(1098, 140)">
+      <rect width="55" height="35" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="28" y="15" text-anchor="middle" font-size="8" font-weight="600" fill="#6ee7b7">Srv 1</text>
+      <circle cx="42" cy="25" r="4" class="success-pulse"/>
+    </g>
+    <g transform="translate(1098, 185)">
+      <rect width="55" height="35" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="28" y="15" text-anchor="middle" font-size="8" font-weight="600" fill="#6ee7b7">Srv 2</text>
+      <circle cx="42" cy="25" r="4" class="success-pulse"/>
+    </g>
+
+    <text x="890" y="270" text-anchor="middle" font-size="12" fill="#94a3b8">Com fila + tradu&#231;&#227;o + retry autom&#225;tico.</text>
+    <text x="890" y="290" text-anchor="middle" font-size="11" fill="#64748b">Quando os sistemas falam l&#237;nguas diferentes.</text>
+    <text x="890" y="310" text-anchor="middle" font-size="11" fill="#8b5cf6">Ganha: Tudo do Modo 1 + Tradu&#231;&#227;o + Garantia</text>
+    <text x="890" y="335" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">Ex: Protheus envia OP, Engenharia, Apontamentos</text>
+
+    <!-- Key message -->
+    <rect x="200" y="390" width="800" height="65" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="600" y="418" text-anchor="middle" font-size="16" font-weight="700" fill="white">Worker s&#243; existe quando h&#225; trabalho real a fazer.</text>
+    <text x="600" y="440" text-anchor="middle" font-size="13" fill="#94a3b8">Sem tradu&#231;&#227;o necess&#225;ria = passagem direta. Mais r&#225;pido, menos componentes.</text>
+
+    <!-- Benefits row -->
+    <g transform="translate(70, 480)">
+      <rect width="170" height="70" class="card-green"/>
+      <text x="85" y="25" text-anchor="middle" font-size="20">&#9889;</text>
+      <text x="85" y="45" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Load Balancing</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" fill="#94a3b8">Distribui carga</text>
+    </g>
+    <g transform="translate(260, 480)">
+      <rect width="170" height="70" class="card-green"/>
+      <text x="85" y="25" text-anchor="middle" font-size="20">&#128737;</text>
+      <text x="85" y="45" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Failover</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" fill="#94a3b8">Servidor cai, outro assume</text>
+    </g>
+    <g transform="translate(450, 480)">
+      <rect width="170" height="70" class="card-green"/>
+      <text x="85" y="25" text-anchor="middle" font-size="20">&#128274;</text>
+      <text x="85" y="45" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Auth Centralizada</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" fill="#94a3b8">Uma porta de entrada</text>
+    </g>
+    <g transform="translate(640, 480)">
+      <rect width="170" height="70" class="card-green"/>
+      <text x="85" y="25" text-anchor="middle" font-size="20">&#128202;</text>
+      <text x="85" y="45" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Rastreabilidade</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" fill="#94a3b8">Tudo registrado</text>
+    </g>
+    <g transform="translate(830, 480)">
+      <rect width="170" height="70" class="card-green"/>
+      <text x="85" y="25" text-anchor="middle" font-size="20">&#128170;</text>
+      <text x="85" y="45" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Resili&#234;ncia</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" fill="#94a3b8">Nenhum dado se perde</text>
+    </g>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 4: COMPARAÇÃO ==================== -->
+  <g class="slide slide4">
+    <text x="600" y="50" text-anchor="middle" class="heading" font-size="26">Compara&#231;&#227;o: Cen&#225;rio a Cen&#225;rio</text>
+    <text x="600" y="75" text-anchor="middle" class="subtitle" font-size="15">O que acontece em cada situa&#231;&#227;o?</text>
+
+    <!-- Headers -->
+    <text x="330" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#f87171">Modelo Atual (Direto)</text>
+    <text x="870" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#34d399">Modelo Novo (Middleware)</text>
+
+    <!-- Scenario A -->
+    <rect x="50" y="125" width="50" height="80" rx="8" fill="#3b82f6" opacity="0.2"/>
+    <text x="75" y="155" text-anchor="middle" font-size="24">&#128683;</text>
+    <text x="75" y="175" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">EME4</text>
+    <text x="75" y="185" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">CAIU</text>
+
+    <rect x="110" y="125" width="360" height="80" class="card-red"/>
+    <text x="290" y="152" text-anchor="middle" font-size="13" fill="#fca5a5">Erro! Timeout. Dados podem se perder.</text>
+    <text x="290" y="172" text-anchor="middle" font-size="11" fill="#94a3b8">Algu&#233;m precisa reenviar manualmente.</text>
+    <text x="290" y="192" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">Risco de perda de dados</text>
+
+    <rect x="560" y="125" width="420" height="80" class="card-green"/>
+    <text x="770" y="152" text-anchor="middle" font-size="13" fill="#6ee7b7">Mensagens ficam na fila. Nada se perde.</text>
+    <text x="770" y="172" text-anchor="middle" font-size="11" fill="#94a3b8">Quando EME4 voltar, entrega autom&#225;tica.</text>
+    <text x="770" y="192" text-anchor="middle" font-size="11" fill="#10b981" font-weight="600">Zero perda de dados</text>
+
+    <!-- Scenario B -->
+    <rect x="50" y="215" width="50" height="80" rx="8" fill="#3b82f6" opacity="0.2"/>
+    <text x="75" y="245" text-anchor="middle" font-size="24">&#128230;</text>
+    <text x="75" y="265" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">500</text>
+    <text x="75" y="275" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">OPs</text>
+
+    <rect x="110" y="215" width="360" height="80" class="card-red"/>
+    <text x="290" y="242" text-anchor="middle" font-size="13" fill="#fca5a5">Uma por uma, esperando cada resposta.</text>
+    <text x="290" y="262" text-anchor="middle" font-size="11" fill="#94a3b8">Servidor &#250;nico fica sobrecarregado.</text>
+    <text x="290" y="282" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">Lento e fr&#225;gil</text>
+
+    <rect x="560" y="215" width="420" height="80" class="card-green"/>
+    <text x="770" y="242" text-anchor="middle" font-size="13" fill="#6ee7b7">Envia todas rapidamente para a fila.</text>
+    <text x="770" y="262" text-anchor="middle" font-size="11" fill="#94a3b8">Load Balancer distribui entre servidores.</text>
+    <text x="770" y="282" text-anchor="middle" font-size="11" fill="#10b981" font-weight="600">R&#225;pido e resiliente</text>
+
+    <!-- Scenario C -->
+    <rect x="50" y="305" width="50" height="80" rx="8" fill="#3b82f6" opacity="0.2"/>
+    <text x="75" y="335" text-anchor="middle" font-size="24">&#128260;</text>
+    <text x="75" y="358" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">FORMATO</text>
+    <text x="75" y="368" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">MUDOU</text>
+
+    <rect x="110" y="305" width="360" height="80" class="card-red"/>
+    <text x="290" y="332" text-anchor="middle" font-size="13" fill="#fca5a5">Alterar Protheus E EME4 juntos.</text>
+    <text x="290" y="352" text-anchor="middle" font-size="11" fill="#94a3b8">Os dois precisam subir ao mesmo tempo.</text>
+    <text x="290" y="372" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">Alto risco de quebra</text>
+
+    <rect x="560" y="305" width="420" height="80" class="card-green"/>
+    <text x="770" y="332" text-anchor="middle" font-size="13" fill="#6ee7b7">Altera apenas o Worker/Tradutor.</text>
+    <text x="770" y="352" text-anchor="middle" font-size="11" fill="#94a3b8">Cada sistema evolui no seu ritmo.</text>
+    <text x="770" y="372" text-anchor="middle" font-size="11" fill="#10b981" font-weight="600">Mudan&#231;a isolada e segura</text>
+
+    <!-- Scenario D -->
+    <rect x="50" y="395" width="50" height="80" rx="8" fill="#3b82f6" opacity="0.2"/>
+    <text x="75" y="425" text-anchor="middle" font-size="24">&#128187;</text>
+    <text x="75" y="448" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">SERVIDOR</text>
+    <text x="75" y="458" text-anchor="middle" font-size="8" fill="#60a5fa" font-weight="600">CAIU</text>
+
+    <rect x="110" y="395" width="360" height="80" class="card-red"/>
+    <text x="290" y="422" text-anchor="middle" font-size="13" fill="#fca5a5">Tudo para. Interven&#231;&#227;o manual.</text>
+    <text x="290" y="442" text-anchor="middle" font-size="11" fill="#94a3b8">Downtime at&#233; o servidor voltar.</text>
+    <text x="290" y="462" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">Ponto &#250;nico de falha</text>
+
+    <rect x="560" y="395" width="420" height="80" class="card-green"/>
+    <text x="770" y="422" text-anchor="middle" font-size="13" fill="#6ee7b7">Load Balancer redireciona automaticamente.</text>
+    <text x="770" y="442" text-anchor="middle" font-size="11" fill="#94a3b8">Outro servidor assume em segundos.</text>
+    <text x="770" y="462" text-anchor="middle" font-size="11" fill="#10b981" font-weight="600">Zero downtime</text>
+
+    <!-- Bottom summary -->
+    <rect x="250" y="510" width="700" height="55" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="600" y="535" text-anchor="middle" font-size="14" fill="#94a3b8">Em todos os cen&#225;rios, o Middleware transforma <tspan fill="#ef4444" font-weight="600">fragilidade</tspan> em <tspan fill="#10b981" font-weight="600">resili&#234;ncia</tspan>.</text>
+    <text x="600" y="555" text-anchor="middle" font-size="12" fill="#64748b">E o Worker s&#243; participa quando h&#225; tradu&#231;&#227;o a fazer.</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 5: TECNOLOGIAS ==================== -->
+  <g class="slide slide5">
+    <text x="600" y="50" text-anchor="middle" class="heading" font-size="26">Por que confiamos nessas tecnologias?</text>
+    <text x="600" y="75" text-anchor="middle" class="subtitle" font-size="15">Tecnologias comprovadas em produ&#231;&#227;o mundial</text>
+
+    <!-- NATS Card -->
+    <rect x="50" y="100" width="530" height="280" class="card-accent" filter="url(#shadow)"/>
+    <rect x="50" y="100" width="530" height="40" rx="12" fill="#3b82f6" opacity="0.15"/>
+    <text x="315" y="126" text-anchor="middle" font-size="16" font-weight="700" fill="#60a5fa">NATS &#8212; Mensageria Ultrarrr&#225;pida</text>
+
+    <!-- NATS metrics -->
+    <g transform="translate(80, 160)">
+      <text x="0" y="0" class="number-med" fill="#3b82f6">25M</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">mensagens/segundo</text>
+    </g>
+    <g transform="translate(230, 160)">
+      <text x="0" y="0" class="number-med" fill="#3b82f6">0.2ms</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">lat&#234;ncia</text>
+    </g>
+    <g transform="translate(400, 160)">
+      <text x="0" y="0" class="number-med" fill="#3b82f6">18MB</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">de RAM</text>
+    </g>
+
+    <text x="80" y="220" font-size="13" fill="#cbd5e1">Escrito em <tspan font-weight="600" fill="white">Go</tspan> (linguagem do Google)</text>
+    <text x="80" y="245" font-size="13" fill="#cbd5e1">Usado por: <tspan font-weight="600" fill="white">Tesla, Mastercard, GE, Walmart</tspan></text>
+    <text x="80" y="270" font-size="13" fill="#cbd5e1">Mantido pela <tspan font-weight="600" fill="white">CNCF</tspan> (mesma do Kubernetes)</text>
+
+    <rect x="80" y="295" width="470" height="55" rx="8" fill="#0f172a"/>
+    <text x="315" y="318" text-anchor="middle" font-size="12" fill="#94a3b8">Para nosso volume (~500 msgs/dia):</text>
+    <text x="315" y="338" text-anchor="middle" font-size="13" font-weight="600" fill="#60a5fa">Usa 0,000002% da capacidade. Roda em qualquer lugar.</text>
+
+    <!-- Kong/APISIX Card -->
+    <rect x="620" y="100" width="530" height="280" class="card" filter="url(#shadow)" stroke="#8b5cf6"/>
+    <rect x="620" y="100" width="530" height="40" rx="12" fill="#8b5cf6" opacity="0.15"/>
+    <text x="885" y="126" text-anchor="middle" font-size="16" font-weight="700" fill="#a78bfa">Kong/APISIX &#8212; Sobre o NGINX</text>
+
+    <!-- Kong metrics -->
+    <g transform="translate(650, 160)">
+      <text x="0" y="0" class="number-med" fill="#8b5cf6">18k</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">requisi&#231;&#245;es/seg</text>
+    </g>
+    <g transform="translate(800, 160)">
+      <text x="0" y="0" class="number-med" fill="#8b5cf6">0.5ms</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">lat&#234;ncia extra</text>
+    </g>
+    <g transform="translate(970, 160)">
+      <text x="0" y="0" class="number-med" fill="#8b5cf6">100MB</text>
+      <text x="0" y="22" font-size="11" fill="#94a3b8">de RAM</text>
+    </g>
+
+    <text x="650" y="220" font-size="13" fill="#cbd5e1">Constru&#237;do sobre <tspan font-weight="600" fill="white">NGINX</tspan> (20+ anos, 30% da internet)</text>
+    <text x="650" y="245" font-size="13" fill="#cbd5e1">NGINX usado por: <tspan font-weight="600" fill="white">Netflix, Cloudflare, WordPress</tspan></text>
+    <text x="650" y="270" font-size="13" fill="#cbd5e1">Kong: <tspan fill="white">Samsung, Nasdaq</tspan> | APISIX: <tspan fill="white">NASA, Airbus</tspan></text>
+
+    <rect x="650" y="295" width="470" height="55" rx="8" fill="#0f172a"/>
+    <text x="885" y="318" text-anchor="middle" font-size="12" fill="#94a3b8">Para nosso volume (~500 req/dia):</text>
+    <text x="885" y="338" text-anchor="middle" font-size="13" font-weight="600" fill="#a78bfa">Usa 0,00006% da capacidade. +LB +Auth +Failover gr&#225;tis.</text>
+
+    <!-- Infrastructure total -->
+    <rect x="200" y="410" width="800" height="130" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="440" text-anchor="middle" font-size="18" font-weight="700" fill="white">Infraestrutura Total do Middleware</text>
+
+    <g transform="translate(250, 460)">
+      <rect width="180" height="55" rx="8" fill="#064e3b" opacity="0.5"/>
+      <text x="90" y="22" text-anchor="middle" font-size="28" font-weight="800" fill="#34d399">280 MB</text>
+      <text x="90" y="42" text-anchor="middle" font-size="11" fill="#94a3b8">RAM total</text>
+    </g>
+    <g transform="translate(460" y="460">
+      <rect x="460" y="460" width="180" height="55" rx="8" fill="#064e3b" opacity="0.5"/>
+      <text x="550" y="482" text-anchor="middle" font-size="28" font-weight="800" fill="#34d399">&lt; 7%</text>
+      <text x="550" y="502" text-anchor="middle" font-size="11" fill="#94a3b8">CPU</text>
+    </g>
+    <g>
+      <rect x="670" y="460" width="280" height="55" rx="8" fill="#064e3b" opacity="0.5"/>
+      <text x="810" y="482" text-anchor="middle" font-size="16" font-weight="600" fill="#34d399">Menos que o Chrome</text>
+      <text x="810" y="502" text-anchor="middle" font-size="11" fill="#94a3b8">com 3 abas abertas</text>
+    </g>
+
+    <text x="600" y="570" text-anchor="middle" font-size="14" fill="#94a3b8">Cabe em qualquer VM ou container. N&#227;o precisa de servidor dedicado.</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 6: VISÃO IA ==================== -->
+  <g class="slide slide6">
+    <text x="600" y="50" text-anchor="middle" class="heading" font-size="26">Vis&#227;o Estrat&#233;gica: O Middleware como base para IA</text>
+    <text x="600" y="75" text-anchor="middle" class="subtitle" font-size="15">N&#227;o &#233; exagero. &#201; o primeiro passo de algo muito maior.</text>
+
+    <!-- Timeline -->
+    <!-- Phase line -->
+    <line x1="100" y1="160" x2="1100" y2="160" stroke="#334155" stroke-width="3"/>
+
+    <!-- POC (now) -->
+    <circle cx="200" cy="160" r="14" fill="#3b82f6" filter="url(#glow)"/>
+    <text x="200" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">1</text>
+    <text x="200" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">POC (agora)</text>
+
+    <rect x="110" y="185" width="180" height="90" class="card-accent"/>
+    <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">Protheus &#8596; EME4</text>
+    <text x="200" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">Engenharia + OPs</text>
+    <text x="200" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#60a5fa">Centenas/dia</text>
+
+    <!-- Phase 2 -->
+    <circle cx="550" cy="160" r="14" fill="#8b5cf6"/>
+    <text x="550" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">2</text>
+    <text x="550" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">Fase 2</text>
+
+    <rect x="430" y="185" width="240" height="90" class="card" stroke="#8b5cf6"/>
+    <text x="550" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">+ Outros m&#243;dulos EME4</text>
+    <text x="550" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">+ Sistemas Datainfo</text>
+    <text x="550" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#a78bfa">Milhares/dia</text>
+
+    <!-- Phase 3 (AI) -->
+    <circle cx="900" cy="160" r="14" fill="#10b981" filter="url(#glow)"/>
+    <text x="900" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">3</text>
+    <text x="900" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">Fase 3 (IA)</text>
+
+    <rect x="760" y="185" width="280" height="90" class="card-green"/>
+    <text x="900" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">+ Agentes de IA</text>
+    <text x="900" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">consultando e atuando em todos os sistemas</text>
+    <text x="900" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#34d399">Dezenas de milhares/dia</text>
+
+    <!-- Future architecture diagram -->
+    <text x="600" y="320" text-anchor="middle" font-size="18" font-weight="600" fill="white">Futuro: Uma porta &#250;nica para todos os sistemas</text>
+
+    <!-- Producers -->
+    <g transform="translate(80, 350)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Agentes IA</text>
+    </g>
+    <g transform="translate(80, 400)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Protheus</text>
+    </g>
+    <g transform="translate(80, 450)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">App Mobile</text>
+    </g>
+    <g transform="translate(80, 500)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Dashboard</text>
+    </g>
+
+    <!-- Arrows to middleware -->
+    <line x1="225" y1="370" x2="420" y2="420" stroke="#3b82f6" stroke-width="1.5" class="flow-line"/>
+    <line x1="225" y1="420" x2="420" y2="430" stroke="#3b82f6" stroke-width="1.5" class="flow-line"/>
+    <line x1="225" y1="470" x2="420" y2="440" stroke="#3b82f6" stroke-width="1.5" class="flow-line"/>
+    <line x1="225" y1="520" x2="420" y2="450" stroke="#3b82f6" stroke-width="1.5" class="flow-line"/>
+
+    <!-- Middleware box -->
+    <rect x="420" y="370" width="260" height="110" rx="12" fill="#1e1b4b" stroke="url(#accentGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="550" y="405" text-anchor="middle" font-size="16" font-weight="700" fill="white">MIDDLEWARE</text>
+    <text x="550" y="425" text-anchor="middle" font-size="12" fill="#a78bfa">Kong/APISIX + NATS</text>
+    <text x="550" y="450" text-anchor="middle" font-size="11" fill="#94a3b8">Auth | LB | Fila | Tradu&#231;&#227;o</text>
+    <text x="550" y="468" text-anchor="middle" font-size="10" fill="#64748b">Worker quando precisa | Direto quando n&#227;o</text>
+
+    <!-- Arrows to systems -->
+    <line x1="685" y1="400" x2="830" y2="370" stroke="#10b981" stroke-width="1.5" class="flow-line"/>
+    <line x1="685" y1="420" x2="830" y2="420" stroke="#10b981" stroke-width="1.5" class="flow-line"/>
+    <line x1="685" y1="440" x2="830" y2="470" stroke="#10b981" stroke-width="1.5" class="flow-line"/>
+    <line x1="685" y1="460" x2="830" y2="520" stroke="#10b981" stroke-width="1.5" class="flow-line"/>
+
+    <!-- Backend systems -->
+    <g transform="translate(835, 350)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">EME4</text>
+    </g>
+    <g transform="translate(835, 400)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Protheus</text>
+    </g>
+    <g transform="translate(835, 450)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema X</text>
+    </g>
+    <g transform="translate(835, 500)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema Y</text>
+    </g>
+
+    <!-- Key message -->
+    <rect x="200" y="575" width="800" height="45" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="600" y="603" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">A POC &#233; o piloto. O Middleware &#233; a pista de decolagem para a IA.</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="5" fill="#3b82f6"/>
+    <circle cx="672" cy="640" r="4" fill="#475569"/>
+  </g>
+
+  <!-- ==================== SLIDE 7: RECOMENDAÇÃO ==================== -->
+  <g class="slide slide7">
+    <text x="600" y="55" text-anchor="middle" class="heading" font-size="28">Recomenda&#231;&#227;o</text>
+    <text x="600" y="85" text-anchor="middle" class="subtitle" font-size="16">Aprovação da POC do Middleware com escopo reduzido</text>
+
+    <!-- Main card -->
+    <rect x="150" y="110" width="900" height="200" rx="16" fill="#0f172a" stroke="url(#accentGrad)" stroke-width="2" filter="url(#shadow)"/>
+
+    <!-- POC scope items -->
+    <g transform="translate(200, 140)">
+      <circle cx="10" cy="10" r="10" fill="#3b82f6"/>
+      <text x="10" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="white">1</text>
+      <text x="35" y="15" font-size="15" font-weight="600" fill="white">Escopo m&#237;nimo da POC</text>
+      <text x="35" y="38" font-size="13" fill="#94a3b8">Sincronizar 1 cadastro de engenharia (Centro de Trabalho)</text>
+      <text x="35" y="56" font-size="13" fill="#94a3b8">+ 1 fluxo de OP (criar + apontar)</text>
+    </g>
+
+    <g transform="translate(200, 210)">
+      <circle cx="10" cy="10" r="10" fill="#10b981"/>
+      <text x="10" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="white">2</text>
+      <text x="35" y="15" font-size="15" font-weight="600" fill="white">Risco: Baixo</text>
+      <text x="35" y="38" font-size="13" fill="#94a3b8">A POC n&#227;o afeta os sistemas atuais</text>
+    </g>
+
+    <g transform="translate(600, 140)">
+      <circle cx="10" cy="10" r="10" fill="#8b5cf6"/>
+      <text x="10" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="white">3</text>
+      <text x="35" y="15" font-size="15" font-weight="600" fill="white">Infraestrutura: M&#237;nima</text>
+      <text x="35" y="38" font-size="13" fill="#94a3b8">~280 MB de RAM em qualquer servidor existente</text>
+    </g>
+
+    <g transform="translate(600, 210)">
+      <circle cx="10" cy="10" r="10" fill="#f59e0b"/>
+      <text x="10" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="white">4</text>
+      <text x="35" y="15" font-size="15" font-weight="600" fill="white">Resultado esperado</text>
+      <text x="35" y="38" font-size="13" fill="#94a3b8">Demonstrar que funciona + medir performance</text>
+      <text x="35" y="56" font-size="13" fill="#94a3b8">= base concreta para decis&#227;o</text>
+    </g>
+
+    <!-- What we deliver -->
+    <text x="600" y="350" text-anchor="middle" font-size="18" font-weight="600" fill="white">O que o Middleware entrega:</text>
+
+    <g transform="translate(70, 375)">
+      <rect width="170" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-size="28">&#128274;</text>
+      <text x="85" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="white">Seguran&#231;a</text>
+      <text x="85" y="73" text-anchor="middle" font-size="10" fill="#94a3b8">Auth centralizada</text>
+    </g>
+    <g transform="translate(260, 375)">
+      <rect width="170" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-size="28">&#9889;</text>
+      <text x="85" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="white">Performance</text>
+      <text x="85" y="73" text-anchor="middle" font-size="10" fill="#94a3b8">NGINX + NATS</text>
+    </g>
+    <g transform="translate(450, 375)">
+      <rect width="170" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-size="28">&#128170;</text>
+      <text x="85" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="white">Resili&#234;ncia</text>
+      <text x="85" y="73" text-anchor="middle" font-size="10" fill="#94a3b8">Zero perda de dados</text>
+    </g>
+    <g transform="translate(640, 375)">
+      <rect width="170" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-size="28">&#128202;</text>
+      <text x="85" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="white">Visibilidade</text>
+      <text x="85" y="73" text-anchor="middle" font-size="10" fill="#94a3b8">Rastreabilidade total</text>
+    </g>
+    <g transform="translate(830, 375)">
+      <rect width="170" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-size="28">&#129302;</text>
+      <text x="85" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="white">Futuro com IA</text>
+      <text x="85" y="73" text-anchor="middle" font-size="10" fill="#94a3b8">Base para agentes</text>
+    </g>
+
+    <!-- Final quote -->
+    <rect x="200" y="500" width="800" height="80" rx="16" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="535" text-anchor="middle" font-size="17" font-weight="600" fill="white" font-style="italic">&#8220;A POC &#233; um investimento pequeno</text>
+    <text x="600" y="560" text-anchor="middle" font-size="17" font-weight="600" fill="white" font-style="italic">para uma decis&#227;o informada.&#8221;</text>
+
+    <!-- Slide indicator -->
+    <circle cx="552" cy="640" r="4" fill="#475569"/>
+    <circle cx="572" cy="640" r="4" fill="#475569"/>
+    <circle cx="592" cy="640" r="4" fill="#475569"/>
+    <circle cx="612" cy="640" r="4" fill="#475569"/>
+    <circle cx="632" cy="640" r="4" fill="#475569"/>
+    <circle cx="652" cy="640" r="4" fill="#475569"/>
+    <circle cx="672" cy="640" r="5" fill="#3b82f6"/>
+  </g>
+
+</svg>
