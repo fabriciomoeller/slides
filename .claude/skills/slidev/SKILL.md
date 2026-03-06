@@ -26,9 +26,12 @@ You are an expert in Slidev presentations. Use these rules when editing or creat
 ### SVG Inside Slides
 - **Inline SVG in Vue templates is fragile** — Vue's template compiler can mangle SVG content
 - For small inline SVGs (arrows, simple shapes): OK, but keep them minimal
-- For complex animated SVGs: **DO NOT USE**. Use HTML/CSS with v-motion instead
-- SVG `<line>`, `<rect>`, `<circle>` work fine inline for simple diagram connectors
+- For complex animated SVGs with many elements: works fine IF you follow the rules below
+- SVG `<line>`, `<rect>`, `<circle>` work fine inline for diagram connectors and animated dots
 - Always use `viewBox` and explicit `width`/`height` or CSS classes on SVGs
+- **CRITICAL: NEVER leave blank lines inside `<svg>` tags** — Slidev's Markdown parser treats them as paragraph separators and wraps SVG content in `<pre><code>`, completely breaking rendering
+- **NEVER put HTML comments (`<!-- -->`) inside `<svg>` tags** — same issue
+- Keep all SVG children tightly packed with no empty lines between elements
 
 ### Animations
 
@@ -160,6 +163,7 @@ This presentation avoids green/orange pairs (director is colorblind). The palett
 Classes are prefixed by slide/section:
 - `s6-*` — Slide 6 (middleware architecture diagram)
 - `ve-*` — Visão Estratégica slide
+- `nats-*` — NATS Pub/Sub animation slide
 - `pipe-*` — Pipeline/flow diagrams
 - `flow-step-*` — Step-by-step flow lists
 - `info-card-*` — Information cards
@@ -230,6 +234,15 @@ Slide separators: `---` with optional frontmatter between slides.
 </svg>
 ```
 
+**Animated node diagram with particle dots (NATS Pub/Sub pattern):**
+Uses absolute-positioned nodes + an SVG overlay with animated `<circle>` dots moving along `<line>` paths via CSS `@keyframes` animating `cx`/`cy`. Key CSS classes:
+- `nats-pubsub` — container with `position: relative`
+- `nats-node` — absolute-positioned node boxes
+- `nats-svg` — SVG layer (`position: absolute; inset: 0; pointer-events: none`)
+- `nats-path` — dashed lines with `dashFlowIn` animation
+- `nats-dot` — animated circles with `drop-shadow` glow, keyframes move `cx`/`cy`
+- Remember: **no blank lines inside `<svg>`** in Slidev markdown
+
 ### Dev Commands
 
 ```bash
@@ -241,7 +254,7 @@ npm run export # Export to PDF
 ### Troubleshooting
 
 1. **"Invalid end tag" error** → Check for self-closing `<div />`. Change to `<span></span>` or `<div></div>`
-2. **SVG not rendering** → Vue may mangle complex SVGs. Simplify or move to `public/` as `<img>`
+2. **SVG not rendering / `<pre>` inside `<svg>` warning** → Blank lines or HTML comments inside `<svg>` cause Markdown parser to inject `<pre><code>`. Remove ALL blank lines and comments from within SVG tags
 3. **Animation runs during slide transition** → Use `v-motion` with `transition.delay` instead of CSS animations on mount
 4. **Icons not showing** → Ensure `@iconify-json/{collection}` is installed. Check class has `inline-block`
 5. **Colors look wrong in light mode** → Slidev inverts dark↔light. Test both modes
