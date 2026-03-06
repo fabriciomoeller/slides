@@ -630,6 +630,91 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
+     SLIDE 10.5 — NATS PUB/SUB ANIMAÇÃO
+     ═══════════════════════════════════════════════════════════ -->
+
+# NATS — Publish / Subscribe
+
+<div class="accent-bar accent-bar-cyan">
+  Como o NATS distribui mensagens — o motor por trás do Middleware
+</div>
+
+<div class="nats-pubsub" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="nats-subject"><span class="i-ph-broadcast-fill inline-block mr-1"></span> subject: eme4.op.criar</div>
+  <div class="nats-node nats-pub">
+    <span class="i-ph-plugs-connected-fill text-lg inline-block"></span>
+    <div>Protheus</div>
+    <span class="nats-node-sub-text">Publisher</span>
+  </div>
+  <div class="nats-node nats-server">
+    <div class="nats-server-glow"></div>
+    <span class="i-ph-cloud-arrow-up-fill text-xl inline-block"></span>
+    <div>NATS</div>
+    <span class="nats-node-sub-text">JetStream</span>
+  </div>
+  <div class="nats-node nats-sub nats-sub-1">
+    <span class="i-ph-gear-six-fill text-base inline-block"></span>
+    <div>Worker 1</div>
+    <span class="nats-node-sub-text">Subscriber</span>
+  </div>
+  <div class="nats-node nats-sub nats-sub-2 nats-sub-cyan">
+    <span class="i-ph-gear-six-fill text-base inline-block"></span>
+    <div>Worker 2</div>
+    <span class="nats-node-sub-text">Subscriber</span>
+  </div>
+  <div class="nats-node nats-sub nats-sub-3 nats-sub-cyan">
+    <span class="i-carbon-dashboard text-base inline-block"></span>
+    <div>Monitor</div>
+    <span class="nats-node-sub-text">Subscriber</span>
+  </div>
+  <svg class="nats-svg" viewBox="0 0 820 340" preserveAspectRatio="xMidYMid meet">
+    <line x1="122" y1="170" x2="330" y2="170" class="nats-path nats-path-pub"/>
+    <line x1="490" y1="170" x2="690" y2="42" class="nats-path nats-path-sub1"/>
+    <line x1="490" y1="170" x2="690" y2="170" class="nats-path nats-path-sub2"/>
+    <line x1="490" y1="170" x2="690" y2="298" class="nats-path nats-path-sub3"/>
+    <circle class="nats-dot nats-dot-blue nats-dot-pub" cx="122" cy="170" r="5"/>
+    <circle class="nats-dot nats-dot-blue nats-dot-pub-2" cx="122" cy="170" r="4"/>
+    <circle class="nats-dot nats-dot-blue nats-dot-pub-3" cx="122" cy="170" r="4"/>
+    <circle class="nats-dot nats-dot-fuchsia nats-dot-s1" cx="490" cy="170" r="4"/>
+    <circle class="nats-dot nats-dot-cyan nats-dot-s2" cx="490" cy="170" r="4"/>
+    <circle class="nats-dot nats-dot-cyan nats-dot-s3" cx="490" cy="170" r="4"/>
+  </svg>
+</div>
+
+<v-click>
+<div class="nats-callout">
+  <div class="nats-callout-item">
+    <div class="nats-callout-value text-blue-400">1 publish</div>
+    <div class="nats-callout-label">Protheus envia uma vez</div>
+  </div>
+  <div class="nats-callout-item">
+    <div class="nats-callout-value text-cyan-400">N subscribers</div>
+    <div class="nats-callout-label">Todos recebem em paralelo</div>
+  </div>
+  <div class="nats-callout-item">
+    <div class="nats-callout-value text-fuchsia-400">0,2 ms</div>
+    <div class="nats-callout-label">Latência por mensagem</div>
+  </div>
+  <div class="nats-callout-item">
+    <div class="nats-callout-value text-purple-400">Garantido</div>
+    <div class="nats-callout-label">JetStream persiste na fila</div>
+  </div>
+</div>
+</v-click>
+
+<v-click>
+<div class="mt-3 p-3 rounded-xl text-center text-sm result-good">
+  <span class="text-cyan-300 font-semibold">O sistema origem publica uma vez.</span>
+  <span class="opacity-60"> O NATS entrega para todos os interessados — Workers, Monitores, Logs — sem o Publisher saber quem está ouvindo.</span>
+</div>
+</v-click>
+
+
+---
+transition: slide-left
+---
+
+<!-- ═══════════════════════════════════════════════════════════
      SLIDE 11 — MODO 1: PASSAGEM DIRETA (IA)
      ═══════════════════════════════════════════════════════════ -->
 
