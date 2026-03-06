@@ -170,21 +170,21 @@ transition: slide-up
 <div class="gradient-divider mx-auto mt-4 mb-8"></div>
 
 <div class="grid grid-cols-2 gap-8 w-full max-w-3xl">
-  <div v-click class="mode-card mode-card-fuchsia">
-    <div class="mode-number">2</div>
-    <div class="mode-title text-fuchsia-300">Com Tradutor</div>
-    <div class="mode-desc">Fila NATS + Worker<br>Tradução DE-PARA + Garantia de entrega</div>
-    <div class="mode-use">Ex: ERP → EME4 (com tradução)</div>
-  </div>
-  <div v-click class="mode-card mode-card-cyan">
+  <div class="mode-card mode-card-cyan">
     <div class="mode-number" style="background: rgba(6,182,212,0.15); color: #22d3ee;">1</div>
     <div class="mode-title text-cyan-300">Passagem Direta</div>
     <div class="mode-desc">Sem tradutor. Sem fila.<br>Direto e rápido.</div>
     <div class="mode-use">IA, Dashboards, Consultas</div>
   </div>
+  <div class="mode-card mode-card-fuchsia">
+    <div class="mode-number">2</div>
+    <div class="mode-title text-fuchsia-300">Com Tradutor</div>
+    <div class="mode-desc">Fila NATS + Worker<br>Tradução DE-PARA + Garantia de entrega</div>
+    <div class="mode-use">Ex: ERP → EME4 (com tradução)</div>
+  </div>
 </div>
 
-<div v-click class="mt-8 text-sm opacity-50 text-center">
+<div class="s6-message mt-8 text-sm opacity-50 text-center" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:800}}">
   Worker só existe quando há trabalho real a fazer. Sem trabalho = passagem direta.
 </div>
 
@@ -203,50 +203,79 @@ transition: slide-left
   Quando há trabalho real — tradução, orquestração, garantia de entrega
 </div>
 
-<div v-click class="pipeline my-4">
-  <div class="pipe-node pipe-blue">ORIGEM<span class="pipe-sub">ex: ERP</span></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-node pipe-purple">KONG<span class="pipe-sub">portaria</span></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-node pipe-cyan">NATS<span class="pipe-sub">fila</span></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-node pipe-fuchsia">Worker<span class="pipe-sub">tradutor</span></div>
-  <div class="pipe-arrow">→</div>
-  <div class="pipe-group">
-    <div class="pipe-node pipe-cyan pipe-sm">EME4 1</div>
-    <div class="pipe-node pipe-cyan pipe-sm">EME4 2</div>
+<div class="wf-box my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="wf-node wf-n-origin"><span class="i-ph-plugs-connected-fill text-base inline-block"></span>ORIGEM<span class="wf-n-sub">ex: ERP</span></div>
+  <div class="wf-node wf-n-kong"><span class="i-ph-shield-check-fill text-base inline-block"></span>KONG<span class="wf-n-sub">portaria</span></div>
+  <div class="wf-node wf-n-nats"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="wf-n-sub">fila</span></div>
+  <div class="wf-node wf-n-worker"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="wf-n-sub">tradutor</span></div>
+  <div class="wf-node wf-n-eme4a">EME4 1</div>
+  <div class="wf-node wf-n-eme4b">EME4 2</div>
+  <div v-click="1" class="wf-seg-layer">
+    <svg class="wf-svg" viewBox="0 0 750 110">
+      <line x1="90" y1="55" x2="160" y2="55" class="wf-line wf-line-blue"/>
+      <circle class="wf-dot wf-dot-blue wf-dot-s1" cx="90" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-blue wf-dot-s1b" cx="90" cy="55" r="4"/>
+    </svg>
   </div>
+  <div v-click="2" class="wf-seg-layer">
+    <svg class="wf-svg" viewBox="0 0 750 110">
+      <line x1="240" y1="55" x2="310" y2="55" class="wf-line wf-line-purple"/>
+      <circle class="wf-dot wf-dot-purple wf-dot-s2" cx="240" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-purple wf-dot-s2b" cx="240" cy="55" r="4"/>
+    </svg>
+  </div>
+  <div v-click="3" class="wf-seg-layer">
+    <svg class="wf-svg" viewBox="0 0 750 110">
+      <path d="M199,81 L199,88 Q199,96 191,96 L51,96 Q44,96 44,88 L44,81" class="wf-line wf-line-cyan wf-line-return"/>
+      <circle class="wf-dot wf-dot-cyan wf-dot-s3" cx="199" cy="81" r="4"/>
+    </svg>
+    <div class="wf-accepted">✓ 202 Accepted</div>
+  </div>
+  <div v-click="4" class="wf-seg-layer">
+    <svg class="wf-svg" viewBox="0 0 750 110">
+      <line x1="390" y1="55" x2="465" y2="55" class="wf-line wf-line-cyan"/>
+      <circle class="wf-dot wf-dot-cyan wf-dot-s4" cx="390" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-cyan wf-dot-s4b" cx="390" cy="55" r="4"/>
+    </svg>
+  </div>
+  <div v-click="5" class="wf-seg-layer">
+    <svg class="wf-svg" viewBox="0 0 750 110">
+      <path d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="wf-line wf-line-fuchsia"/>
+      <path d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" class="wf-line wf-line-fuchsia"/>
+      <circle class="wf-dot wf-dot-fuchsia wf-lb-1" cx="553" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-fuchsia wf-lb-2" cx="553" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-fuchsia wf-lb-3" cx="553" cy="55" r="4"/>
+      <circle class="wf-dot wf-dot-fuchsia wf-lb-4" cx="553" cy="55" r="4"/>
+    </svg>
+  </div>
+  <div v-click="6" class="wf-retry-badge"><span class="i-ph-arrow-counter-clockwise-fill inline-block text-xs"></span> retry</div>
 </div>
 
 <div class="flow-steps" style="max-width:750px;">
-<v-clicks>
-
-<div class="flow-step flow-step-blue">
+<div v-click="1" class="flow-step flow-step-blue">
   <div class="flow-step-num">1</div>
   <div>Sistema externo envia os dados para o Kong/APISIX</div>
 </div>
-<div class="flow-step flow-step-cyan">
-  <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">2</div>
+<div v-click="2" class="flow-step flow-step-purple">
+  <div class="flow-step-num" style="background:rgba(139,92,246,0.2);color:#a78bfa;">2</div>
   <div>Kong autentica e coloca a mensagem na fila (NATS JetStream)</div>
 </div>
-<div class="flow-step flow-step-cyan" style="font-weight:600;">
+<div v-click="3" class="flow-step flow-step-cyan" style="font-weight:600;">
   <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">3</div>
   <div>Sistema origem recebe "Recebido!" (202 Accepted) e <strong>segue em frente</strong></div>
 </div>
-<div class="flow-step flow-step-fuchsia">
+<div v-click="4" class="flow-step flow-step-fuchsia">
   <div class="flow-step-num" style="background:rgba(217,70,239,0.2);color:#e879f9;">4</div>
   <div>Worker pega da fila e traduz campos (DE-PARA: SG1 → ListaMateriaisProduto)</div>
 </div>
-<div class="flow-step flow-step-purple">
-  <div class="flow-step-num" style="background:rgba(139,92,246,0.2);color:#a78bfa;">5</div>
+<div v-click="5" class="flow-step flow-step-fuchsia">
+  <div class="flow-step-num" style="background:rgba(217,70,239,0.2);color:#e879f9;">5</div>
   <div>Load Balancer escolhe a melhor instância do EME4 (menos ocupada)</div>
 </div>
-<div class="flow-step flow-step-cyan">
+<div v-click="6" class="flow-step flow-step-cyan">
   <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">6</div>
   <div>Se der erro → retry automático com backoff exponencial</div>
 </div>
-
-</v-clicks>
 </div>
 
 <!--
@@ -630,7 +659,7 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 10.5 — NATS PUB/SUB ANIMAÇÃO
+     SLIDE 11 — NATS PUB/SUB ANIMAÇÃO
      ═══════════════════════════════════════════════════════════ -->
 
 # NATS — Publish / Subscribe
@@ -715,7 +744,7 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 11 — MODO 1: PASSAGEM DIRETA (IA)
+     SLIDE 12 — MODO 1: PASSAGEM DIRETA (IA)
      ═══════════════════════════════════════════════════════════ -->
 
 # Modo 1: Passagem Direta
@@ -776,7 +805,7 @@ transition: slide-up
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 12 — VISÃO ESTRATÉGICA IA
+     SLIDE 13 — VISÃO ESTRATÉGICA IA
      ═══════════════════════════════════════════════════════════ -->
 
 # Visão Estratégica: Pista de Decolagem para IA
@@ -839,7 +868,7 @@ transition: fade
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 13 — RECOMENDAÇÃO
+     SLIDE 14 — RECOMENDAÇÃO
      ═══════════════════════════════════════════════════════════ -->
 
 # Recomendação
