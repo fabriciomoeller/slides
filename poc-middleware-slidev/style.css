@@ -250,65 +250,8 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   FLOW STEPS (numbered list)
+   FLOW STEPS — pulseAlert keyframes (classes inline)
    ══════════════════════════════════════════════════════ */
-.flow-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-.flow-step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  border-radius: 10px;
-  border-left: 3px solid;
-  font-size: 0.88em;
-  background: rgba(30, 41, 59, 0.4);
-}
-.flow-step-blue {
-  border-left-color: #3b82f6;
-  color: #93c5fd;
-}
-.flow-step-cyan {
-  border-left-color: #06b6d4;
-  color: #67e8f9;
-}
-.flow-step-fuchsia {
-  border-left-color: #d946ef;
-  color: #f0abfc;
-}
-.flow-step-pink {
-  border-left-color: #ec4899;
-  color: #f9a8d4;
-}
-.flow-step-purple {
-  border-left-color: #8b5cf6;
-  color: #c4b5fd;
-}
-
-.flow-step-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85em;
-  flex-shrink: 0;
-}
-.flow-step-num-alert {
-  background: rgba(236, 72, 153, 0.2) !important;
-  color: #f472b6 !important;
-  animation: pulseAlert 1.5s ease-in-out infinite;
-}
-
 @keyframes pulseAlert {
   0%,
   100% {

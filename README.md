@@ -52,6 +52,9 @@ docs/
 | 04/03/2026 | [Comparativo Antigo vs Novo](POC-Middleware-Comparativo-Antigo-vs-Novo-v2.md) | Modelo atual (direto) vs Middleware |
 | 04/03/2026 | [Analise Kong + NATS](POC-Middleware-Kong-NATS-Analise-v2.md) | Analise tecnica das tecnologias escolhidas |
 | 04/03/2026 | [Sessoes e Load Balancing](POC-Middleware-Sessoes-e-LoadBalancing.md) | Gestao de sessoes stateful do EME4 |
+| 06/03/2026 | [Animações SVG nos Slides de Pipeline](documentacao/2026-03-06-19-30-43-animacoes-svg-slides-pipeline.md) | Técnica de animação SVG com dots, linhas retangulares e load balancing visual |
+| 06/03/2026 | [Padronização de Cores com Paleta Tailwind](documentacao/2026-03-06-22-07-40-padronizacao-cores-tailwind-palette.md) | Migração de cores inline (hex/rgba) para classes Tailwind CSS |
+| 06/03/2026 | [Conversão de Classes flow-step para Tailwind Inline](documentacao/2026-03-06-22-53-00-flow-steps-classes-inline.md) | Eliminação de classes CSS customizadas flow-* em favor de utilitárias Tailwind |
 
 ## Apresentacao
 
@@ -90,7 +93,7 @@ Acesse `http://localhost:3030`
 | Mensageria | NATS JetStream | Filas, garantia de entrega, pub/sub |
 | Backend | Go (DDD, GORM, Bun) | Workers, traducao DE-PARA |
 | Frontend | Vue.js + TailwindCSS | Interfaces de monitoramento |
-| Apresentacao | Slidev + UnoCSS | Slides interativos |
+| Apresentacao | Slidev + UnoCSS | Slides interativos (~1300 linhas CSS) |
 
 ## Proximos Passos
 
@@ -101,4 +104,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 06/03/2026*
+*Atualizado em: 06/03/2026 22:53*
