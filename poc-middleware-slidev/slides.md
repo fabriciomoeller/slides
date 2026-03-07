@@ -58,21 +58,26 @@ transition: fade-out
   Modelo Direto — API para API — "Ligação telefônica"
 </div>
 
-<div v-click class="pipeline my-8 gap-4">
-  <div class="pipe-node pipe-blue" style="padding:16px 24px;">
+<div v-click class="anim-flow max-w-700px h-100px my-6" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="anim-node left-0 w-130px px-20px py-12px bg-[rgba(30,58,95,0.9)] border-blue-500/60 text-blue-300 text-13px shadow-[0_0_20px_rgba(59,130,246,0.15)]">
     <span class="i-ph-plugs-connected-fill text-2xl mb-1 inline-block"></span>
     <div class="font-bold text-base">Sistema Externo</div>
     <div class="text-xs opacity-40">(ex: ERP, IA, etc.)</div>
   </div>
-  <div class="flex flex-col items-center gap-1">
-    <span class="font-mono text-xs text-gray-400">POST /Incluir_API</span>
-    <span class="text-2xl text-gray-500 animate-pulse">━━━━►</span>
-  </div>
-  <div class="pipe-node pipe-cyan" style="padding:16px 24px;">
+  <div class="absolute left-50% top-2px -translate-x-50% font-mono text-10px text-slate-400 opacity-70 whitespace-nowrap z-3">POST /Incluir_API</div>
+  <div class="anim-node right-0 w-130px px-20px py-12px bg-[rgba(10,50,60,0.9)] border-cyan-500/70 text-cyan-300 text-13px shadow-[0_0_20px_rgba(6,182,212,0.15)]">
     <span class="i-carbon-bare-metal-server-02 text-2xl mb-1 inline-block"></span>
     <div class="font-bold text-base">EME4</div>
     <div class="text-xs opacity-50">(1 servidor)</div>
   </div>
+  <svg class="anim-svg absolute inset-0 z-1 pointer-events-none" viewBox="0 0 700 100" preserveAspectRatio="xMidYMid meet">
+    <line x1="105" y1="50" x2="595" y2="50" class="svg-line svg-stroke-blue"/>
+    <circle class="svg-dot svg-fill-blue anim-sync-ok" cx="105" cy="50" r="5"/>
+    <circle class="svg-dot svg-fill-blue anim-sync-ok-d1" cx="105" cy="50" r="5"/>
+    <circle class="svg-dot svg-fill-blue anim-sync-ok-d2" cx="105" cy="50" r="5"/>
+    <circle class="svg-fill-pink anim-sync-err" cx="105" cy="50" r="5"/>
+    <text class="anim-sync-err-text" x="350" y="30" text-anchor="middle">✕ ERRO 500</text>
+  </svg>
 </div>
 
 <div v-click class="grid grid-cols-2 gap-6 mt-2">
@@ -131,12 +136,12 @@ transition: slide-left
 </div>
 
 <div class="flow-step flow-step-fuchsia">
-  <div class="flow-step-num" style="background: rgba(217,70,239,0.2); color: #e879f9;">3</div>
+  <div class="flow-step-num bg-fuchsia-500/20 text-fuchsia-400">3</div>
   <div>Sistema origem <strong>AGUARDA...</strong> 2s, 5s, 10s, timeout?</div>
 </div>
 
 <div class="flow-step flow-step-cyan">
-  <div class="flow-step-num" style="background: rgba(6,182,212,0.2); color: #22d3ee;">4</div>
+  <div class="flow-step-num bg-cyan-500/20 text-cyan-400">4</div>
   <div>EME4 responde: <code>{ "Sucesso": true }</code></div>
 </div>
 
@@ -171,7 +176,7 @@ transition: slide-up
 
 <div class="grid grid-cols-2 gap-8 w-full max-w-3xl">
   <div class="mode-card mode-card-cyan">
-    <div class="mode-number" style="background: rgba(6,182,212,0.15); color: #22d3ee;">1</div>
+    <div class="mode-number bg-cyan-500/15 text-cyan-400">1</div>
     <div class="mode-title text-cyan-300">Passagem Direta</div>
     <div class="mode-desc">Sem tradutor. Sem fila.<br>Direto e rápido.</div>
     <div class="mode-use">IA, Dashboards, Consultas</div>
@@ -203,52 +208,53 @@ transition: slide-left
   Quando há trabalho real — tradução, orquestração, garantia de entrega
 </div>
 
-<div class="wf-box my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="wf-node wf-n-origin"><span class="i-ph-plugs-connected-fill text-base inline-block"></span>ORIGEM<span class="wf-n-sub">ex: ERP</span></div>
-  <div class="wf-node wf-n-kong"><span class="i-ph-shield-check-fill text-base inline-block"></span>KONG<span class="wf-n-sub">portaria</span></div>
-  <div class="wf-node wf-n-nats"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="wf-n-sub">fila</span></div>
-  <div class="wf-node wf-n-worker"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="wf-n-sub">tradutor</span></div>
-  <div class="wf-node wf-n-eme4a">EME4 1</div>
-  <div class="wf-node wf-n-eme4b">EME4 2</div>
-  <div v-click="1" class="wf-seg-layer">
-    <svg class="wf-svg" viewBox="0 0 750 110">
-      <line x1="90" y1="55" x2="160" y2="55" class="wf-line wf-line-blue"/>
-      <circle class="wf-dot wf-dot-blue wf-dot-s1" cx="90" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-blue wf-dot-s1b" cx="90" cy="55" r="4"/>
+<div class="anim-flow max-w-750px h-120px my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-88px h-52px bg-blue-500/12 border-blue-500/40 text-blue-400"><span class="i-ph-plugs-connected-fill text-base inline-block"></span>ORIGEM<span class="anim-sub">ex: ERP</span></div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-160px w-78px h-52px bg-violet-500/12 border-violet-500/40 text-violet-400"><span class="i-ph-shield-check-fill text-base inline-block"></span>KONG<span class="anim-sub">portaria</span></div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-310px w-78px h-52px bg-cyan-500/12 border-cyan-500/40 text-cyan-400"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-465px w-88px h-52px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
+  <div class="anim-node-top top-4px left-630px w-88px h-38px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1</div>
+  <div class="anim-node-top bottom-4px left-630px w-88px h-38px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2</div>
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 750 110">
+      <line x1="90" y1="55" x2="160" y2="55" class="svg-line svg-stroke-blue"/>
+      <circle class="svg-dot svg-fill-blue anim-s1" cx="90" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-blue anim-s1-d" cx="90" cy="55" r="4"/>
     </svg>
   </div>
-  <div v-click="2" class="wf-seg-layer">
-    <svg class="wf-svg" viewBox="0 0 750 110">
-      <line x1="240" y1="55" x2="310" y2="55" class="wf-line wf-line-purple"/>
-      <circle class="wf-dot wf-dot-purple wf-dot-s2" cx="240" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-purple wf-dot-s2b" cx="240" cy="55" r="4"/>
+  <div v-click="2" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 750 110">
+      <line x1="240" y1="55" x2="310" y2="55" class="svg-line svg-stroke-purple"/>
+      <circle class="svg-dot svg-fill-purple anim-s2" cx="240" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-purple anim-s2-d" cx="240" cy="55" r="4"/>
     </svg>
   </div>
-  <div v-click="3" class="wf-seg-layer">
-    <svg class="wf-svg" viewBox="0 0 750 110">
-      <path d="M199,81 L199,88 Q199,96 191,96 L51,96 Q44,96 44,88 L44,81" class="wf-line wf-line-cyan wf-line-return"/>
-      <circle class="wf-dot wf-dot-cyan wf-dot-s3" cx="199" cy="81" r="4"/>
+  <div v-click="3" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 750 110">
+      <path d="M199,81 L199,88 Q199,96 191,96 L51,96 Q44,96 44,88 L44,81" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-s3" cx="199" cy="81" r="4"/>
     </svg>
-    <div class="wf-accepted">✓ 202 Accepted</div>
+    <div class="anim-badge left-75px bottom-0px bg-cyan-500/15 border-1 border-solid border-cyan-500/40 text-cyan-400 anim-accepted-pulse">✓ 202 Accepted</div>
   </div>
-  <div v-click="4" class="wf-seg-layer">
-    <svg class="wf-svg" viewBox="0 0 750 110">
-      <line x1="390" y1="55" x2="465" y2="55" class="wf-line wf-line-cyan"/>
-      <circle class="wf-dot wf-dot-cyan wf-dot-s4" cx="390" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-cyan wf-dot-s4b" cx="390" cy="55" r="4"/>
-    </svg>
-  </div>
-  <div v-click="5" class="wf-seg-layer">
-    <svg class="wf-svg" viewBox="0 0 750 110">
-      <path d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="wf-line wf-line-fuchsia"/>
-      <path d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" class="wf-line wf-line-fuchsia"/>
-      <circle class="wf-dot wf-dot-fuchsia wf-lb-1" cx="553" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-fuchsia wf-lb-2" cx="553" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-fuchsia wf-lb-3" cx="553" cy="55" r="4"/>
-      <circle class="wf-dot wf-dot-fuchsia wf-lb-4" cx="553" cy="55" r="4"/>
+  <div v-click="4" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 750 110">
+      <line x1="390" y1="55" x2="465" y2="55" class="svg-line svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-s4" cx="390" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-cyan anim-s4-d" cx="390" cy="55" r="4"/>
     </svg>
   </div>
-  <div v-click="6" class="wf-retry-badge"><span class="i-ph-arrow-counter-clockwise-fill inline-block text-xs"></span> retry</div>
+  <div v-click="5" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 750 110">
+      <path d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" class="svg-line svg-stroke-fuchsia"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-lb-up1" cx="553" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-lb-down1" cx="553" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-lb-up2" cx="553" cy="55" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-lb-down2" cx="553" cy="55" r="4"/>
+    </svg>
+  </div>
+  
+  <div v-click="6" class="anim-badge right-125px bottom-0px bg-cyan-500/12 border-1 border-solid border-cyan-500/35 text-cyan-400 anim-retry-pulse"><span class="i-ph-arrow-counter-clockwise-fill inline-block text-xs"></span> retry</div>
 </div>
 
 <div class="flow-steps" style="max-width:750px;">
@@ -257,23 +263,23 @@ transition: slide-left
   <div>Sistema externo envia os dados para o Kong/APISIX</div>
 </div>
 <div v-click="2" class="flow-step flow-step-purple">
-  <div class="flow-step-num" style="background:rgba(139,92,246,0.2);color:#a78bfa;">2</div>
+  <div class="flow-step-num bg-violet-500/20 text-purple-300">2</div>
   <div>Kong autentica e coloca a mensagem na fila (NATS JetStream)</div>
 </div>
 <div v-click="3" class="flow-step flow-step-cyan" style="font-weight:600;">
-  <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">3</div>
+  <div class="flow-step-num bg-cyan-500/20 text-cyan-400">3</div>
   <div>Sistema origem recebe "Recebido!" (202 Accepted) e <strong>segue em frente</strong></div>
 </div>
 <div v-click="4" class="flow-step flow-step-fuchsia">
-  <div class="flow-step-num" style="background:rgba(217,70,239,0.2);color:#e879f9;">4</div>
+  <div class="flow-step-num bg-fuchsia-500/20 text-fuchsia-400">4</div>
   <div>Worker pega da fila e traduz campos (DE-PARA: SG1 → ListaMateriaisProduto)</div>
 </div>
 <div v-click="5" class="flow-step flow-step-fuchsia">
-  <div class="flow-step-num" style="background:rgba(217,70,239,0.2);color:#e879f9;">5</div>
+  <div class="flow-step-num bg-fuchsia-500/20 text-fuchsia-400">5</div>
   <div>Load Balancer escolhe a melhor instância do EME4 (menos ocupada)</div>
 </div>
 <div v-click="6" class="flow-step flow-step-cyan">
-  <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">6</div>
+  <div class="flow-step-num bg-cyan-500/20 text-cyan-400">6</div>
   <div>Se der erro → retry automático com backoff exponencial</div>
 </div>
 </div>
@@ -619,7 +625,7 @@ transition: slide-up
 </div>
 
 <div v-click class="grid grid-cols-3 gap-4 mt-4">
-  <div class="info-card" style="border-color: rgba(6,182,212,0.2); padding: 14px;">
+  <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">NATS</div>
     <div class="card-body" style="font-size:0.78em;">
       <div>→ Escrito em Go (Google)</div>
@@ -628,7 +634,7 @@ transition: slide-up
       <div>→ Um executável de 20 MB, sem dependências</div>
     </div>
   </div>
-  <div class="info-card" style="border-color: rgba(139,92,246,0.2); padding: 14px;">
+  <div class="info-card border-violet-500/20 p-14px">
     <div class="card-header text-purple-400">Kong / APISIX</div>
     <div class="card-body" style="font-size:0.78em;">
       <div>→ Construído sobre <strong>NGINX</strong></div>
@@ -637,7 +643,7 @@ transition: slide-up
       <div>→ LB + Auth + Failover + Logs inclusos</div>
     </div>
   </div>
-  <div class="info-card" style="border-color: rgba(6,182,212,0.2); padding: 14px;">
+  <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">Infraestrutura Total</div>
     <div class="card-body" style="font-size:0.78em;">
       <div>→ <strong>280 MB</strong> RAM total (menos que o Chrome)</div>
@@ -754,13 +760,13 @@ transition: slide-left
 </div>
 
 <div v-click class="pipeline my-6 gap-3">
-  <div class="pipe-node pipe-pink" style="padding:12px 18px;">
+  <div class="pipe-node pipe-pink px-18px py-12px">
     <span class="i-carbon-bot text-xl mb-1 inline-block"></span>
     <div class="font-bold text-sm">Agente IA</div>
     <span class="pipe-sub">(futuro)</span>
   </div>
   <div class="pipe-arrow text-cyan-500 text-xl animate-pulse">━►</div>
-  <div class="pipe-node pipe-purple" style="padding:12px 18px; box-shadow: 0 0 20px rgba(139,92,246,0.15);">
+  <div class="pipe-node pipe-purple px-18px py-12px shadow-[0_0_20px_rgba(139,92,246,0.15)]">
     <span class="i-ph-door-open-fill text-xl mb-1 inline-block"></span>
     <div class="font-bold text-sm">KONG/APISIX</div>
     <span class="pipe-sub">portaria + LB</span>
@@ -776,15 +782,15 @@ transition: slide-left
 <v-clicks>
 
 <div class="flow-step flow-step-purple">
-  <div class="flow-step-num" style="background:rgba(139,92,246,0.2);color:#a78bfa;">1</div>
+  <div class="flow-step-num bg-violet-500/20 text-violet-400">1</div>
   <div>Sistema faz requisição HTTP ao Middleware (Kong/APISIX)</div>
 </div>
 <div class="flow-step flow-step-purple">
-  <div class="flow-step-num" style="background:rgba(139,92,246,0.2);color:#a78bfa;">2</div>
+  <div class="flow-step-num bg-violet-500/20 text-violet-400">2</div>
   <div>Kong autentica, escolhe o servidor EME4 menos ocupado (LB)</div>
 </div>
 <div class="flow-step flow-step-cyan" style="font-weight:600;">
-  <div class="flow-step-num" style="background:rgba(6,182,212,0.2);color:#22d3ee;">3</div>
+  <div class="flow-step-num bg-cyan-500/20 text-cyan-400">3</div>
   <div>EME4 responde → Kong devolve → <strong>Pronto.</strong> Sem fila, sem espera.</div>
 </div>
 
@@ -820,7 +826,7 @@ transition: slide-up
     <div class="font-bold text-sm">Agente IA</div>
   </div>
   <div class="pipe-arrow text-purple-400 text-xl animate-pulse">━►</div>
-  <div class="pipe-node pipe-purple" style="padding:14px 20px; box-shadow: 0 0 20px rgba(139,92,246,0.15);">
+  <div class="pipe-node pipe-purple px-20px py-14px shadow-[0_0_20px_rgba(139,92,246,0.15)]">
     <div class="font-bold">MIDDLEWARE</div>
     <span class="pipe-sub">Kong + NATS</span>
   </div>
@@ -836,24 +842,24 @@ transition: slide-up
 <div v-click class="timeline-row">
   <div class="timeline-line"></div>
   <div class="tl-item">
-    <div class="tl-dot" style="background:#3b82f6;">1</div>
+    <div class="tl-dot bg-blue-500">1</div>
     <div class="tl-title">POC</div>
     <div class="tl-desc">ERP ↔ EME4<br>1 cadastro + 1 fluxo OP</div>
   </div>
   <div class="tl-item">
-    <div class="tl-dot" style="background:#06b6d4;">2</div>
+    <div class="tl-dot bg-cyan-500">2</div>
     <div class="tl-title">Expansão</div>
     <div class="tl-desc">Mais integrações<br>Dashboard monitoramento</div>
   </div>
   <div class="tl-item">
-    <div class="tl-dot" style="background:#8b5cf6;">3</div>
+    <div class="tl-dot bg-violet-500">3</div>
     <div class="tl-title">IA</div>
     <div class="tl-desc">Agentes IA consumindo<br>APIs via Middleware</div>
   </div>
 </div>
 
 <div v-click class="info-card info-card-pink mx-auto mt-4" style="max-width:650px; padding:14px 20px;">
-  <div class="card-header" style="color:#f472b6; font-size:0.9em;">Por que IA precisa de Middleware?</div>
+  <div class="card-header text-pink-300 text-0.9em">Por que IA precisa de Middleware?</div>
   <div class="card-body" style="font-size:0.78em;">
     <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>
     <div>→ Sem precisar saber a autenticação de cada sistema (sessão, token, API key...)</div>
