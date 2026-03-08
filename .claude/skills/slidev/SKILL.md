@@ -56,6 +56,40 @@ You are an expert in Slidev presentations. Use these rules when editing or creat
 </v-clicks>
 ```
 
+#### v-click.hide (hide on click)
+Use `v-click.hide` to hide elements at a specific click — **much better than `v-click="[0, N]"` ranges** for "visible initially, hide later":
+```html
+<!-- Visible by default, hides at click 1 -->
+<div v-click.hide="1">Disappears on click 1</div>
+
+<!-- Works on ANY element, including inside SVG -->
+<circle v-click.hide="2" class="svg-dot" cx="100" cy="70" r="4"/>
+```
+
+**CRITICAL**: Prefer `v-click.hide="N"` over `v-click="[0, N]"` — ranges can be unreliable for initial visibility.
+
+#### v-click + v-click.hide together (swap elements)
+The most powerful pattern: hide one element and show another at the same click:
+```html
+<!-- EME4 1 healthy: visible initially, hides at click 1 -->
+<div v-click.hide="1" class="node-healthy">EME4 1 online</div>
+
+<!-- EME4 1 error: hidden initially, appears at click 1 -->
+<div v-click="1" class="node-error">EME4 1 erro 500</div>
+```
+
+This pattern allows **swapping state** within the same container/SVG without splitting into separate segments, preserving continuous animations on other elements.
+
+#### v-switch (complex visibility)
+For more complex scenarios with multiple states:
+```html
+<v-switch>
+  <template #1>Show at click 1, hide at click 2</template>
+  <template #2>Show at click 2, hide at click 5</template>
+  <template #5-7>Show at click 5, hide at click 7</template>
+</v-switch>
+```
+
 #### v-motion (entrance animations)
 Uses `@vueuse/motion` integrated in Slidev:
 ```html
@@ -100,6 +134,60 @@ Pulse animation:
   50% { opacity: 1; }
 }
 ```
+
+#### Scenario Slides: Animated SVG Diagrams with State Changes
+
+Pattern for slides that show a flow diagram (e.g., NATS → Worker → EME4) with state changes per click:
+
+**Architecture**: Single container with absolute-positioned nodes + SVG overlay layers:
+```html
+<div class="scenario-flow my-4">
+  <!-- Static nodes (always visible) -->
+  <div class="anim-node-sm ...">NATS</div>
+  <div class="anim-node-sm ...">Worker</div>
+  <div class="anim-node-top ...">EME4 1</div>
+  <div class="anim-node-top ...">EME4 2</div>
+
+  <!-- Static paths (always visible) -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line ... class="svg-line svg-stroke-cyan"/>
+      <path ... class="svg-line svg-stroke-fuchsia"/>
+    </svg>
+  </div>
+
+  <!-- Animated dots + elements that change per click -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <!-- These dots run continuously -->
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" .../>
+      <!-- This dot hides at click 1 (LB stops sending to EME4 1) -->
+      <circle v-click.hide="1" class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-up" .../>
+      <!-- This dot stays (LB keeps sending to EME4 2) -->
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-down" .../>
+    </svg>
+    <!-- Swap healthy node for error node at click 1 -->
+    <div v-click="1" class="anim-node-top bg-pink-500/15 ...">EME4 1 erro</div>
+  </div>
+</div>
+```
+
+**Key principles**:
+1. **Keep elements in the SAME container** — don't split into separate `anim-seg` per click when possible. Use `v-click.hide` and `v-click` on individual elements to swap state
+2. **Continuous animations survive clicks** — dots that are NOT hidden keep animating without restart
+3. **Separate segments only for truly new layers** (e.g., return paths that appear on click)
+
+**Single-play animations** (for one-time events like error returns):
+```html
+<!-- Inline style overrides class animation to play once -->
+<circle class="svg-dot svg-fill-pink" cx="420" cy="20" r="4"
+  style="animation: scRetryEme4 2.5s ease-in-out 1 forwards"/>
+```
+
+**Flow direction convention**:
+- Forward (envio): left → right, paths on the **main line** (cy:70)
+- Success return: right → left via **bottom** path (cy:120)
+- Error/Nak return: right → left via **top** path (cy:20)
 
 ### Icons (UnoCSS + Iconify)
 
@@ -172,6 +260,8 @@ Classes are prefixed by slide/section:
 - `stat-*` — Statistics cards
 - `tl-*` — Timeline elements
 - `benefit-pill` — Benefit badges
+- `scenario-*` — Scenario slides container (LB/Retry cenários)
+- `anim-sc-*` — Scenario animation dots (e.g., `anim-sc-nats-worker`, `anim-sc-lb-down`)
 
 ### Slide Frontmatter
 
@@ -258,3 +348,6 @@ npm run export # Export to PDF
 3. **Animation runs during slide transition** → Use `v-motion` with `transition.delay` instead of CSS animations on mount
 4. **Icons not showing** → Ensure `@iconify-json/{collection}` is installed. Check class has `inline-block`
 5. **Colors look wrong in light mode** → Slidev inverts dark↔light. Test both modes
+6. **`v-click="[0, N]"` not working / element invisible on load** → Use `v-click.hide="N"` instead. Range syntax `[0, N]` can be unreliable for "initially visible" elements. The `.hide` modifier is the correct approach
+7. **Animations restart when using separate v-click containers** → Don't split animated SVG into multiple containers per click. Instead, use `v-click.hide` and `v-click` on individual elements WITHIN the same SVG/container to swap state without restarting other animations
+8. **Multiple states per slide (e.g., healthy→error→retry)** → Use the v-click + v-click.hide swap pattern. Keep all states in the same container, toggle individual elements. This avoids animation restart and keeps continuous flows uninterrupted

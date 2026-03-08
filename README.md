@@ -25,7 +25,7 @@ Substituir o modelo atual de integracoes diretas (API-para-API) por uma arquitet
 |------|--------|
 | Analise tecnica | Concluida |
 | Comparativo Antigo vs Novo | Concluido |
-| Apresentacao Slidev | Em andamento (14 slides) |
+| Apresentacao Slidev | Em andamento (17 slides) |
 | Implementacao POC | Pendente aprovacao |
 
 ## Estrutura do Projeto
@@ -39,7 +39,7 @@ docs/
 ├── POC-Middleware-Kong-NATS-Analise-v2.md        ← analise tecnica v2
 ├── POC-Middleware-Sessoes-e-LoadBalancing.md      ← gestao de sessoes
 ├── poc-middleware-slidev/                         ← apresentacao Slidev
-│   ├── slides.md                                 ← 14 slides
+│   ├── slides.md                                 ← 17 slides
 │   ├── style.css                                 ← CSS customizado (~1050 linhas)
 │   └── public/                                   ← assets estaticos
 └── documentacao/                                  ← registros detalhados
@@ -55,6 +55,11 @@ docs/
 | 06/03/2026 | [Animações SVG nos Slides de Pipeline](documentacao/2026-03-06-19-30-43-animacoes-svg-slides-pipeline.md) | Técnica de animação SVG com dots, linhas retangulares e load balancing visual |
 | 06/03/2026 | [Padronização de Cores com Paleta Tailwind](documentacao/2026-03-06-22-07-40-padronizacao-cores-tailwind-palette.md) | Migração de cores inline (hex/rgba) para classes Tailwind CSS |
 | 06/03/2026 | [Conversão de Classes flow-step para Tailwind Inline](documentacao/2026-03-06-22-53-00-flow-steps-classes-inline.md) | Eliminação de classes CSS customizadas flow-* em favor de utilitárias Tailwind |
+| 08/03/2026 | [Retry Visual no Slide 5: Linhas de Retorno](documentacao/2026-03-08-11-59-17-retry-visual-slide5-linhas-retorno.md) | Paths SVG de retorno (EME4→Worker→NATS), overlay de erro e animações de retry |
+| 08/03/2026 | [Load Balancing vs Retry: Garantia de Entrega](documentacao/2026-03-08-11-59-17-loadbalance-vs-retry-nats-garantia-entrega.md) | Análise de negócio: como LB e Retry/Nak do NATS JetStream se complementam |
+| 08/03/2026 | [Plano: Slides LB vs Retry Cenários](documentacao/2026-03-08-12-31-56-plano-slides-lb-vs-retry-cenarios.md) | Planejamento de 3 slides animados com cenários hipotéticos de LB e Retry |
+| 08/03/2026 | [Implementação Slides 6a/6b/6c: Cenários LB vs Retry](documentacao/2026-03-08-16-44-42-slides-cenarios-lb-retry-implementacao.md) | 3 slides com animações SVG, v-click.hide, retornos sucesso/erro e single-play |
+| 08/03/2026 | [Correção v-click Slide 6c: Sobreposição](documentacao/2026-03-08-20-21-38-correcao-vclick-slide6c-sobreposicao.md) | Fix de elementos sobrepostos com v-click.hide e click ranges [enter, leave] |
 
 ## Apresentacao
 
@@ -75,8 +80,11 @@ Acesse `http://localhost:3030`
 3. Fluxo passo a passo (hoje)
 4. Modelo Novo — visao geral
 5. Modo 2: Com Tradutor (Worker)
-6. Como funcionaria com o Middleware
-7. Comparacao cenario a cenario
+6a. Cenário 1: LB Resolve (1ª Linha de Defesa)
+6b. Cenário 2: Retry Resolve (Quando o LB não basta)
+6c. Cenário 3: Ambos Fora (A Fila Garante)
+7. Como funcionaria com o Middleware
+8. Comparacao cenario a cenario
 8. Visao Estrategica
 9. Analogia: O Restaurante
 10. Por que confiamos nessas tecnologias?
@@ -104,4 +112,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 06/03/2026 22:53*
+*Atualizado em: 08/03/2026 20:21*

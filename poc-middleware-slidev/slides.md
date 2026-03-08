@@ -190,7 +190,7 @@ transition: slide-up
 </div>
 
 <div class="s6-message mt-8 text-sm opacity-50 text-center" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:800}}">
-  Worker só existe quando há trabalho real a fazer. Sem trabalho = passagem direta.
+  Worker só existe quando há trabalho real a fazer como a tradução DE-PARA.
 </div>
 
 
@@ -234,7 +234,7 @@ transition: slide-left
       <path d="M199,81 L199,88 Q199,96 191,96 L51,96 Q44,96 44,88 L44,81" class="svg-line-return svg-stroke-cyan"/>
       <circle class="svg-dot svg-fill-cyan anim-s3" cx="199" cy="81" r="4"/>
     </svg>
-    <div class="anim-badge left-75px bottom-0px bg-cyan-500/15 border-1 border-solid border-cyan-500/40 text-cyan-400 anim-accepted-pulse">✓ 202 Accepted</div>
+    <div class="anim-badge left-75px bottom-20px text-cyan-400">✓ 202 Accepted</div>
   </div>
   <div v-click="4" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
@@ -254,7 +254,20 @@ transition: slide-left
     </svg>
   </div>
   
-  <div v-click="6" class="anim-badge right-125px bottom-0px bg-cyan-500/12 border-1 border-solid border-cyan-500/35 text-cyan-400 anim-retry-pulse"><span class="i-ph-arrow-counter-clockwise-fill inline-block text-xs"></span> retry</div>
+  <div v-click="6" class="anim-seg">
+    <div class="anim-node-top top-4px left-630px w-88px h-38px bg-pink-500/15 border-pink-500/50 text-pink-400 z-5">EME4 1</div>
+    <svg class="anim-svg" viewBox="0 0 750 90">
+      <path d="M630,3 Q630,4 616,4 L524,4 Q510,4 510,18" class="svg-line-return svg-stroke-pink"/>
+      <circle class="svg-dot svg-fill-pink anim-retry-eme4" cx="630" cy="18" r="4"/>
+      <path d="M509,70 Q509,85 495,85 L364,85 Q350,85 350,70" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-retry-nats" cx="509" cy="50" r="4"/>
+    </svg>
+    <div class="anim-badge right-140px top-0px   text-pink-400  text-[9px]">✕ erro/timeout</div>
+    <div class="anim-badge left-380px bottom-20px text-cyan-400  text-[9px]">
+      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[8px]"></span>
+      Nak → refila
+    </div>
+  </div>
 </div>
 
 <div class="flex flex-col gap-2 max-w-750px mx-auto">
@@ -280,13 +293,276 @@ transition: slide-left
 </div>
 <div v-click="6" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
   <div class="w-24px h-24px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700  shrink-0">6</div>
-  <div>Se der erro → retry automático com backoff exponencial</div>
+  <div>Se der erro → Worker devolve à fila (<strong>Nak</strong>) → NATS retenta com backoff exponencial</div>
 </div>
 </div>
 
 <!--
 Descobri como fazer o modo apresentação
 -->
+
+---
+transition: fade
+---
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 6a — CENÁRIO 1: LOAD BALANCER COM SUCESSO
+     ═══════════════════════════════════════════════════════════ -->
+
+# 1ª Linha de Defesa: Load Balancer
+
+<div class="accent-bar accent-bar-fuchsia">
+  Load Balancer distribui as mensagens entre os servidores EME4
+</div>
+
+<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
+  <div class="anim-node-top top-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+  <div class="anim-node-top bottom-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
+    </svg>
+  </div>
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-up" cx="340" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-down" cx="340" cy="70" r="4"/>
+    </svg>
+    <div class="anim-badge left-300px top-80px text-fuchsia-400 text-[9px] bg-fuchsia-500/10 border border-fuchsia-500/30 rounded-6px px-6px">
+      <span class="i-ph-arrows-split inline-block text-[8px]"></span> LB distribui
+    </div>
+  </div>
+  <div v-click="2" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+    </svg>
+    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] px-6px">
+      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
+    </div>
+    <div class="anim-badge right-0px bottom-10 text-cyan-400 text-[10px] bg-cyan-500/10 border border-cyan-500/30 rounded-8px px-8px py-2px anim-success-pulse">
+      <span class="i-ph-check-circle-fill inline-block text-xs"></span> Entregue
+    </div>
+    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-2 max-w-580px mx-auto">
+<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-svg-spinners-pulse-3 inline-block"></span></div>
+  <div>Ambos EME4 <strong>online</strong> — NATS entrega mensagens ao Worker</div>
+</div>
+<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
+  <div class="w-22px h-22px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+  <div>Load Balancer <strong>distribui</strong> entre EME4 1 e EME4 2 (Round Robin / Health Check)</div>
+</div>
+<div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">2</div>
+  <div><strong>Sucesso</strong> — EME4 responde OK → Worker faz <strong>Ack</strong> → mensagem removida da fila</div>
+</div>
+</div>
+
+
+---
+transition: fade
+---
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 6b — CENÁRIO 2: RETRY RESOLVE (LB NÃO BASTA)
+     ═══════════════════════════════════════════════════════════ -->
+
+# Quando o LB Não Basta: Retry
+
+<div class="accent-bar accent-bar-pink">
+  Cenário: EME4 1 aceitou a conexão mas falhou durante o processamento (erro 500)
+</div>
+
+<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
+  <div v-click.hide="1" class="anim-node-top top-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+  <div class="anim-node-top bottom-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+    </svg>
+  </div>
+  <div  class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
+      <circle v-click.hide="1" class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-up" cx="340" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-down" cx="340" cy="70" r="4"/>
+      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+    </svg>
+    <div v-click="1" class="anim-node-top top-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400 z-5" style="animation: pulseAlert 2s ease-in-out infinite;">EME4 1
+      <span class="anim-sub">erro 500 </span>
+   </div>
+    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px">
+      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
+    </div>
+    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
+  </div>
+  <div v-click="2" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-down" cx="340" cy="70" r="4"/>
+      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+      <path d="M420,20 Q420,20 406,20 L260,20 Q250,20 250,40" class="svg-line-return svg-stroke-pink"/>
+      <circle class="svg-dot svg-fill-pink" cx="420" cy="20" r="4" style="animation: scRetryEme4 2.5s ease-in-out 1 forwards"/>
+      <path d="M250,40 Q250,20 240,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan" cx="250" cy="20" r="4" style="animation: scRetryNats 2.5s ease-in-out 1.2s 1 forwards"/>
+    </svg>
+    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px">
+      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
+    </div>
+    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
+    <div class="anim-badge left-280px top-3 text-pink-400 text-[8px]">✕ erro/timeout</div>
+    <div class="anim-badge left-100px top-3 text-cyan-400 text-[8px]">
+      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[7px]"></span> Nak → refila
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-2 max-w-580px mx-auto">
+<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-check-circle-fill inline-block"></span></div>
+  <div>LB distribui entre ambos EME4 com <strong>sucesso</strong> (igual cenário anterior)</div>
+</div>
+<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
+  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+  <div>EME4 1 <strong>erro 500</strong> → Worker faz <strong>Nak</strong> → mensagem volta para a fila NATS</div>
+</div>
+</div>
+
+
+---
+transition: fade
+---
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 6c — CENÁRIO 3: AMBOS FORA, FILA GARANTE
+     ═══════════════════════════════════════════════════════════ -->
+
+# Ambos Fora: A Fila Garante
+
+<div class="accent-bar accent-bar-pink">
+  Cenário extremo: todos os servidores EME4 estão indisponíveis
+</div>
+
+<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist">
+    <span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>
+    NATS
+    <span class="anim-sub">
+      fila
+    </span>
+  </div>
+  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
+  <div class="anim-node-top top-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400" style="animation: pulseAlert 2.5s ease-in-out infinite;">
+    <span class="i-ph-x-circle-fill text-xs inline-block mr-2px"></span>EME4 1<span class="anim-sub">offline</span>
+  </div>
+  <div v-click.hide="2" class="anim-node-top bottom-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400" style="animation: pulseAlert 2.5s ease-in-out 0.5s infinite;">
+    <span class="i-ph-x-circle-fill text-xs inline-block mr-2px"></span>EME4 2<span class="anim-sub">offline</span>
+  </div>
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
+    </svg>
+    <div v-click.hide="2" class="anim-badge left-350px top-52px text-pink-400 text-[9px] bg-pink-500/10 border border-pink-500/30 rounded-6px px-6px">
+      <span class="i-ph-x-circle-fill inline-block text-[8px]"></span> sem servidor
+    </div>
+  </div>
+  <div v-click="[1, 3]" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M250,100 Q250,110 240,110 L55,110 Q45,110 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-retry-nats" cx="278" cy="100" r="4"/>
+    </svg>
+    <div class="anim-badge left-100px bottom-15px text-cyan-400 text-[8px]">
+      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[7px]"></span> 
+      Nak → fila persiste
+    </div>
+    <div class="anim-badge left-0 top-2 text-cyan-300 text-[8px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px py-2px">
+      <span class="i-ph-hard-drives-fill inline-block text-[8px]"></span> 
+      persistida em disco
+    </div>
+    <div class="anim-badge left-100px bottom-30px text-slate-400 text-[8px]">
+      <span class="i-ph-timer-fill inline-block text-[7px]"></span> 5s → 30s → 2min...
+    </div>
+  </div>
+  <div v-click="2" class="anim-seg">
+    <div class="anim-node-top bottom-6px left-420px w-100px h-42px z-5 anim-node-recover">
+      EME4 2
+      <span class="anim-sub"><span class="i-ph-arrow-up-fill text-[7px] inline-block"></span> 
+        voltou
+      </span>
+    </div>
+  </div>
+  <div v-click="3" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-down" cx="340" cy="70" r="4"/>
+      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+    </svg>
+    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px]  px-6px">
+      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
+    </div>
+    <div class="anim-badge left-420px bottom-13 text-cyan-400 text-[10px] bg-cyan-500/10 border border-cyan-500/30 rounded-8px px-8px py-2px anim-success-pulse">
+      <span class="i-ph-check-circle-fill inline-block text-xs"></span> Recuperação automática
+    </div>
+    <div class="anim-badge left-130px bottom-2px text-cyan-400 text-[8px]">Ack ✓</div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-2 max-w-580px mx-auto">
+<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
+  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
+  <div><strong>Ambos</strong> EME4 1 e EME4 2 estão fora — LB não tem para onde mandar</div>
+</div>
+<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+  <div>Mensagem <strong>não se perde</strong> — NATS persiste em disco. Backoff: 5s → 30s → 2min...</div>
+</div>
+<div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">2</div>
+  <div>Minutos depois, <strong>EME4 2 é reiniciado</strong> e volta ao ar</div>
+</div>
+<div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">3</div>
+  <div><strong>Nenhuma mensagem se perdeu</strong> — EME4 2 responde sucesso → Worker faz Ack</div>
+</div>
+</div>
+
+<div v-click="4" class="text-center mt-4 py-3 px-6 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-400px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
+  <div class="text-[13px] font-700 text-white"><span class="i-ph-shield-check-fill text-cyan-400 inline-block mr-4px"></span> LB + Retry = Zero mensagens perdidas</div>
+  <div class="text-[10px] text-slate-400 mt-1">LB previne · Retry recupera · Fila persiste</div>
+</div>
+
 
 ---
 transition: slide-left
@@ -909,4 +1185,35 @@ transition: fade
 <div v-click class="mt-6 text-center opacity-50 italic text-sm max-w-lg mx-auto">
   "A POC é um investimento pequeno para uma decisão informada.<br>
   Melhor testar antes de comprometer do que comprometer antes de testar."
+</div>
+
+layout: center
+transition: fade
+---
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 14 — RECOMENDAÇÃO
+     ═══════════════════════════════════════════════════════════ -->
+     
+<div>
+  <svg viewBox="0 0 200 200" width="200" height="200">
+    <circle
+      cx="100"
+      cy="100"
+      r="50"
+      fill="blue"
+      v-motion
+      :initial="{ opacity: 0, scale: 0 }"
+      :enter="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
+    />
+    <path
+      d="M20 180 L180 180"
+      stroke="red"
+      stroke-width="5"
+      v-motion
+      :initial="{ strokeDasharray: '0 160', opacity: 0 }"
+      :enter="{ strokeDasharray: '160 0', opacity: 1 }"
+      :hovered="{ strokeWidth: 10, stroke: 'orange' }"
+    />
+  </svg>
 </div>
