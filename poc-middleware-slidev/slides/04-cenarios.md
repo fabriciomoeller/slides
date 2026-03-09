@@ -4,9 +4,8 @@ transition: fade
 
 # 1ª Linha de Defesa: Load Balancer
 
-<div class="accent-bar accent-bar-fuchsia">
-  Load Balancer distribui as mensagens entre os servidores EME4
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Load Balancer distribui as mensagens entre os servidores EME4</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
@@ -76,9 +75,8 @@ transition: fade
 
 # Quando o LB Não Basta: Retry
 
-<div class="accent-bar accent-bar-pink">
-  Cenário: EME4 1 aceitou a conexão mas falhou durante o processamento (erro 500)
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Cenário: EME4 1 aceitou a conexão mas falhou durante o processamento (erro 500)</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
@@ -157,9 +155,8 @@ transition: fade
 
 # Ambos Fora: A Fila Garante
 
-<div class="accent-bar accent-bar-pink">
-  Cenário extremo: todos os servidores EME4 estão indisponíveis
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Cenário extremo: todos os servidores EME4 estão indisponíveis</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />

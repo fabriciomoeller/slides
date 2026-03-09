@@ -4,9 +4,8 @@ transition: slide-left
 
 # Analogia: O Restaurante
 
-<div class="accent-bar accent-bar-pink">
-  Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
   <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
@@ -117,10 +116,10 @@ transition: slide-left
 transition: slide-up
 ---
 
-<div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
-  <div class="text-[18px] font-bold text-white">Como funcionaria com o MIDDLEWARE</div>
-  <div class="text-[11px] text-gray-400">Dois modos: o Worker só existe quando há trabalho a fazer</div>
-</div>
+# Como funcionaria com o MIDDLEWARE
+
+<div class="gradient-subtitle text-[0.9rem]">Dois modos: o Worker só existe quando há trabalho a fazer</div>
+<div class="gradient-divider mx-auto mt-2 mb-2"></div>
 
 <div class="accent-bar accent-bar-cyan mt-1">
   <span class="i-ph-arrow-right-bold inline-block text-cyan-400 align-middle"></span> Passagem direta — sem fila, sem tradutor, rápido
@@ -199,6 +198,9 @@ transition: slide-left
 ---
 
 # Comparação: Cenário a Cenário
+
+<div class="gradient-subtitle text-[0.9rem]">Modelo Atual vs. Modelo Novo — lado a lado</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 

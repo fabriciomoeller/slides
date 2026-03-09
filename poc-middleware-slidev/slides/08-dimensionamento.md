@@ -4,9 +4,8 @@ transition: slide-left
 
 # Dimensionamento: Equipe e Tempo
 
-<div class="accent-bar accent-bar-cyan">
-  Estimativa para implementação da POC com escopo reduzido
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Estimativa para implementação da POC com escopo reduzido</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div v-click class="grid grid-cols-2 gap-6 mt-6 max-w-3xl mx-auto">
   <div class="info-card border-cyan-500/20 p-5">

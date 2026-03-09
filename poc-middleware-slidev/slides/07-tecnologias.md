@@ -4,6 +4,9 @@ transition: slide-left
 
 # Por que confiamos nessas tecnologias?
 
+<div class="gradient-subtitle text-[0.9rem]">Números reais das tecnologias escolhidas para o Middleware</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
+
 <div v-click class="flex justify-center gap-4 flex-wrap my-4">
   <div class="stat-card stat-glow-cyan">
     <div class="stat-value text-cyan-400">2 milhões</div>
@@ -23,7 +26,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="grid grid-cols-3 gap-4 mt-10">
+<div v-click class="grid grid-cols-3 gap-4 mt-7">
   <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">NATS</div>
     <div class="card-body text-[0.78rem]">
@@ -74,9 +77,8 @@ transition: slide-left
 
 # NATS — Publish / Subscribe
 
-<div class="accent-bar accent-bar-cyan">
-  Como o NATS distribui mensagens — o motor por trás do Middleware
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Como o NATS distribui mensagens — o motor por trás do Middleware</div>
+<div class="gradient-divider mx-auto mt-2 mb-2"></div>
 
 <div class="text-center text-[11px] text-slate-400 mb-1"><span class="i-ph-broadcast-fill inline-block mr-1 text-cyan-400"></span> subject: <span class="text-cyan-300 font-600">eme4.op.criar</span></div>
 

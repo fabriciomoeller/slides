@@ -41,9 +41,8 @@ transition: slide-left
 
 # <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-400 align-middle"></span> Com Tradutor (Worker)
 
-<div class="accent-bar accent-bar-fuchsia">
-  Quando há trabalho real — tradução, orquestração, garantia de entrega
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Quando há trabalho real — tradução, orquestração, garantia de entrega</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div class="anim-flow max-w-750px h-120px my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <FlowNode label="ORIGEM" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-88px h-52px" sub="ex: ERP" />

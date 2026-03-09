@@ -4,9 +4,8 @@ transition: fade-out
 
 # Como funciona HOJE
 
-<div class="accent-bar accent-bar-blue">
-  Modelo Direto — API para API — "Ligação telefônica"
-</div>
+<div class="gradient-subtitle text-[0.9rem]">Modelo Direto — API para API — "Ligação telefônica"</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div class="anim-flow max-w-700px h-100px my-10" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <div class="anim-node left-0 w-130px px-20px py-12px bg-[rgba(30,58,95,0.9)] border-blue-500/60 text-blue-300 text-13px shadow-[0_0_20px_rgba(59,130,246,0.15)]">
@@ -70,9 +69,8 @@ transition: slide-top
 
 # O fluxo passo a passo (Hoje)
 
-<div class="accent-bar accent-bar-pink">
-  O sistema externo fica bloqueado até o EME4 responder
-</div>
+<div class="gradient-subtitle text-[0.9rem]">O sistema externo fica bloqueado até o EME4 responder</div>
+<div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div class="flex flex-col gap-2 max-w-700px mx-auto my-10">
 

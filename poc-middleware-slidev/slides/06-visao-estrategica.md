@@ -2,10 +2,9 @@
 transition: slide-left
 ---
 
-<div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
-  <div class="text-[20px] font-bold text-white">Visão Estratégica: O Middleware como base para IA</div>
-  <div class="text-[12px] text-gray-400 mt-1">Fases para evoluir.</div>
-</div>
+# Visão Estratégica: O Middleware como base para IA
+
+<div class="gradient-divider mx-auto mt-2 mb-2"></div>
 
 <div class="ve-timeline" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300}}">
   <div class="ve-tl-line"></div>
