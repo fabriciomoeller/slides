@@ -168,7 +168,7 @@ transition: slide-up
 
 # Modelo Novo — Middleware
 
-<div class="gradient-subtitle" style="font-size:1.1em;">Dois modos que coexistem no mesmo Middleware</div>
+<div class="gradient-subtitle text-[1.1rem]">Dois modos que coexistem no mesmo Middleware</div>
 
 <div class="gradient-divider mx-auto mt-4 mb-8"></div>
 
@@ -901,7 +901,7 @@ transition: slide-left
 <!-- Mensagem final -->
 <div v-click="2" class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
   <div class="card-header text-pink-300 text-0.8em">Por que IA precisa de Middleware?</div>
-  <div class="card-body" style="font-size:0.65em;">
+  <div class="card-body text-[0.65rem]">
     <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>
     <div>→ Sem precisar saber a autenticação de cada sistema (sessão, token, API key...)</div>
     <div>→ Alto volume: centenas de consultas por minuto para montar análises completas</div>
@@ -941,7 +941,7 @@ transition: slide-left
 <div v-click class="grid grid-cols-3 gap-4 mt-10">
   <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">NATS</div>
-    <div class="card-body" style="font-size:0.78em;">
+    <div class="card-body text-[0.78rem]">
       <div>→ Escrito em Go (Google)</div>
       <div>→ Tesla, Mastercard, Walmart</div>
       <div>→ CNCF (fundação do Kubernetes)</div>
@@ -950,7 +950,7 @@ transition: slide-left
   </div>
   <div class="info-card border-violet-500/20 p-14px">
     <div class="card-header text-purple-400">Kong / APISIX</div>
-    <div class="card-body" style="font-size:0.78em;">
+    <div class="card-body text-[0.78rem]">
       <div>→ Construído sobre <strong>NGINX</strong></div>
       <div>→ NGINX serve 30% da internet mundial</div>
       <div>→ Netflix, Samsung, NASA usam</div>
@@ -959,7 +959,7 @@ transition: slide-left
   </div>
   <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">Infraestrutura Total</div>
-    <div class="card-body" style="font-size:0.78em;">
+    <div class="card-body text-[0.78rem]">
       <div>→ <strong>2 GB</strong> RAM total</div>
       <div>→ 6 vCPU</div>
       <div>→ ~50 GB de disco</div>
@@ -1135,7 +1135,7 @@ transition: fade
 
 # Recomendação
 
-<div class="gradient-subtitle" style="font-size:0.95em;">Aprovação da POC do Middleware com escopo reduzido</div>
+<div class="gradient-subtitle text-[0.95rem]">Aprovação da POC do Middleware com escopo reduzido</div>
 
 <div class="gradient-divider mx-auto mt-3 mb-6" style="width:150px;"></div>
 
