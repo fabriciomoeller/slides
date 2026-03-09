@@ -61,15 +61,15 @@ onMounted(() => {
 
       <!-- Phase 3 (AI) -->
       <g class="a a6">
-        <circle cx="900" cy="160" r="14" fill="#10b981" filter="url(#ve-glow)"/>
+        <circle cx="900" cy="160" r="14" fill="#06b6d4" filter="url(#ve-glow)"/>
         <text x="900" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">3</text>
-        <text x="900" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">Fase 3 (IA)</text>
+        <text x="900" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#22d3ee">Fase 3 (IA)</text>
       </g>
       <g class="a a7">
-        <rect x="760" y="185" width="280" height="90" rx="8" fill="none" stroke="#10b981" stroke-width="1.5"/>
+        <rect x="760" y="185" width="280" height="90" rx="8" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
         <text x="900" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">+ Agentes de IA</text>
         <text x="900" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">consultando e atuando em todos os sistemas</text>
-        <text x="900" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#34d399">Dezenas de milhares/dia</text>
+        <text x="900" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#22d3ee">Dezenas de milhares/dia</text>
       </g>
 
       <!-- Future architecture title -->
@@ -95,10 +95,10 @@ onMounted(() => {
 
       <!-- Dashed arrows to middleware -->
       <g class="a a13">
-        <line x1="225" y1="370" x2="420" y2="410" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="225" y1="420" x2="420" y2="425" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="225" y1="470" x2="420" y2="440" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="225" y1="520" x2="420" y2="455" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="225" y1="370" x2="420" y2="410" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="225" y1="420" x2="420" y2="425" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="225" y1="470" x2="420" y2="440" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="225" y1="520" x2="420" y2="455" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
       </g>
 
       <!-- Middleware box -->
@@ -112,34 +112,34 @@ onMounted(() => {
 
       <!-- Dashed arrows to systems -->
       <g class="a a14">
-        <line x1="685" y1="410" x2="830" y2="370" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="685" y1="425" x2="830" y2="420" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="685" y1="440" x2="830" y2="470" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
-        <line x1="685" y1="455" x2="830" y2="520" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="685" y1="410" x2="830" y2="370" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="685" y1="425" x2="830" y2="420" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="685" y1="440" x2="830" y2="470" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+        <line x1="685" y1="455" x2="830" y2="520" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
       </g>
 
       <!-- Backend systems (right side) -->
       <g transform="translate(835, 350)" class="a a14">
-        <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">EME4</text>
+        <rect width="140" height="40" rx="8" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#67e8f9">EME4</text>
       </g>
       <g transform="translate(835, 400)" class="a a15">
-        <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">ERP Externo</text>
+        <rect width="140" height="40" rx="8" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#67e8f9">ERP Externo</text>
       </g>
       <g transform="translate(835, 450)" class="a a16">
-        <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema X</text>
+        <rect width="140" height="40" rx="8" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#67e8f9">Sistema X</text>
       </g>
       <g transform="translate(835, 500)" class="a a17">
-        <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema Y</text>
+        <rect width="140" height="40" rx="8" fill="#083344" stroke="#06b6d4" stroke-width="1"/>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#67e8f9">Sistema Y</text>
       </g>
 
       <!-- Key message -->
       <g class="a a18">
-        <rect x="200" y="575" width="800" height="45" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="600" y="603" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">A POC &#xE9; o piloto. O Middleware &#xE9; a pista de decolagem para a IA.</text>
+        <rect x="200" y="575" width="800" height="45" rx="10" fill="#1e293b" stroke="#d946ef" stroke-width="1.5"/>
+        <text x="600" y="603" text-anchor="middle" font-size="15" font-weight="600" fill="#e879f9">A POC &#xE9; o piloto. O Middleware &#xE9; a pista de decolagem para a IA.</text>
       </g>
     </svg>
   </div>
