@@ -125,19 +125,19 @@ transition: slide-left
 
 <v-click>
 <div class="flex justify-center gap-4 mt-2">
-  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-blue-500/20">
+  <div class="mini-stat border-blue-500/20">
     <div class="text-[13px] font-700 text-blue-400">1 publish</div>
     <div class="text-[9px] text-slate-400">ERP Externo envia uma vez</div>
   </div>
-  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-cyan-500/20">
+  <div class="mini-stat border-cyan-500/20">
     <div class="text-[13px] font-700 text-cyan-400">N subscribers</div>
     <div class="text-[9px] text-slate-400">Todos recebem em paralelo</div>
   </div>
-  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-fuchsia-500/20">
+  <div class="mini-stat border-fuchsia-500/20">
     <div class="text-[13px] font-700 text-fuchsia-400">0,2 ms</div>
     <div class="text-[9px] text-slate-400">Latência por mensagem</div>
   </div>
-  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-purple-500/20">
+  <div class="mini-stat border-purple-500/20">
     <div class="text-[13px] font-700 text-purple-400">Garantido</div>
     <div class="text-[9px] text-slate-400">JetStream persiste na fila</div>
   </div>

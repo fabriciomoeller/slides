@@ -32,8 +32,8 @@ transition: slide-left
 </ScenarioFlow>
 
 <div class="flex flex-col gap-1 max-w-580px mx-auto">
-<div class="flex items-center gap-2 py-1 px-3 rounded-[10px] border-l-3 border-l-solid text-[0.52em] bg-slate-800/40 border-l-pink-500 text-pink-300">
-  <div class="w-18px h-18px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[9px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
+<div class="step-item-xs text-[0.52em] border-l-pink-500 text-pink-300">
+  <div class="num-badge w-18px h-18px text-[9px] bg-pink-500/20 text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
   <div><strong>Modelo Atual:</strong> cliente vai direto ao cozinheiro — espera, bloqueio, ponto único de falha</div>
 </div>
 </div>
@@ -91,12 +91,12 @@ transition: slide-left
 </ScenarioFlow>
 
 <div class="flex flex-col gap-1 max-w-580px mx-auto">
-<div v-click="3" class="flex items-center gap-2 py-1 px-3 rounded-[10px] border-l-3 border-l-solid text-[0.52em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
-  <div class="w-18px h-18px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700 shrink-0 text-[9px]">1</div>
+<div v-click="3" class="step-item-xs text-[0.52em] border-l-fuchsia-500 text-fuchsia-300">
+  <div class="num-badge w-18px h-18px text-[9px] bg-fuchsia-500/20 text-fuchsia-400">1</div>
   <div><strong>Cliente</strong> pede → <strong>Garçom</strong> anota e coloca na comanda (fila) — cliente não espera</div>
 </div>
-<div v-click="5" class="flex items-center gap-2 py-1 px-3 rounded-[10px] border-l-3 border-l-solid text-[0.52em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
-  <div class="w-18px h-18px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[9px]">2</div>
+<div v-click="5" class="step-item-xs text-[0.52em] border-l-cyan-500 text-cyan-300 font-600">
+  <div class="num-badge w-18px h-18px text-[9px] bg-cyan-500/20 text-cyan-400">2</div>
   <div><strong>Cozinheiro</strong> pega a comanda e prepara — nenhum pedido se perde</div>
 </div>
 </div>

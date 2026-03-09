@@ -11,6 +11,10 @@ drawings:
 transition: slide-left
 colorSchema: dark
 exportFilename: POC-Middleware-EME4
+fonts:
+  sans: Nunito Sans
+  mono: Fira Code
+  weights: '200,400,600'
 ---
 
 <DecoShapes opacity="0.10" />

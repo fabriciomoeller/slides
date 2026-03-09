@@ -103,28 +103,28 @@ transition: slide-left
 </div>
 
 <div class="flex flex-col gap-2 max-w-750px mx-auto">
-<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-blue-500 text-blue-300">
-  <div class="w-24px h-24px rounded-full bg-blue-500/20 flex items-center justify-center font-700  shrink-0">1</div>
+<div v-click="1" class="step-item-sm text-[0.60em] border-l-blue-500 text-blue-300">
+  <div class="num-badge w-24px h-24px bg-blue-500/20">1</div>
   <div>Sistema externo envia os dados para o APIGATEWAY Kong/APISIX</div>
 </div>
-<div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-violet-500 text-violet-300">
-  <div class="w-24px h-24px rounded-full bg-violet-500/20 text-purple-300 flex items-center justify-center font-700  shrink-0">2</div>
+<div v-click="2" class="step-item-sm text-[0.60em] border-l-violet-500 text-violet-300">
+  <div class="num-badge w-24px h-24px bg-violet-500/20 text-purple-300">2</div>
   <div>Kong/APISIX autentica e coloca a mensagem na fila (NATS JetStream)</div>
 </div>
-<div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
-  <div class="w-24px h-24px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700  shrink-0">3</div>
+<div v-click="3" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-300 font-600">
+  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-400">3</div>
   Sistema origem recebe "Recebido!" (202 Accepted) e segue em frente.<br> Desacoplamento total para enviar outras mensagens
 </div>
-<div v-click="4" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
-  <div class="w-24px h-24px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700  shrink-0">4</div>
+<div v-click="4" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-300">
+  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-400">4</div>
   <div>Worker pega da fila e traduz campos (DE-PARA: SG1 → ListaMateriaisProduto)</div>
 </div>
-<div v-click="5" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
-  <div class="w-24px h-24px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700  shrink-0">5</div>
+<div v-click="5" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-300">
+  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-400">5</div>
   <div>Load Balancer escolhe a melhor instância do EME4 (menos ocupada)</div>
 </div>
-<div v-click="6" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-24px h-24px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700  shrink-0">6</div>
+<div v-click="6" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-400">6</div>
   <div>Se der erro → Worker devolve à fila (<strong>Nak</strong>) → NATS retenta com backoff exponencial</div>
 </div>
 </div>

@@ -48,16 +48,16 @@ transition: fade
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-svg-spinners-pulse-3 inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400"><span class="i-svg-spinners-pulse-3 inline-block"></span></div>
   <div>Ambos EME4 <strong>online</strong> — NATS entrega mensagens ao Worker</div>
 </div>
-<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
-  <div class="w-22px h-22px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-fuchsia-500 text-fuchsia-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-fuchsia-500/20 text-fuchsia-400">1</div>
   <div>Load Balancer <strong>distribui</strong> entre EME4 1 e EME4 2 (Round Robin / Health Check)</div>
 </div>
-<div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">2</div>
+<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300 font-600">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">2</div>
   <div><strong>Sucesso</strong> — EME4 responde OK → Worker faz <strong>Ack</strong> → mensagem removida da fila</div>
 </div>
 </div>
@@ -131,12 +131,12 @@ transition: fade
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-check-circle-fill inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400"><span class="i-ph-check-circle-fill inline-block"></span></div>
   <div>LB distribui entre ambos EME4 com <strong>sucesso</strong> (igual cenário anterior)</div>
 </div>
-<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
-  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-pink-500 text-pink-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-pink-500/20 text-pink-400">1</div>
   <div>EME4 1 <strong>erro 500</strong> → Worker faz <strong>Nak</strong> → mensagem volta para a fila NATS</div>
 </div>
 </div>
@@ -203,20 +203,20 @@ transition: fade
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
-  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-pink-500 text-pink-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-pink-500/20 text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
   <div><strong>Ambos</strong> EME4 1 e EME4 2 estão fora — LB não tem para onde mandar</div>
 </div>
-<div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">1</div>
   <div>Mensagem <strong>não se perde</strong> — NATS persiste em disco. Backoff: 5s → 30s → 2min...</div>
 </div>
-<div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">2</div>
+<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">2</div>
   <div>Minutos depois, <strong>EME4 2 é reiniciado</strong> e volta ao ar</div>
 </div>
-<div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]">3</div>
+<div v-click="3" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300 font-600">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">3</div>
   <div><strong>Nenhuma mensagem se perdeu</strong> — EME4 2 responde sucesso → Worker faz Ack</div>
 </div>
 </div>

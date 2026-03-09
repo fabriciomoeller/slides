@@ -75,28 +75,28 @@ transition: slide-top
 <div class="flex flex-col gap-2 max-w-700px mx-auto my-10">
 
 
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-blue-500 text-blue-300">
-  <div class="w-28px h-28px rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">1</div>
+<div class="step-item text-[0.65em] border-l-blue-500 text-blue-300">
+  <div class="num-badge w-28px h-28px text-[0.85em] bg-blue-500/20 text-blue-400">1</div>
   <div>Sistema externo monta o JSON com os dados (ex: OP, cadastro)</div>
 </div>
 
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-blue-500 text-blue-300">
-  <div class="w-28px h-28px rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">2</div>
+<div class="step-item text-[0.65em] border-l-blue-500 text-blue-300">
+  <div class="num-badge w-28px h-28px text-[0.85em] bg-blue-500/20 text-blue-400">2</div>
   <div>Faz chamada HTTP direta: <code>POST /DoctoOrdProducaoManufatura/Incluir_API</code></div>
 </div>
 
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
-  <div class="w-28px h-28px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">3</div>
+<div class="step-item text-[0.65em] border-l-fuchsia-500 text-fuchsia-300">
+  <div class="num-badge w-28px h-28px text-[0.85em] bg-fuchsia-500/20 text-fuchsia-400">3</div>
   <div>Sistema origem <strong>AGUARDA...</strong> 2s, 5s, 10s, timeout?</div>
 </div>
 
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-28px h-28px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">4</div>
+<div class="step-item text-[0.65em] border-l-cyan-500 text-cyan-300">
+  <div class="num-badge w-28px h-28px text-[0.85em] bg-cyan-500/20 text-cyan-400">4</div>
   <div>EME4 responde: <code>{ "Sucesso": true }</code></div>
 </div>
 
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-pink-500 text-pink-300">
-  <div class="w-28px h-28px rounded-full bg-pink-500/20 text-pink-300 flex items-center justify-center font-700 text-[0.85em] shrink-0 animate-[pulseAlert_1.5s_ease-in-out_infinite]"><span class="i-ph-warning-diamond-fill inline-block"></span></div>
+<div class="step-item text-[0.65em] border-l-pink-500 text-pink-300">
+  <div class="num-badge w-28px h-28px text-[0.85em] bg-pink-500/20 text-pink-300 animate-[pulseAlert_1.5s_ease-in-out_infinite]"><span class="i-ph-warning-diamond-fill inline-block"></span></div>
   <div>Se EME4 estiver fora → <strong>ERRO!</strong> Dados podem se perder</div>
 </div>
 
