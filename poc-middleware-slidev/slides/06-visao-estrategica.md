@@ -42,11 +42,11 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click="1" class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300}}">
+<div class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :click-1="{opacity:1, transition:{delay:100, duration:300}}">
   <div class="text-white font-semibold text-[14px]">Futuro: Uma porta única para todos os sistemas</div>
 </div>
 
-<div v-click="1" class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+<div class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :click-1="{opacity:1, transition:{duration:600}}">
   <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" />
   <FlowNode label="App Mobile" icon="i-ph-device-mobile-fill" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
@@ -83,7 +83,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click="2" class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
+<div class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :click-2="{opacity:1, scale:1, transition:{delay:100, duration:400}}">
   <div class="card-header text-pink-300 text-0.8em">Por que IA precisa de Middleware?</div>
   <div class="card-body text-[0.65rem]">
     <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>

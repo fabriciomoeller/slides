@@ -67,6 +67,7 @@ docs/
 | 09/03/2026 | [Ajuste Métricas NATS + Slide Dimensionamento](documentacao/2026-03-09-16-07-32-ajustes-metricas-nats-slide-dimensionamento.md) | Correção de 25M→2M msg/s (single-server) e novo slide de equipe/tempo |
 | 09/03/2026 | [Migração font-size inline → UnoCSS](documentacao/2026-03-09-16-18-10-migracao-font-size-inline-para-unocss.md) | Substituição de 6 ocorrências de style="font-size" por classes text-[Xrem] |
 | 09/03/2026 | [UnoCSS Shortcuts e Google Fonts](documentacao/2026-03-09_20-42-20-unocss-shortcuts-e-google-fonts.md) | 5 shortcuts (step-item, num-badge, mini-stat) + fontes explícitas no frontmatter |
+| 09/03/2026 | [Refatoração Final — Itens 10-14](documentacao/2026-03-09_20-53-45-refatoracao-final-itens-10-11-12-14.md) | v-motion :click-N implementado; view-transition, consolidação componentes e layout section descartados |
 
 ## Apresentacao
 
@@ -119,4 +120,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 09/03/2026 20:42*
+*Atualizado em: 09/03/2026 20:53*
