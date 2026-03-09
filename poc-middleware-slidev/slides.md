@@ -174,13 +174,13 @@ transition: slide-up
 
 <div class="grid grid-cols-2 gap-8 w-full max-w-3xl">
   <div class="mode-card mode-card-cyan">
-    <div class="mode-number bg-cyan-500/15 text-cyan-400">1</div>
+    <div class="mode-number bg-cyan-500/15 text-cyan-400"><span class="i-ph-arrow-right-bold inline-block text-[1.2em]"></span></div>
     <div class="mode-title text-cyan-300">Passagem Direta</div>
     <div class="mode-desc">Sem tradutor. Sem fila.<br>Direto e rápido.</div>
     <div class="mode-use">IA, Dashboards, Consultas</div>
   </div>
   <div class="mode-card mode-card-fuchsia">
-    <div class="mode-number">2</div>
+    <div class="mode-number"><span class="i-ph-arrows-clockwise-bold inline-block text-[1.2em]"></span></div>
     <div class="mode-title text-fuchsia-300">Com Tradutor</div>
     <div class="mode-desc">Fila NATS + Worker<br>Tradução DE-PARA + Garantia de entrega</div>
     <div class="mode-use">Ex: ERP → EME4 (com tradução)</div>
@@ -200,7 +200,7 @@ transition: slide-left
      SLIDE 5 — MODO 2: COM TRADUTOR (WORKER)
      ═══════════════════════════════════════════════════════════ -->
 
-# Modo 2: Com Tradutor (Worker)
+# <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-400 align-middle"></span> Com Tradutor (Worker)
 
 <div class="accent-bar accent-bar-fuchsia">
   Quando há trabalho real — tradução, orquestração, garantia de entrega
@@ -676,7 +676,7 @@ transition: slide-up
 
 <!-- MODO 1: PASSAGEM DIRETA -->
 <div class="accent-bar accent-bar-cyan mt-1">
-  Modo 1: Passagem direta — sem fila, sem tradutor, rápido
+  <span class="i-ph-arrow-right-bold inline-block text-cyan-400 align-middle"></span> Passagem direta — sem fila, sem tradutor, rápido
 </div>
 
 <ScenarioFlow>
@@ -706,7 +706,7 @@ transition: slide-up
 
 <!-- MODO 2: COM WORKER -->
 <div v-click="1" class="accent-bar accent-bar-fuchsia mt-0">
-  Modo 2: Com Worker — fila + tradução + retry automático
+  <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-400 align-middle"></span> Com Worker — fila + tradução + retry automático
 </div>
 
 <ScenarioFlow v-click="1">

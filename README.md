@@ -63,6 +63,7 @@ docs/
 | 08/03/2026 | [Análise: Componentes Vue + Animações Modernas](documentacao/2026-03-08-21-30-06-analise-arquitetura-componentes-vue-animacoes.md) | Arquitetura com offset-path, v-motion, useSpring e componentes reutilizáveis |
 | 08/03/2026 | [Migração para Componentes Vue + offset-path](documentacao/2026-03-08-23-08-12-migracao-componentes-vue-slides-cenario.md) | Criação de FlowNode/FlowDot/FlowBadge, migração slides 5/6a/6b/6c, remoção de ~280 linhas CSS |
 | 08/03/2026 | [Migração Slides 6/8/9/11 para ScenarioFlow](documentacao/2026-03-08-23-32-31-scenarioflow-slides-6-8-9-11.md) | ScenarioFlow com FlowDots em slides 6, 8, 9 e 11 — fan-in/fan-out, retorno Ack, analogia restaurante |
+| 09/03/2026 | [Ícones nos Modos do Middleware](documentacao/2026-03-09-13-56-09-icones-modos-middleware-slides.md) | Substituição de números 1/2 por ícones Phosphor nos cards e referências dos modos |
 
 ## Apresentacao
 
@@ -115,4 +116,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 08/03/2026 23:32*
+*Atualizado em: 09/03/2026 13:56*
