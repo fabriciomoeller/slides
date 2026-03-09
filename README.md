@@ -64,6 +64,7 @@ docs/
 | 08/03/2026 | [Migração para Componentes Vue + offset-path](documentacao/2026-03-08-23-08-12-migracao-componentes-vue-slides-cenario.md) | Criação de FlowNode/FlowDot/FlowBadge, migração slides 5/6a/6b/6c, remoção de ~280 linhas CSS |
 | 08/03/2026 | [Migração Slides 6/8/9/11 para ScenarioFlow](documentacao/2026-03-08-23-32-31-scenarioflow-slides-6-8-9-11.md) | ScenarioFlow com FlowDots em slides 6, 8, 9 e 11 — fan-in/fan-out, retorno Ack, analogia restaurante |
 | 09/03/2026 | [Ícones nos Modos do Middleware](documentacao/2026-03-09-13-56-09-icones-modos-middleware-slides.md) | Substituição de números 1/2 por ícones Phosphor nos cards e referências dos modos |
+| 09/03/2026 | [Ajuste Métricas NATS + Slide Dimensionamento](documentacao/2026-03-09-16-07-32-ajustes-metricas-nats-slide-dimensionamento.md) | Correção de 25M→2M msg/s (single-server) e novo slide de equipe/tempo |
 
 ## Apresentacao
 
@@ -116,4 +117,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 09/03/2026 13:56*
+*Atualizado em: 09/03/2026 16:07*

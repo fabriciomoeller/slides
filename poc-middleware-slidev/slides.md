@@ -921,11 +921,11 @@ transition: slide-left
 
 <div v-click class="stats-row">
   <div class="stat-card stat-glow-cyan">
-    <div class="stat-value text-cyan-400">25 milhões</div>
-    <div class="stat-label">mensagens processadas<br><strong>por segundo</strong> (NATS)</div>
+    <div class="stat-value text-cyan-400">2 milhões</div>
+    <div class="stat-label">mensagens processadas<br><strong>por segundo</strong> (NATS, 1 servidor)</div>
   </div>
   <div class="stat-card stat-glow-blue">
-    <div class="stat-value text-blue-400">18 mil</div>
+    <div class="stat-value text-blue-400">50 a 150 mil</div>
     <div class="stat-label">requisições HTTP<br><strong>por segundo</strong> (Kong/APISIX)</div>
   </div>
   <div class="stat-card stat-glow-cyan">
@@ -960,9 +960,9 @@ transition: slide-left
   <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">Infraestrutura Total</div>
     <div class="card-body" style="font-size:0.78em;">
-      <div>→ <strong>280 MB</strong> RAM total (menos que o Chrome)</div>
-      <div>→ Menos de 7% de CPU</div>
-      <div>→ ~1 GB de disco</div>
+      <div>→ <strong>2 GB</strong> RAM total</div>
+      <div>→ 6 vCPU</div>
+      <div>→ ~50 GB de disco</div>
       <div>→ Cabe em qualquer VM ou container</div>
     </div>
   </div>
@@ -970,7 +970,8 @@ transition: slide-left
 
 <div v-click class="mt-4 p-3 rounded-xl text-center text-sm result-good">
   <span class="text-cyan-300">Nosso volume atual é de ~500 mil mensagens <strong>por dia</strong>.</span> <br>
-  <span class="opacity-50"> Estamos prontos para escalar com o NATS que processa 25 milhões por segundos.</span>
+  <span class="opacity-50"> Um único servidor NATS já processa 2 milhões msg/s — e escala linearmente em cluster.</span> <br>
+  <span class="opacity-50 text-xs"><span class="i-ph-info-bold inline-block align-middle text-fuchsia-400 text-lg"></span> Com JetStream (persistência), o throughput é de ~1,2M msg/s por servidor</span>
 </div>
 
 
@@ -979,7 +980,7 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 11 — NATS PUB/SUB ANIMAÇÃO
+     SLIDE 14 — NATS PUB/SUB ANIMAÇÃO
      ═══════════════════════════════════════════════════════════ -->
 
 # NATS — Publish / Subscribe
@@ -1069,60 +1070,59 @@ transition: slide-left
 </v-click>
 
 
+
+
 ---
-transition: slide-up
+transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 13 — VISÃO ESTRATÉGICA IA
+     SLIDE 15 — DIMENSIONAMENTO DE EQUIPE E TEMPO
      ═══════════════════════════════════════════════════════════ -->
 
-# Visão Estratégica: Pista de Decolagem para IA
+# Dimensionamento: Equipe e Tempo
 
-<div class="accent-bar accent-bar-pink">
-  A POC de hoje é o piloto. O Middleware é a pista de decolagem.
+<div class="accent-bar accent-bar-cyan">
+  Estimativa para implementação da POC com escopo reduzido
 </div>
 
-<div v-click class="pipeline my-5 gap-3">
-  <div class="pipe-node pipe-pink" style="padding:10px 16px;">
-    <span class="i-carbon-bot text-lg inline-block"></span>
-    <div class="font-bold text-sm">Agente IA</div>
+<div v-click class="grid grid-cols-2 gap-6 mt-6 max-w-3xl mx-auto">
+  <div class="info-card border-cyan-500/20 p-5">
+    <div class="card-header text-cyan-400"><span class="i-ph-users-three-fill inline-block align-middle mr-2"></span>Equipe</div>
+    <div class="card-body mt-3 text-xs">
+      <div class="flex items-center gap-2 mb-2"><span class="i-ph-user-fill inline-block text-cyan-400"></span> <strong>1 Dev Integração</strong> — APIs + Worker</div>
+      <div class="flex items-center gap-2 mb-2"><span class="i-ph-user-fill inline-block text-blue-400"></span> <strong>1 Infra/DevOps</strong> — NATS + Gateway</div>
+      <div class="flex items-center gap-2"><span class="i-ph-user-fill inline-block text-purple-400"></span> <strong>1 Analista EME4</strong> — negócio + validação</div>
+    </div>
   </div>
-  <div class="pipe-arrow text-purple-400 text-xl animate-pulse">━►</div>
-  <div class="pipe-node pipe-purple px-20px py-14px shadow-[0_0_20px_rgba(139,92,246,0.15)]">
-    <div class="font-bold">MIDDLEWARE</div>
-    <span class="pipe-sub">Kong + NATS</span>
-  </div>
-  <div class="pipe-arrow text-purple-400 text-xl animate-pulse">━►</div>
-  <div class="pipe-group">
-    <div class="pipe-node pipe-cyan pipe-sm">EME4</div>
-    <div class="pipe-node pipe-blue pipe-sm">ERP</div>
-    <div class="pipe-node pipe-gray pipe-sm">Sistema X</div>
-    <div class="pipe-node pipe-gray pipe-sm">Sistema Y</div>
-  </div>
-</div>
-
-<div v-click class="timeline-row">
-  <div class="timeline-line"></div>
-  <div class="tl-item">
-    <div class="tl-dot bg-blue-500">1</div>
-    <div class="tl-title">POC</div>
-    <div class="tl-desc">ERP ↔ EME4<br>1 cadastro + 1 fluxo OP</div>
-  </div>
-  <div class="tl-item">
-    <div class="tl-dot bg-cyan-500">2</div>
-    <div class="tl-title">Expansão</div>
-    <div class="tl-desc">Mais integrações<br>Dashboard monitoramento</div>
-  </div>
-  <div class="tl-item">
-    <div class="tl-dot bg-violet-500">3</div>
-    <div class="tl-title">IA</div>
-    <div class="tl-desc">Agentes IA consumindo<br>APIs via Middleware</div>
+  <div class="info-card border-purple-500/20 p-5 text-[1rem]">
+    <div class="card-header text-purple-400"><span class="i-ph-calendar-check-fill inline-block align-middle mr-2"></span>Cronograma</div>
+    <div class="card-body mt-3 text-[0.85rem]">
+      <div class="flex items-center gap-2 mb-2"><span class="i-ph-number-circle-one-fill inline-block text-cyan-400"></span> <strong>Semana 1–2</strong> — Infra + NATS + Gateway</div>
+      <div class="flex items-center gap-2 mb-2"><span class="i-ph-number-circle-two-fill inline-block text-blue-400"></span> <strong>Semana 3</strong> — integração EME4</div>
+      <div class="flex items-center gap-2"><span class="i-ph-number-circle-three-fill inline-block text-purple-400"></span> <strong>Semana 4</strong> — Testes + ajustes + entrega</div>
+    </div>
   </div>
 </div>
 
+<div v-click class="grid grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
+  <div class="stat-card stat-glow-cyan">
+    <div class="stat-value text-cyan-400 text-[1.8rem]">3</div>
+    <div class="stat-label">profissionais</div>
+  </div>
+  <div class="stat-card stat-glow-blue">
+    <div class="stat-value text-blue-400 text-[1.8rem]">4</div>
+    <div class="stat-label">semanas</div>
+  </div>
+  <div class="stat-card stat-glow-purple">
+    <div class="stat-value text-purple-400 text-[1.8rem]">R$ 0</div>
+    <div class="stat-label">licenças de software</div>
+  </div>
+</div>
 
-
+<div v-click class="mt-4 p-3 rounded-xl text-center text-sm result-good max-w-2xl mx-auto">
+  <span class="text-cyan-300">POC viável com equipe enxuta e prazo curto — sem custos de licenciamento.</span>
+</div>
 
 ---
 layout: center
@@ -1130,7 +1130,7 @@ transition: fade
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 14 — RECOMENDAÇÃO
+     SLIDE 16 — RECOMENDAÇÃO
      ═══════════════════════════════════════════════════════════ -->
 
 # Recomendação
@@ -1139,7 +1139,7 @@ transition: fade
 
 <div class="gradient-divider mx-auto mt-3 mb-6" style="width:150px;"></div>
 
-<div v-click class="grid grid-cols-3 gap-5 max-w-3xl">
+<div class="grid grid-cols-3 gap-5 max-w-3xl">
   <div class="rec-card rec-card-cyan">
     <div class="rec-icon"><span class="i-ph-crosshair-fill inline-block text-cyan-400"></span></div>
     <div class="rec-title text-cyan-400">Escopo da POC</div>
@@ -1153,16 +1153,11 @@ transition: fade
   <div class="rec-card rec-card-purple">
     <div class="rec-icon"><span class="i-ph-lightning-fill inline-block text-purple-400"></span></div>
     <div class="rec-title text-purple-400">Infraestrutura</div>
-    <div class="rec-desc">~280 MB RAM<br>em qualquer servidor<br>NATS + Kong gratuitos</div>
+    <div class="rec-desc">6 vCPU, 2GB RAM<br>50GB SSD<br>NATS + Kong/APISIX gratuitos</div>
   </div>
 </div>
 
-<div v-click class="mt-6 p-5 rounded-xl text-center result-good max-w-2xl mx-auto" style="border-width: 1.5px;">
+<div class="mt-6 p-5 rounded-xl text-center result-good max-w-2xl mx-auto" style="border-width: 1.5px;">
   <div class="text-cyan-400 font-semibold mb-1">Resultado Esperado</div>
   <div class="text-sm opacity-80">Demonstrar que o Middleware funciona, medir performance real, e ter base concreta para decisão de expansão rumo à IA.</div>
-</div>
-
-<div v-click class="mt-6 text-center opacity-50 italic text-sm max-w-lg mx-auto">
-  "A POC é um investimento pequeno para uma decisão informada.<br>
-  Melhor testar antes de comprometer do que comprometer antes de testar."
 </div>
