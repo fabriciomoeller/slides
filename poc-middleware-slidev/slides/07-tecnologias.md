@@ -4,7 +4,7 @@ transition: slide-left
 
 # Por que confiamos nessas tecnologias?
 
-<div v-click class="stats-row">
+<div v-click class="flex justify-center gap-4 flex-wrap my-4">
   <div class="stat-card stat-glow-cyan">
     <div class="stat-value text-cyan-400">2 milhões</div>
     <div class="stat-label">mensagens processadas<br><strong>por segundo</strong> (NATS, 1 servidor)</div>
