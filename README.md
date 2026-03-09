@@ -60,6 +60,7 @@ docs/
 | 08/03/2026 | [Plano: Slides LB vs Retry Cenários](documentacao/2026-03-08-12-31-56-plano-slides-lb-vs-retry-cenarios.md) | Planejamento de 3 slides animados com cenários hipotéticos de LB e Retry |
 | 08/03/2026 | [Implementação Slides 6a/6b/6c: Cenários LB vs Retry](documentacao/2026-03-08-16-44-42-slides-cenarios-lb-retry-implementacao.md) | 3 slides com animações SVG, v-click.hide, retornos sucesso/erro e single-play |
 | 08/03/2026 | [Correção v-click Slide 6c: Sobreposição](documentacao/2026-03-08-20-21-38-correcao-vclick-slide6c-sobreposicao.md) | Fix de elementos sobrepostos com v-click.hide e click ranges [enter, leave] |
+| 08/03/2026 | [Análise: Componentes Vue + Animações Modernas](documentacao/2026-03-08-21-30-06-analise-arquitetura-componentes-vue-animacoes.md) | Arquitetura com offset-path, v-motion, useSpring e componentes reutilizáveis |
 
 ## Apresentacao
 
@@ -112,4 +113,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 08/03/2026 20:21*
+*Atualizado em: 08/03/2026 21:30*
