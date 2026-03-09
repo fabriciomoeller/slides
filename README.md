@@ -61,6 +61,7 @@ docs/
 | 08/03/2026 | [Implementação Slides 6a/6b/6c: Cenários LB vs Retry](documentacao/2026-03-08-16-44-42-slides-cenarios-lb-retry-implementacao.md) | 3 slides com animações SVG, v-click.hide, retornos sucesso/erro e single-play |
 | 08/03/2026 | [Correção v-click Slide 6c: Sobreposição](documentacao/2026-03-08-20-21-38-correcao-vclick-slide6c-sobreposicao.md) | Fix de elementos sobrepostos com v-click.hide e click ranges [enter, leave] |
 | 08/03/2026 | [Análise: Componentes Vue + Animações Modernas](documentacao/2026-03-08-21-30-06-analise-arquitetura-componentes-vue-animacoes.md) | Arquitetura com offset-path, v-motion, useSpring e componentes reutilizáveis |
+| 08/03/2026 | [Migração para Componentes Vue + offset-path](documentacao/2026-03-08-23-08-12-migracao-componentes-vue-slides-cenario.md) | Criação de FlowNode/FlowDot/FlowBadge, migração slides 5/6a/6b/6c, remoção de ~280 linhas CSS |
 
 ## Apresentacao
 

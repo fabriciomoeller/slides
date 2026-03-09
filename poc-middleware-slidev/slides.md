@@ -209,64 +209,60 @@ transition: slide-left
 </div>
 
 <div class="anim-flow max-w-750px h-120px my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-88px h-52px bg-blue-500/12 border-blue-500/40 text-blue-400"><span class="i-ph-plugs-connected-fill text-base inline-block"></span>ORIGEM<span class="anim-sub">ex: ERP</span></div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-160px w-78px h-52px bg-violet-500/12 border-violet-500/40 text-violet-400"><span class="i-ph-shield-check-fill text-base inline-block"></span>KONG<span class="anim-sub">portaria</span></div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-310px w-78px h-52px bg-cyan-500/12 border-cyan-500/40 text-cyan-400"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-465px w-88px h-52px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
-  <div class="anim-node-top top-4px left-630px w-88px h-38px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1</div>
-  <div class="anim-node-top bottom-4px left-630px w-88px h-38px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2</div>
+  <FlowNode label="ORIGEM" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-88px h-52px" sub="ex: ERP" />
+  <FlowNode label="KONG" icon="i-ph-shield-check-fill" color="violet" position="top-50% -translate-y-50% left-160px w-78px h-52px" sub="portaria" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="top-50% -translate-y-50% left-465px w-88px h-52px" sub="tradutor" />
+  <FlowNode label="EME4 1" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" />
+  <FlowNode label="EME4 2" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" />
   <div v-click="1" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <line x1="90" y1="55" x2="160" y2="55" class="svg-line svg-stroke-blue"/>
-      <circle class="svg-dot svg-fill-blue anim-s1" cx="90" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-blue anim-s1-d" cx="90" cy="55" r="4"/>
+      <FlowDot d="M90,55 L160,55" color="blue" :duration="1.2" />
+      <FlowDot d="M90,55 L160,55" color="blue" :duration="1.2" :delay="0.6" />
     </svg>
   </div>
   <div v-click="2" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <line x1="240" y1="55" x2="310" y2="55" class="svg-line svg-stroke-purple"/>
-      <circle class="svg-dot svg-fill-purple anim-s2" cx="240" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-purple anim-s2-d" cx="240" cy="55" r="4"/>
+      <FlowDot d="M240,55 L310,55" color="purple" :duration="1.2" />
+      <FlowDot d="M240,55 L310,55" color="purple" :duration="1.2" :delay="0.6" />
     </svg>
   </div>
   <div v-click="3" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <path d="M199,81 L199,88 Q199,96 191,96 L51,96 Q44,96 44,88 L44,81" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-s3" cx="199" cy="81" r="4"/>
+      <FlowDot d="M199,81 L199,96 L44,96 L44,81" color="cyan" :duration="1.2" />
     </svg>
-    <div class="anim-badge left-75px bottom-20px text-cyan-400">✓ 202 Accepted</div>
+    <FlowBadge text="✓ 202 Accepted" color="cyan" position="left-75px bottom-20px" />
   </div>
   <div v-click="4" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <line x1="390" y1="55" x2="465" y2="55" class="svg-line svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-s4" cx="390" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-cyan anim-s4-d" cx="390" cy="55" r="4"/>
+      <FlowDot d="M390,55 L465,55" color="cyan" :duration="3.5" />
+      <FlowDot d="M390,55 L465,55" color="cyan" :duration="3.5" :delay="0.6" />
     </svg>
   </div>
   <div v-click="5" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <path d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="svg-line svg-stroke-fuchsia"/>
       <path d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" class="svg-line svg-stroke-fuchsia"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-lb-up1" cx="553" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-lb-down1" cx="553" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-lb-up2" cx="553" cy="55" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-lb-down2" cx="553" cy="55" r="4"/>
+      <FlowDot d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" />
+      <FlowDot d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" color="fuchsia" :duration="5" :delay="1.25" />
+      <FlowDot d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" :delay="2.5" />
+      <FlowDot d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" color="fuchsia" :duration="5" :delay="3.75" />
     </svg>
   </div>
-  
   <div v-click="6" class="anim-seg">
-    <div class="anim-node-top top-4px left-630px w-88px h-38px bg-pink-500/15 border-pink-500/50 text-pink-400 z-5">EME4 1</div>
+    <FlowNode label="EME4 1" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" />
     <svg class="anim-svg" viewBox="0 0 750 90">
       <path d="M630,3 Q630,4 616,4 L524,4 Q510,4 510,18" class="svg-line-return svg-stroke-pink"/>
-      <circle class="svg-dot svg-fill-pink anim-retry-eme4" cx="630" cy="18" r="4"/>
+      <FlowDot d="M630,18 L630,4 L510,4 L510,18" color="pink" :duration="2" />
       <path d="M509,70 Q509,85 495,85 L364,85 Q350,85 350,70" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-retry-nats" cx="509" cy="50" r="4"/>
+      <FlowDot d="M509,70 L509,85 L350,85 L350,70" color="cyan" :duration="2" :delay="2" />
     </svg>
-    <div class="anim-badge right-140px top-0px   text-pink-400  text-[9px]">✕ erro/timeout</div>
-    <div class="anim-badge left-380px bottom-20px text-cyan-400  text-[9px]">
-      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[8px]"></span>
-      Nak → refila
-    </div>
+    <FlowBadge text="✕ erro/timeout" color="pink" position="right-140px top-0px" />
+    <FlowBadge text="Nak → refila" icon="i-ph-arrow-counter-clockwise-fill" color="cyan" position="left-380px bottom-20px" />
   </div>
 </div>
 
@@ -281,7 +277,7 @@ transition: slide-left
 </div>
 <div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
   <div class="w-24px h-24px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700  shrink-0">3</div>
-  <div>Sistema origem recebe "Recebido!" (202 Accepted) e <strong>segue em frente</strong></div>
+  Sistema origem recebe "Recebido!" (202 Accepted) e segue em frente.<br> Desacoplamento total para enviar outras mensagens
 </div>
 <div v-click="4" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-fuchsia-500 text-fuchsia-300">
   <div class="w-24px h-24px rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-700  shrink-0">4</div>
@@ -315,45 +311,52 @@ transition: fade
   Load Balancer distribui as mensagens entre os servidores EME4
 </div>
 
-<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
-  <div class="anim-node-top top-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
-  <div class="anim-node-top bottom-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+<ScenarioFlow>
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" />
+  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <!-- Animação do NATS para o Worker -->
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
     </svg>
   </div>
+  <!-- Animação do Worker para o balanceamento nos EME4 Server -->
   <div v-click="1" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-up" cx="340" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-down" cx="340" cy="70" r="4"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
     </svg>
-    <div class="anim-badge left-300px top-80px text-fuchsia-400 text-[9px] bg-fuchsia-500/10 border border-fuchsia-500/30 rounded-6px px-6px">
-      <span class="i-ph-arrows-split inline-block text-[8px]"></span> LB distribui
-    </div>
+    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
   </div>
+  <!-- Animação dos EME4 com as entregas de Sucesso (EME4 1 top + EME4 2 bottom) -->
   <div v-click="2" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
-      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <!-- EME4 1 (top) → Worker via path superior -->
+      <path d="M420,20 L265,20 Q250,20 250,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,28 L420,20 L265,20 L250,40" color="cyan" :duration="2.5" />
+      <!-- EME4 2 (bottom) → Worker via path inferior -->
+      <path d="M420,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" :delay="0.5" />
+      <!-- Worker → NATS (Ack) via path superior -->
+      <path d="M250,40 Q250,20 235,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2" :delay="1.5" />
+      <!-- Worker → NATS (Ack) via path inferior -->
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
     </svg>
-    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] px-6px">
-      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
-    </div>
-    <div class="anim-badge right-0px bottom-10 text-cyan-400 text-[10px] bg-cyan-500/10 border border-cyan-500/30 rounded-8px px-8px py-2px anim-success-pulse">
-      <span class="i-ph-check-circle-fill inline-block text-xs"></span> Entregue
-    </div>
-    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
+    <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
+    <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0" />
+    <FlowBadge text=" Entregue" icon="i-ph-check-circle-fill" color="cyan" position="right-0px bottom-10" bordered pulse />
+    <FlowBadge text="✓ Ack" color="cyan" position="left-120px top-0px" size="xs" />
+    <FlowBadge text="✓ Ack" color="cyan" position="left-120px bottom-0px" size="xs" />
   </div>
-</div>
+</ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
 <div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
@@ -385,11 +388,12 @@ transition: fade
   Cenário: EME4 1 aceitou a conexão mas falhou durante o processamento (erro 500)
 </div>
 
-<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist"><span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>NATS<span class="anim-sub">fila</span></div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
-  <div v-click.hide="1" class="anim-node-top top-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 1<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
-  <div class="anim-node-top bottom-6px left-420px w-100px h-42px bg-cyan-500/12 border-cyan-500/40 text-cyan-400">EME4 2<span class="anim-sub"><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span> online</span></div>
+<ScenarioFlow>
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" />
+  <FlowNode v-click.hide="1" label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <!-- Linhas estáticas: NATS→Worker e Worker→EME4 (fork) -->
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -397,48 +401,60 @@ transition: fade
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
     </svg>
   </div>
-  <div  class="anim-seg">
+  <!-- Fluxo contínuo: dots NATS→Worker, LB fork, sucesso EME4 1+2 (top desaparece no click 1) -->
+  <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
-      <circle v-click.hide="1" class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-up" cx="340" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-alt-down" cx="340" cy="70" r="4"/>
-      <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <!-- NATS → Worker -->
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
+      <!-- Worker → EME4 1 (top, desaparece no click 1) -->
+      <FlowDot v-click.hide="1" d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
+      <!-- Worker → EME4 2 (bottom, contínuo) -->
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
+      <!-- EME4 1 (top) → Worker via path superior (desaparece no click 1) -->
+      <path v-click.hide="1" d="M420,20 L265,20 Q250,20 250,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot v-click.hide="1" d="M420,28 L420,20 L265,20 L250,40" color="cyan" :duration="2.5" />
+      <!-- EME4 2 (bottom) → Worker via path inferior -->
+      <path d="M420,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" :delay="0.5" />
+      <!-- Worker → NATS (Ack) via path superior (desaparece no click 1) -->
+      <path v-click.hide="1" d="M250,40 Q250,20 235,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot v-click.hide="1" d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2" :delay="1.5" />
+      <!-- Worker → NATS (Ack) via path inferior -->
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
     </svg>
-    <div v-click="1" class="anim-node-top top-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400 z-5" style="animation: pulseAlert 2s ease-in-out infinite;">EME4 1
-      <span class="anim-sub">erro 500 </span>
-   </div>
-    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px">
-      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
-    </div>
-    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
+    <!-- EME4 1 muda para erro 500 no click 1 -->
+    <FlowNode v-click="1" label="EME4 1" color="pink" position="eme4-top" sub="erro 500" pulse />
+    <FlowBadge v-click.hide="1" text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
+    <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0"/>
+    <FlowBadge v-click.hide="1" text="✓ Ack" color="cyan" position="left-120px top-0px" size="xs" />
+    <FlowBadge text="✓ Ack" color="cyan" position="left-120px bottom-0px" size="xs" />
   </div>
+  <!-- Click 2: Retry — EME4 1 retorna erro, EME4 2 sucesso (bottom), Nak refila -->
   <div v-click="2" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-down" cx="340" cy="70" r="4"/>
+      <!-- NATS → Worker (nova tentativa) -->
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <!-- Worker → EME4 2 (bottom, única rota disponível) -->
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" />
+      <!-- EME4 2 (bottom) → Worker sucesso -->
       <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" />
+      <!-- Worker → NATS (Ack) via path inferior -->
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="1" />
+      <!-- EME4 1 (top) → Worker erro (one-shot: acontece 1x, LB para de enviar) -->
       <path d="M420,20 Q420,20 406,20 L260,20 Q250,20 250,40" class="svg-line-return svg-stroke-pink"/>
-      <circle class="svg-dot svg-fill-pink" cx="420" cy="20" r="4" style="animation: scRetryEme4 2.5s ease-in-out 1 forwards"/>
+      <FlowDot d="M420,20 L260,20 L250,40" color="pink" :duration="2.5" :loop="false" />
+      <!-- Worker → NATS (Nak → refila, one-shot) -->
       <path d="M250,40 Q250,20 240,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan" cx="250" cy="20" r="4" style="animation: scRetryNats 2.5s ease-in-out 1.2s 1 forwards"/>
+      <FlowDot d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2.5" :delay="1.2" :loop="false" />
     </svg>
-    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px">
-      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
-    </div>
-    <div class="anim-badge left-120px bottom-0px text-cyan-400 text-[8px]">✓ Ack</div>
-    <div class="anim-badge left-280px top-3 text-pink-400 text-[8px]">✕ erro/timeout</div>
-    <div class="anim-badge left-100px top-3 text-cyan-400 text-[8px]">
-      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[7px]"></span> Nak → refila
-    </div>
+    <FlowBadge text="✕ erro/timeout" color="pink" position="left-300px top-0" size="xs" />
+    <FlowBadge text=" Nak → refila" icon="i-ph-arrow-counter-clockwise-fill" color="cyan" position="left-100px top-0" size="xs" />
   </div>
-</div>
+</ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
 <div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
@@ -466,78 +482,57 @@ transition: fade
   Cenário extremo: todos os servidores EME4 estão indisponíveis
 </div>
 
-<div class="scenario-flow my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="anim-node-sm top-50% -translate-y-50% left-0 w-90px h-56px bg-cyan-500/12 border-cyan-500/40 text-cyan-400 anim-nats-persist">
-    <span class="i-ph-cloud-arrow-up-fill text-base inline-block"></span>
-    NATS
-    <span class="anim-sub">
-      fila
-    </span>
-  </div>
-  <div class="anim-node-sm top-50% -translate-y-50% left-200px w-95px h-56px bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400"><span class="i-ph-gear-six-fill text-base inline-block"></span>Worker<span class="anim-sub">tradutor</span></div>
-  <div class="anim-node-top top-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400" style="animation: pulseAlert 2.5s ease-in-out infinite;">
-    <span class="i-ph-x-circle-fill text-xs inline-block mr-2px"></span>EME4 1<span class="anim-sub">offline</span>
-  </div>
-  <div v-click.hide="2" class="anim-node-top bottom-6px left-420px w-100px h-42px bg-pink-500/15 border-pink-500/50 text-pink-400" style="animation: pulseAlert 2.5s ease-in-out 0.5s infinite;">
-    <span class="i-ph-x-circle-fill text-xs inline-block mr-2px"></span>EME4 2<span class="anim-sub">offline</span>
-  </div>
+<ScenarioFlow>
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" />
+  <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="offline" pulse />
+  <FlowNode v-click.hide="2" label="EME4 2" icon="i-ph-x-circle-fill" color="pink" position="eme4-bottom" sub="offline" pulse />
+  <!-- Estado inicial: NATS→Worker contínuo, linhas LB esmaecidas (sem servidor) -->
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker-d" cx="92" cy="70" r="4"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
       <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
     </svg>
-    <div v-click.hide="2" class="anim-badge left-350px top-52px text-pink-400 text-[9px] bg-pink-500/10 border border-pink-500/30 rounded-6px px-6px">
-      <span class="i-ph-x-circle-fill inline-block text-[8px]"></span> sem servidor
-    </div>
+    <FlowBadge v-click.hide="2" text=" sem servidor" icon="i-ph-x-circle-fill" color="pink" position="left-350px top-52px" bordered />
   </div>
+  <!-- Click 1→3: Nak contínuo — Worker devolve para NATS (backoff) -->
   <div v-click="[1, 3]" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <path d="M250,100 Q250,110 240,110 L55,110 Q45,110 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-retry-nats" cx="278" cy="100" r="4"/>
+      <FlowDot d="M250,100 L250,110 L55,110 L45,100" color="cyan" :duration="2.5" />
     </svg>
-    <div class="anim-badge left-100px bottom-15px text-cyan-400 text-[8px]">
-      <span class="i-ph-arrow-counter-clockwise-fill inline-block text-[7px]"></span> 
-      Nak → fila persiste
-    </div>
-    <div class="anim-badge left-0 top-2 text-cyan-300 text-[8px] bg-cyan-500/10 border border-cyan-500/30 rounded-6px px-6px py-2px">
-      <span class="i-ph-hard-drives-fill inline-block text-[8px]"></span> 
-      persistida em disco
-    </div>
-    <div class="anim-badge left-100px bottom-30px text-slate-400 text-[8px]">
-      <span class="i-ph-timer-fill inline-block text-[7px]"></span> 5s → 30s → 2min...
-    </div>
+    <FlowBadge text=" Nak → fila persiste" icon="i-ph-arrow-counter-clockwise-fill" color="cyan" position="left-100px bottom-15px" size="xs" />
+    <FlowBadge text=" persistida em disco" icon="i-ph-hard-drives-fill" color="cyan" position="left-0 top-2" bordered size="xs" />
+    <FlowBadge text=" 5s → 30s → 2min..." icon="i-ph-timer-fill" color="slate" position="left-100px bottom-30px" size="xs" />
   </div>
+  <!-- Click 2: EME4 2 volta ao ar (recover) -->
   <div v-click="2" class="anim-seg">
-    <div class="anim-node-top bottom-6px left-420px w-100px h-42px z-5 anim-node-recover">
-      EME4 2
-      <span class="anim-sub"><span class="i-ph-arrow-up-fill text-[7px] inline-block"></span> 
-        voltou
-      </span>
-    </div>
+    <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" voltou" subIcon="i-ph-arrow-up-fill" recover />
   </div>
+  <!-- Click 3: Sucesso — NATS→Worker→EME4 2→Worker→NATS (Ack) -->
   <div v-click="3" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
+      <!-- NATS → Worker -->
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-nats-worker" cx="92" cy="70" r="4"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <!-- Worker → EME4 2 (bottom, única rota disponível) -->
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
-      <circle class="svg-dot svg-fill-fuchsia anim-sc-lb-down" cx="340" cy="70" r="4"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" />
+      <!-- EME4 2 (bottom) → Worker sucesso -->
       <path d="M420,120 Q420,120 406,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-eme4-success" cx="420" cy="112" r="4"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" />
+      <!-- Worker → NATS (Ack) via path inferior -->
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <circle class="svg-dot svg-fill-cyan anim-sc-ack-return" cx="278" cy="100" r="4"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="1" />
     </svg>
-    <div class="anim-badge left-300px bottom-0 text-cyan-400 text-[9px]  px-6px">
-      <span class="i-ph-check-circle-fill inline-block text-[8px]"></span> Sucesso
-    </div>
-    <div class="anim-badge left-420px bottom-13 text-cyan-400 text-[10px] bg-cyan-500/10 border border-cyan-500/30 rounded-8px px-8px py-2px anim-success-pulse">
-      <span class="i-ph-check-circle-fill inline-block text-xs"></span> Recuperação automática
-    </div>
-    <div class="anim-badge left-130px bottom-2px text-cyan-400 text-[8px]">Ack ✓</div>
+    <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0" />
+    <FlowBadge text=" Recuperação automática" icon="i-ph-check-circle-fill" color="cyan" position="left-420px bottom-13" bordered pulse />
+    <FlowBadge text="Ack ✓" color="cyan" position="left-130px bottom-2px" size="xs" />
   </div>
-</div>
+</ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
 <div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
