@@ -2,7 +2,7 @@
 
 ## Visao Geral
 
-Prova de Conceito para infraestrutura de **Middleware** integrando o **EME4** (Manufatura) com sistemas externos (Protheus, IA, Dashboards) na Datainfo.
+Prova de Conceito para infraestrutura de **Middleware** integrando o **EME4** (Manufatura) com sistemas externos (ERP Externo, IA, Dashboards) na Datainfo.
 
 ### Objetivo
 
@@ -17,7 +17,7 @@ Substituir o modelo atual de integracoes diretas (API-para-API) por uma arquitet
 | Modo | Quando usar | Componentes |
 |------|-------------|-------------|
 | **Passagem Direta** | Sistemas que ja falam a mesma lingua (IA, Dashboards) | Kong/APISIX → EME4 |
-| **Com Tradutor** | Sistemas com formato diferente (Protheus → EME4) | Kong → NATS → Worker → EME4 |
+| **Com Tradutor** | Sistemas com formato diferente (ERP Externo → EME4) | Kong → NATS → Worker → EME4 |
 
 ## Status
 

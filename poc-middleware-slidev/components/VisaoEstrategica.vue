@@ -41,7 +41,7 @@ onMounted(() => {
       </g>
       <g class="a a3">
         <rect x="110" y="185" width="180" height="90" rx="8" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
-        <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">Protheus &#x2194; EME4</text>
+        <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">ERP Externo &#x2194; EME4</text>
         <text x="200" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">Engenharia + OPs</text>
         <text x="200" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#60a5fa">Centenas/dia</text>
       </g>
@@ -82,7 +82,7 @@ onMounted(() => {
       </g>
       <g transform="translate(80, 400)" class="a a10">
         <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Protheus</text>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">ERP Externo</text>
       </g>
       <g transform="translate(80, 450)" class="a a11">
         <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
@@ -125,7 +125,7 @@ onMounted(() => {
       </g>
       <g transform="translate(835, 400)" class="a a15">
         <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Protheus</text>
+        <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">ERP Externo</text>
       </g>
       <g transform="translate(835, 450)" class="a a16">
         <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>

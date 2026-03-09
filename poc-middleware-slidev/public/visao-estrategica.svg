@@ -25,7 +25,7 @@
     <text x="200" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">1</text>
     <text x="200" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">POC (agora)</text>
     <rect x="110" y="185" width="180" height="90" rx="8" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
-    <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">Protheus ↔ EME4</text>
+    <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">ERP Externo ↔ EME4</text>
     <text x="200" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">Engenharia + OPs</text>
     <text x="200" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#60a5fa">Centenas/dia</text>
 
@@ -57,7 +57,7 @@
     </g>
     <g transform="translate(80, 400)">
       <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
-      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Protheus</text>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">ERP Externo</text>
     </g>
     <g transform="translate(80, 450)">
       <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
@@ -94,7 +94,7 @@
     </g>
     <g transform="translate(835, 400)">
       <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
-      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Protheus</text>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">ERP Externo</text>
     </g>
     <g transform="translate(835, 450)">
       <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>

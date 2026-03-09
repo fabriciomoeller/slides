@@ -28,7 +28,7 @@ colorSchema: dark
 
 <div class="pt-6">
   <span class="px-3 py-1.5 rounded-lg text-sm opacity-50">
-    POC — Prova de Conceito para infraestrutura de Middleware — Ex: Protheus, IA, Dashboards
+    POC — Prova de Conceito para infraestrutura de Middleware — Ex: ERP Externo, IA, Dashboards
   </span>
 </div>
 
@@ -300,7 +300,7 @@ transition: fade
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 6a — CENÁRIO 1: LOAD BALANCER COM SUCESSO
+     SLIDE 6 — CENÁRIO 1: LOAD BALANCER COM SUCESSO
      ═══════════════════════════════════════════════════════════ -->
 
 # 1ª Linha de Defesa: Load Balancer
@@ -377,7 +377,7 @@ transition: fade
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 6b — CENÁRIO 2: RETRY RESOLVE (LB NÃO BASTA)
+     SLIDE 7 — CENÁRIO 2: RETRY RESOLVE (LB NÃO BASTA)
      ═══════════════════════════════════════════════════════════ -->
 
 # Quando o LB Não Basta: Retry
@@ -471,7 +471,7 @@ transition: fade
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 6c — CENÁRIO 3: AMBOS FORA, FILA GARANTE
+     SLIDE 8 — CENÁRIO 3: AMBOS FORA, FILA GARANTE
      ═══════════════════════════════════════════════════════════ -->
 
 # Ambos Fora: A Fila Garante
@@ -665,7 +665,7 @@ transition: slide-up
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 6 — COMO FUNCIONARIA COM O MIDDLEWARE
+     SLIDE 10 — COMO FUNCIONARIA COM O MIDDLEWARE
      ═══════════════════════════════════════════════════════════ -->
 
 <!-- Título -->
@@ -721,7 +721,7 @@ transition: slide-up
       <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
       <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
     </svg>
-    <FlowBadge text=" Protheus → Kong →" icon="i-ph-plugs-connected-fill" color="blue" position="left-0 top-0" bordered size="xs" />
+    <FlowBadge text=" ERP Externo → Kong →" icon="i-ph-plugs-connected-fill" color="blue" position="left-0 top-0" bordered size="xs" />
   </div>
   <!-- Worker → EME4 1/2 (LB) -->
   <div v-click="1" class="anim-seg">
@@ -752,7 +752,7 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 7 — COMPARAÇÃO CENÁRIO A CENÁRIO
+     SLIDE 11 — COMPARAÇÃO CENÁRIO A CENÁRIO
      ═══════════════════════════════════════════════════════════ -->
 
 # Comparação: Cenário a Cenário
@@ -802,13 +802,13 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 8 — Visão Estratégica
+     SLIDE 12 — Visão Estratégica
      ═══════════════════════════════════════════════════════════ -->
 
 <!-- Título -->
 <div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
   <div class="text-[20px] font-bold text-white">Visão Estratégica: O Middleware como base para IA</div>
-  <div class="text-[12px] text-gray-400 mt-1">Não é exagero. É o primeiro passo de algo muito maior.</div>
+  <div class="text-[12px] text-gray-400 mt-1">Fases para evoluir.</div>
 </div>
 
 <!-- Timeline -->
@@ -858,7 +858,7 @@ transition: slide-left
 <div v-click="1" class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <!-- Produtores (esquerda) -->
   <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
-  <FlowNode label="Protheus" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-88px h-34px" size="sm" />
+  <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" />
   <FlowNode label="App Mobile" icon="i-ph-device-mobile-fill" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="Dashboard" icon="i-ph-chart-line-up-fill" color="blue" position="top-132px left-0 w-88px h-34px" size="sm" />
   <!-- Middleware (centro) -->
@@ -914,7 +914,7 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
-     SLIDE 10 — TECNOLOGIAS (COM MÉTRICAS CLARAS)
+     SLIDE 13 — TECNOLOGIAS (COM MÉTRICAS CLARAS)
      ═══════════════════════════════════════════════════════════ -->
 
 # Por que confiamos nessas tecnologias?
@@ -938,7 +938,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="grid grid-cols-3 gap-4 mt-4">
+<div v-click class="grid grid-cols-3 gap-4 mt-10">
   <div class="info-card border-cyan-500/20 p-14px">
     <div class="card-header text-cyan-400">NATS</div>
     <div class="card-body" style="font-size:0.78em;">
@@ -969,8 +969,8 @@ transition: slide-left
 </div>
 
 <div v-click class="mt-4 p-3 rounded-xl text-center text-sm result-good">
-  <span class="text-cyan-300">Nosso volume atual é de ~500 mensagens <strong>por dia</strong>.</span>
-  <span class="opacity-50"> O NATS processa 25 milhões <strong>por segundo</strong>. É como ter um foguete para ir à padaria.</span>
+  <span class="text-cyan-300">Nosso volume atual é de ~500 mil mensagens <strong>por dia</strong>.</span> <br>
+  <span class="opacity-50"> Estamos prontos para escalar com o NATS que processa 25 milhões por segundos.</span>
 </div>
 
 
@@ -991,12 +991,12 @@ transition: slide-left
 <div class="text-center text-[11px] text-slate-400 mb-1"><span class="i-ph-broadcast-fill inline-block mr-1 text-cyan-400"></span> subject: <span class="text-cyan-300 font-600">eme4.op.criar</span></div>
 
 <div class="scenario-flow-tall my-3" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <FlowNode label="Protheus" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="Publisher" />
+  <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="Publisher" />
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="JetStream" persist />
   <FlowNode label="Worker 1" icon="i-ph-gear-six-fill" color="fuchsia" position="top-2px left-420px w-100px h-42px" sub="Subscriber" size="top" />
   <FlowNode label="Worker 2" icon="i-ph-gear-six-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-42px" sub="Subscriber" size="top" />
   <FlowNode label="Monitor" icon="i-carbon-dashboard" color="cyan" position="bottom-2px left-420px w-100px h-42px" sub="Subscriber" size="top" />
-  <!-- Protheus → NATS (publish) -->
+  <!-- ERP Externo → NATS (publish) -->
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 180">
       <line x1="92" y1="90" x2="200" y2="90" class="svg-line svg-stroke-blue"/>
@@ -1044,7 +1044,7 @@ transition: slide-left
 <div class="flex justify-center gap-4 mt-2">
   <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-blue-500/20">
     <div class="text-[13px] font-700 text-blue-400">1 publish</div>
-    <div class="text-[9px] text-slate-400">Protheus envia uma vez</div>
+    <div class="text-[9px] text-slate-400">ERP Externo envia uma vez</div>
   </div>
   <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-cyan-500/20">
     <div class="text-[13px] font-700 text-cyan-400">N subscribers</div>
