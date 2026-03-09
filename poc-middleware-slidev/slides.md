@@ -567,76 +567,76 @@ transition: slide-left
      SLIDE 6 — COMO FUNCIONARIA COM O MIDDLEWARE
      ═══════════════════════════════════════════════════════════ -->
 
-<div class="s6-slide">
-
 <!-- Título -->
 <div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
   <div class="text-[20px] font-bold text-white">Como funcionaria com o MIDDLEWARE</div>
   <div class="text-[12px] text-gray-400 mt-1">Dois modos: o Worker só existe quando há trabalho a fazer</div>
 </div>
 
-<!-- Dois painéis -->
-<div class="s6-panels">
-
-  <!-- MODO 1 -->
-  
-  <div class="s6-panel s6-panel-cyan" v-motion :initial="{opacity:0, x:-30}" :enter="{opacity:1, x:0, transition:{delay:300}}">
-    <div class="s6-panel-title text-cyan-300">MODO 1: PASSAGEM DIRETA (sem Worker)</div>
-    <div class="s6-diagram">
-      <div class="s6-node s6-node-pink">
-        <span class="i-carbon-bot text-lg inline-block"></span>
-        <div class="">Agente IA</div>
-        <span class="s6-node-sub">(futuro)</span>
-      </div>
-      <svg class="s6-arrow" viewBox="0 0 40 10"><line x1="0" y1="5" x2="40" y2="5" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-      <div class="s6-node s6-node-teal">KONG/APISIX<span class="s6-node-sub">Auth + LB</span><span class="s6-node-sub">Direto, sem fila</span></div>
-      <div class="s6-srv-group">
-        <svg class="s6-arrow-fork" viewBox="0 0 40 50"><line x1="0" y1="25" x2="40" y2="8" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/><line x1="0" y1="25" x2="40" y2="42" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-        <div class="s6-srv"><span>EME4 Srv 1</span><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span></div>
-        <div class="s6-srv"><span>EME4 Srv 2</span><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span></div>
-      </div>
-    </div>
-    <div class="s6-desc">
-      <div>Sem fila. Sem tradutor. Rápido e direto.</div>
-      <div>Quando os sistemas falam a mesma língua.</div>
-      <div>Ganha: Auth, LB, Failover, Logging, Rate Limit</div>
-      <div class="italic text-cyan-400/60 mt-1">Ex: IA consulta status de OP, Dashboard busca dados</div>
-    </div>
-  </div>
-  
-
-  <!-- MODO 2 -->
-  <v-click>
-  <div class="s6-panel s6-panel-purple" v-motion :initial="{opacity:0, x:30}" :enter="{opacity:1, x:0, transition:{delay:500}}">
-    <div class="s6-panel-title text-purple-300">MODO 2: COM WORKER (quando há trabalho)</div>
-    <div class="s6-diagram">
-      <div class="s6-node s6-node-blue">Protheus<span class="s6-node-sub">ERP</span></div>
-      <svg class="s6-arrow" viewBox="0 0 24 10"><line x1="0" y1="5" x2="24" y2="5" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-      <div class="s6-node s6-node-teal-sm">KONG<span class="s6-node-sub">Auth</span></div>
-      <svg class="s6-arrow" viewBox="0 0 24 10"><line x1="0" y1="5" x2="24" y2="5" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-      <div class="s6-node s6-node-teal-sm">NATS<span class="s6-node-sub">Fila</span></div>
-      <svg class="s6-arrow" viewBox="0 0 24 10"><line x1="0" y1="5" x2="24" y2="5" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-      <div class="s6-node s6-node-fuchsia">Worker<span class="s6-node-sub">Traduz</span><span class="s6-node-sub">DE-PARA</span></div>
-      <div class="s6-srv-group">
-        <svg class="s6-arrow-fork" viewBox="0 0 30 50"><line x1="0" y1="25" x2="30" y2="8" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/><line x1="0" y1="25" x2="30" y2="42" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" class="ve-line-in"/></svg>
-        <div class="s6-srv s6-srv-sm"><span>EME4 Srv 1</span><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span></div>
-        <div class="s6-srv s6-srv-sm"><span>EME4  Srv 2</span><span class="i-svg-spinners-pulse-3 text-cyan-400 text-[7px] inline-block"></span></div>
-      </div>
-    </div>
-    <div class="s6-desc">
-      <div>Com fila + tradução + retry automático.</div>
-      <div>Quando os sistemas falam línguas diferentes.</div>
-      <div>Ganha: Tudo do Modo 1 + Tradução + Garantia</div>
-      <div class="italic text-purple-400/60 mt-1">Ex: Protheus envia OP, Engenharia, Apontamentos</div>
-    </div>
-  </div>
-  </v-click>
-
+<!-- MODO 1: PASSAGEM DIRETA -->
+<div class="accent-bar accent-bar-cyan mt-3">
+  Modo 1: Passagem direta — sem fila, sem tradutor, rápido
 </div>
+
+<ScenarioFlow>
+  <FlowNode label="Agente IA" icon="i-carbon-bot" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="(futuro)" />
+  <FlowNode label="Kong" icon="i-ph-shield-check-fill" color="purple" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="Auth + LB" />
+  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <!-- Agente IA → Kong -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-blue"/>
+      <FlowDot d="M100,70 L210,70" color="blue" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="blue" :duration="2" :delay="1" />
+    </svg>
+  </div>
+  <!-- Kong → EME4 1/2 (LB direto) -->
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-purple"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-purple"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="purple" :duration="2.5" />
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="purple" :duration="3" :delay="1.5" />
+    </svg>
+    <FlowBadge text=" direto, sem fila" icon="i-ph-lightning-fill" color="cyan" position="left-300px top-80px" bordered />
+  </div>
+</ScenarioFlow>
+
+<!-- MODO 2: COM WORKER -->
+<div v-click="2" class="accent-bar accent-bar-fuchsia mt-1">
+  Modo 2: Com Worker — fila + tradução + retry automático
+</div>
+
+<ScenarioFlow v-click="2">
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz DE→PARA" />
+  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <!-- NATS → Worker -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
+    </svg>
+    <FlowBadge text=" Protheus → Kong →" icon="i-ph-plugs-connected-fill" color="blue" position="left-0 top-0" bordered size="xs" />
+  </div>
+  <!-- Worker → EME4 1/2 (LB) -->
+  <div v-click="3" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
+    </svg>
+    <FlowBadge text=" LB + tradução" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
+  </div>
+</ScenarioFlow>
 
 <!-- Mensagem central -->
 <v-click>
-<div class="s6-message" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:800}}">
+<div class="text-center mt-3 py-2.5 px-5 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-500px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
   <div class="font-bold text-white text-[13px]">Worker só existe quando há trabalho real a fazer.</div>
   <div class="text-gray-400 text-[11px]">Sem tradução necessária = passagem direta. Mais rápido, menos componentes.</div>
 </div>
@@ -644,16 +644,14 @@ transition: slide-left
 
 <!-- Features -->
 <v-click>
-<div class="s6-features" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:1000}}">
-  <div class="s6-feat"><div class="s6-feat-icon"><span class="i-ph-lightning-fill inline-block text-cyan-400"></span></div><div class="s6-feat-title">Load Balancing</div><div class="s6-feat-sub">Distribui carga</div></div>
-  <div class="s6-feat"><div class="s6-feat-icon"><span class="i-ph-shield-check-fill inline-block text-purple-400"></span></div><div class="s6-feat-title">Failover</div><div class="s6-feat-sub">Servidor cai, outro assume</div></div>
-  <div class="s6-feat"><div class="s6-feat-icon"><span class="i-ph-lock-key-fill inline-block text-blue-400"></span></div><div class="s6-feat-title">Auth Centralizada</div><div class="s6-feat-sub">Uma porta de entrada</div></div>
-  <div class="s6-feat"><div class="s6-feat-icon"><span class="i-ph-chart-line-up-fill inline-block text-cyan-400"></span></div><div class="s6-feat-title">Rastreabilidade</div><div class="s6-feat-sub">Tudo registrado</div></div>
-  <div class="s6-feat"><div class="s6-feat-icon"><span class="i-ph-heartbeat-fill inline-block text-fuchsia-400"></span></div><div class="s6-feat-title">Resiliência</div><div class="s6-feat-sub">Nenhum dado se perde</div></div>
+<div class="flex justify-center gap-3 mt-3" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:300}}">
+  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[10px] font-700"><span class="i-ph-lightning-fill inline-block mr-2px"></span> Load Balancing</div><div class="text-[8px] text-slate-400">Distribui carga</div></div>
+  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-purple-500/20"><div class="text-purple-400 text-[10px] font-700"><span class="i-ph-shield-check-fill inline-block mr-2px"></span> Failover</div><div class="text-[8px] text-slate-400">Servidor cai, outro assume</div></div>
+  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-blue-500/20"><div class="text-blue-400 text-[10px] font-700"><span class="i-ph-lock-key-fill inline-block mr-2px"></span> Auth Centralizada</div><div class="text-[8px] text-slate-400">Uma porta de entrada</div></div>
+  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[10px] font-700"><span class="i-ph-chart-line-up-fill inline-block mr-2px"></span> Rastreabilidade</div><div class="text-[8px] text-slate-400">Tudo registrado</div></div>
+  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-fuchsia-500/20"><div class="text-fuchsia-400 text-[10px] font-700"><span class="i-ph-heartbeat-fill inline-block mr-2px"></span> Resiliência</div><div class="text-[8px] text-slate-400">Nenhum dado se perde</div></div>
 </div>
 </v-click>
-
-</div>
 
 
 ---
@@ -714,12 +712,10 @@ transition: slide-left
      SLIDE 8 — Visão Estratégica
      ═══════════════════════════════════════════════════════════ -->
 
-<div class="ve-slide">
-
 <!-- Título -->
-<div class="ve-title" v-motion :initial="{opacity:0, y:-20}" :enter="{opacity:1, y:0, transition:{delay:100}}">
-  <div class="text-[22px] font-bold text-white">Visão Estratégica: O Middleware como base para IA</div>
-  <div class="text-[13px] text-gray-400 mt-1">Não é exagero. É o primeiro passo de algo muito maior.</div>
+<div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
+  <div class="text-[20px] font-bold text-white">Visão Estratégica: O Middleware como base para IA</div>
+  <div class="text-[12px] text-gray-400 mt-1">Não é exagero. É o primeiro passo de algo muito maior.</div>
 </div>
 
 <!-- Timeline -->
@@ -761,57 +757,60 @@ transition: slide-left
 </div>
 
 <!-- Futuro título -->
-<div class="text-center mt-4 mb-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:1000}}">
-  <div class="text-white font-semibold text-[15px]">Futuro: Uma porta única para todos os sistemas</div>
+<div v-click class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300}}">
+  <div class="text-white font-semibold text-[14px]">Futuro: Uma porta única para todos os sistemas</div>
 </div>
 
-<!-- Arquitetura: esquerda + centro + direita -->
-<div class="ve-arch" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:1200}}">
+<!-- Arquitetura com ScenarioFlow -->
+<div v-click class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <!-- Produtores (esquerda) -->
-  <div class="ve-col-left">
-    <div class="ve-box ve-box-blue">Agentes IA</div>
-    <div class="ve-box ve-box-blue">Protheus</div>
-    <div class="ve-box ve-box-blue">App Mobile</div>
-    <div class="ve-box ve-box-blue">Dashboard</div>
+  <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
+  <FlowNode label="Protheus" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-88px h-34px" size="sm" />
+  <FlowNode label="App Mobile" icon="i-ph-device-mobile-fill" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
+  <FlowNode label="Dashboard" icon="i-ph-chart-line-up-fill" color="blue" position="top-132px left-0 w-88px h-34px" size="sm" />
+  <!-- Middleware (centro) -->
+  <div class="absolute top-50% -translate-y-50% left-230px w-160px h-130px rounded-14px border-2 border-solid border-purple-500/40 bg-purple-500/10 flex flex-col items-center justify-center z-2 gap-2px" style="animation: natsPersistGlow 3s ease-in-out infinite">
+    <span class="i-ph-shield-check-fill text-purple-400 text-lg inline-block"></span>
+    <div class="text-white font-700 text-12px">MIDDLEWARE</div>
+    <div class="text-purple-400 text-[9px]">Kong/APISIX + NATS</div>
+    <div class="text-gray-400 text-[8px]">Auth | LB | Fila | Tradução</div>
   </div>
-
-  <!-- Linhas esquerda + Middleware + Linhas direita (SVG estático para linhas) -->
-  <div class="ve-center">
-    <svg class="ve-lines" viewBox="0 -30 500 260" preserveAspectRatio="none">
-      <!-- Linhas esquerda → centro (fluxo para direita) -->
-      <line x1="0" y1="25"  x2="140" y2="70"  class="ve-line-in" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="0" y1="75"  x2="140" y2="85"  class="ve-line-in" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="0" y1="125" x2="140" y2="100" class="ve-line-out" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="0" y1="175" x2="140" y2="115" class="ve-line-in" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <!-- Linhas centro → direita (fluxo para direita) -->
-      <line x1="360" y1="70"  x2="500" y2="25"  class="ve-line-in" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="360" y1="85"  x2="500" y2="75"  class="ve-line-out" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="360" y1="100" x2="500" y2="125" class="ve-line-out" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-      <line x1="360" y1="115" x2="500" y2="175" class="ve-line-in" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.5"/>
-    </svg>
-    <div class="ve-middleware">
-      <div class="text-white font-bold text-[15px]">MIDDLEWARE</div>
-      <div class="text-purple-400 text-[11px]">Kong/APISIX + NATS</div>
-      <div class="text-gray-400 text-[10px] mt-1">Auth | LB | Fila | Tradução</div>
-      <div class="text-gray-500 text-[9px]">Worker quando precisa | Direto quando não</div>
-    </div>
-  </div>
-
   <!-- Consumidores (direita) -->
-  <div class="ve-col-right">
-    <div class="ve-box ve-box-cyan">EME4</div>
-    <div class="ve-box ve-box-cyan">Gesti</div>
-    <div class="ve-box ve-box-cyan">Sistema X</div>
-    <div class="ve-box ve-box-cyan">Sistema Y</div>
+  <FlowNode label="EME4" icon="i-ph-buildings-fill" color="cyan" position="top-6px left-530px w-88px h-34px" size="sm" />
+  <FlowNode label="Gesti" icon="i-ph-database-fill" color="cyan" position="top-48px left-530px w-88px h-34px" size="sm" />
+  <FlowNode label="Sistema X" icon="i-ph-cube-fill" color="cyan" position="top-90px left-530px w-88px h-34px" size="sm" />
+  <FlowNode label="Sistema Y" icon="i-ph-cube-fill" color="cyan" position="top-132px left-530px w-88px h-34px" size="sm" />
+  <!-- SVG: linhas e dots -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 640 170">
+      <!-- Produtores → Middleware (fan-in) -->
+      <line x1="90" y1="23" x2="230" y2="70" class="svg-line svg-stroke-blue" style="opacity:0.4"/>
+      <line x1="90" y1="65" x2="230" y2="78" class="svg-line svg-stroke-blue" style="opacity:0.4"/>
+      <line x1="90" y1="107" x2="230" y2="92" class="svg-line svg-stroke-blue" style="opacity:0.4"/>
+      <line x1="90" y1="149" x2="230" y2="100" class="svg-line svg-stroke-blue" style="opacity:0.4"/>
+      <FlowDot d="M90,23 L230,70" color="blue" :duration="2.5" />
+      <FlowDot d="M90,65 L230,78" color="blue" :duration="2.2" :delay="0.5" />
+      <FlowDot d="M90,107 L230,92" color="blue" :duration="2.3" :delay="1" />
+      <FlowDot d="M90,149 L230,100" color="blue" :duration="2.5" :delay="1.5" />
+      <!-- Middleware → Consumidores (fan-out) -->
+      <line x1="390" y1="70" x2="530" y2="23" class="svg-line svg-stroke-cyan" style="opacity:0.4"/>
+      <line x1="390" y1="78" x2="530" y2="65" class="svg-line svg-stroke-cyan" style="opacity:0.4"/>
+      <line x1="390" y1="92" x2="530" y2="107" class="svg-line svg-stroke-cyan" style="opacity:0.4"/>
+      <line x1="390" y1="100" x2="530" y2="149" class="svg-line svg-stroke-cyan" style="opacity:0.4"/>
+      <FlowDot d="M390,70 L530,23" color="cyan" :duration="2.5" :delay="0.3" />
+      <FlowDot d="M390,78 L530,65" color="cyan" :duration="2.2" :delay="0.8" />
+      <FlowDot d="M390,92 L530,107" color="cyan" :duration="2.3" :delay="1.3" />
+      <FlowDot d="M390,100 L530,149" color="cyan" :duration="2.5" :delay="1.8" />
+    </svg>
   </div>
 </div>
 
 <!-- Mensagem final -->
-<div class="ve-bottom" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:1500}}">
-  A POC é o piloto. O Middleware é a pista de decolagem para a IA.
+<v-click>
+<div class="text-center mt-2 py-2.5 px-5 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-500px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
+  <div class="text-[13px] font-700 text-white"><span class="i-ph-rocket-launch-fill text-cyan-400 inline-block mr-4px"></span> A POC é o piloto. O Middleware é a pista de decolagem para a IA.</div>
 </div>
-
-</div>
+</v-click>
 
 ---
 transition: slide-left
@@ -823,46 +822,91 @@ transition: slide-left
 
 # Analogia: O Restaurante
 
-<div class="grid grid-cols-2 gap-8 mt-4">
-
-<div v-click class="info-card info-card-pink" style="padding:20px;">
-<div class="card-header text-pink-400" style="font-size:1.05em;">Modelo Atual</div>
-<div class="card-body" style="font-size:0.82em; line-height:1.7;">
-
-<v-clicks>
-
-<div>O cliente <span class="text-blue-400">(sistema externo)</span> vai até a cozinha <span class="text-cyan-400">(EME4)</span> e faz o pedido diretamente ao <strong>único</strong> cozinheiro.</div>
-
-<div>Fica <strong>parado na cozinha esperando</strong> o prato ficar pronto.</div>
-
-<div>Cozinheiro no banheiro? <span class="text-pink-400">Espera.</span></div>
-
-<div>Cozinha pegou fogo? <span class="text-pink-400">Perde o pedido.</span></div>
-
-<div>50 clientes? Todos na fila do <strong>mesmo</strong> cozinheiro.</div>
-
-</v-clicks>
-
-</div>
+<div class="accent-bar accent-bar-pink">
+  Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda
 </div>
 
-<div v-click="1" class="info-card info-card-cyan" style="padding:20px;">
-<div class="card-header text-cyan-400" style="font-size:1.05em;">Modelo Novo</div>
-<div class="card-body" style="font-size:0.82em; line-height:1.7;">
+<ScenarioFlow>
+  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
+  <FlowNode v-click.hide="2" label="Cozinheiro" icon="i-ph-cooking-pot-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-56px" />
+  <!-- Linha direta Cliente → Cozinheiro -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="420" y2="70" class="svg-line svg-stroke-blue"/>
+      <FlowDot d="M100,70 L420,70" color="blue" :duration="3.5" />
+    </svg>
+    <FlowBadge text=" direto / bloqueante" icon="i-ph-arrow-right-fill" color="blue" position="left-180px top-50px" bordered />
+  </div>
+  <!-- Click 1: Problemas — bloqueado esperando -->
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <FlowDot d="M100,70 L420,70" color="blue" :duration="4" :delay="1" />
+    </svg>
+    <FlowBadge text=" Esperando o prato..." icon="i-ph-hourglass-fill" color="pink" position="left-200px top-15px" bordered />
+    <FlowBadge text=" 50 clientes na fila" icon="i-ph-users-three-fill" color="pink" position="left-200px bottom-15px" bordered />
+  </div>
+  <!-- Click 2: Cozinheiro offline — perde o pedido -->
+  <div v-click="2" class="anim-seg">
+    <FlowNode label="Cozinheiro" icon="i-ph-x-circle-fill" color="pink" position="top-50% -translate-y-50% left-420px w-100px h-56px" pulse />
+    <FlowBadge text=" Cozinha pegou fogo!" icon="i-ph-fire-fill" color="pink" position="left-350px top-5px" bordered />
+    <FlowBadge text=" Pedido perdido" icon="i-ph-trash-fill" color="pink" position="left-350px bottom-5px" bordered />
+  </div>
+</ScenarioFlow>
 
-<v-clicks at="6">
-
-<div><strong class="text-fuchsia-300">Modo 2:</strong> Cliente faz pedido ao <span class="text-purple-400">garçom (Kong)</span>, que anota na <span class="text-cyan-400">comanda (NATS)</span>. Volta para a mesa.</div>
-
-<div>O <span class="text-fuchsia-400">expedidor (Worker)</span> traduz o pedido e escolhe o cozinheiro menos ocupado <span class="text-gray-400">(Load Balancing)</span>.</div>
-
-<div>Cozinheiro passou mal? Os pedidos vão para os outros <span class="text-gray-400">(Failover)</span>.</div>
-
-<div><strong class="text-cyan-300">Modo 1:</strong> Cliente que fala a língua da cozinha vai ao <span class="text-purple-400">maître</span> → encaminha direto. Sem garçom no meio.</div>
-
-</v-clicks>
-
+<!-- Modelo Novo -->
+<div v-click="3" class="accent-bar accent-bar-cyan mt-2">
+  Modelo Novo: comanda na fila, expedidor distribui — nenhum pedido se perde
 </div>
+
+<ScenarioFlow v-click="3">
+  <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Expedidor" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz" />
+  <FlowNode label="Cozinha 1" color="cyan" position="eme4-top" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Cozinha 2" color="cyan" position="eme4-bottom" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <!-- Comanda → Expedidor -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
+    </svg>
+  </div>
+  <!-- Expedidor → Cozinhas (LB) -->
+  <div v-click="4" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
+    </svg>
+    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
+  </div>
+  <!-- Sucesso: retorno dos dois cozinheiros -->
+  <div v-click="5" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M420,20 L265,20 Q250,20 250,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,28 L420,20 L265,20 L250,40" color="cyan" :duration="2.5" />
+      <path d="M420,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" :delay="0.5" />
+      <path d="M250,40 Q250,20 235,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2" :delay="1.5" />
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
+    </svg>
+    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
+    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0" />
+    <FlowBadge text=" Nenhum pedido perdido" icon="i-ph-shield-check-fill" color="cyan" position="right-0px bottom-10" bordered pulse />
+  </div>
+</ScenarioFlow>
+
+<div class="flex flex-col gap-2 max-w-580px mx-auto">
+<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
+  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
+  <div><strong>Modelo Atual:</strong> cliente vai direto ao cozinheiro — espera, bloqueio, ponto único de falha</div>
+</div>
+<div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-check-circle-fill inline-block"></span></div>
+  <div><strong>Modelo Novo:</strong> comanda na fila, expedidor distribui — LB + Retry + Zero perda</div>
 </div>
 </div>
 
@@ -945,65 +989,75 @@ transition: slide-left
   Como o NATS distribui mensagens — o motor por trás do Middleware
 </div>
 
-<div class="nats-pubsub" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <div class="nats-subject"><span class="i-ph-broadcast-fill inline-block mr-1"></span> subject: eme4.op.criar</div>
-  <div class="nats-node nats-pub">
-    <span class="i-ph-plugs-connected-fill text-lg inline-block"></span>
-    <div>Protheus</div>
-    <span class="nats-node-sub-text">Publisher</span>
+<div class="text-center text-[11px] text-slate-400 mb-1"><span class="i-ph-broadcast-fill inline-block mr-1 text-cyan-400"></span> subject: <span class="text-cyan-300 font-600">eme4.op.criar</span></div>
+
+<div class="scenario-flow-tall my-3" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+  <FlowNode label="Protheus" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="Publisher" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="JetStream" persist />
+  <FlowNode label="Worker 1" icon="i-ph-gear-six-fill" color="fuchsia" position="top-2px left-420px w-100px h-42px" sub="Subscriber" size="top" />
+  <FlowNode label="Worker 2" icon="i-ph-gear-six-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-42px" sub="Subscriber" size="top" />
+  <FlowNode label="Monitor" icon="i-carbon-dashboard" color="cyan" position="bottom-2px left-420px w-100px h-42px" sub="Subscriber" size="top" />
+  <!-- Protheus → NATS (publish) -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 180">
+      <line x1="92" y1="90" x2="200" y2="90" class="svg-line svg-stroke-blue"/>
+      <FlowDot d="M100,90 L210,90" color="blue" :duration="2" />
+      <FlowDot d="M100,90 L210,90" color="blue" :duration="2" :delay="0.8" />
+      <FlowDot d="M100,90 L210,90" color="blue" :duration="2" :delay="1.6" />
+    </svg>
   </div>
-  <div class="nats-node nats-server">
-    <div class="nats-server-glow"></div>
-    <span class="i-ph-cloud-arrow-up-fill text-xl inline-block"></span>
-    <div>NATS</div>
-    <span class="nats-node-sub-text">JetStream</span>
+  <!-- NATS → 3 Subscribers (fan-out) -->
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 180">
+      <!-- NATS → Worker 1 (top) -->
+      <path d="M300,90 L360,90 Q370,90 370,75 L370,35 Q370,25 380,25 L420,25" class="svg-line svg-stroke-fuchsia"/>
+      <FlowDot d="M310,90 L360,90 Q370,90 370,75 L370,35 Q370,25 380,25 L430,25" color="fuchsia" :duration="2.5" />
+      <!-- NATS → Worker 2 (middle) -->
+      <line x1="300" y1="90" x2="420" y2="90" class="svg-line svg-stroke-cyan"/>
+      <FlowDot d="M310,90 L430,90" color="cyan" :duration="2" :delay="0.3" />
+      <!-- NATS → Monitor (bottom) -->
+      <path d="M300,90 L360,90 Q370,90 370,105 L370,145 Q370,155 380,155 L420,155" class="svg-line svg-stroke-cyan"/>
+      <FlowDot d="M310,90 L360,90 Q370,90 370,105 L370,145 Q370,155 380,155 L430,155" color="cyan" :duration="2.5" :delay="0.6" />
+    </svg>
+    <FlowBadge text=" fan-out" icon="i-ph-arrows-split" color="cyan" position="left-310px top-100px" bordered />
   </div>
-  <div class="nats-node nats-sub nats-sub-1">
-    <span class="i-ph-gear-six-fill text-base inline-block"></span>
-    <div>Worker 1</div>
-    <span class="nats-node-sub-text">Subscriber</span>
+  <!-- Retorno: Subscribers → NATS (Ack) -->
+  <div v-click="2" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 180">
+      <!-- Worker 1 (top) → NATS via path superior -->
+      <path d="M420,10 L270,10 Q255,10 255,30" class="svg-line-return svg-stroke-fuchsia"/>
+      <FlowDot d="M420,10 L270,10 L255,30" color="fuchsia" :duration="2.5" />
+      <!-- Worker 2 (middle) → NATS via path abaixo da linha principal -->
+      <path d="M420,105 L310,105 Q300,105 300,95" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,105 L310,105 L300,95" color="cyan" :duration="2.2" :delay="0.4" />
+      <!-- Monitor (bottom) → NATS via path inferior -->
+      <path d="M420,170 L270,170 Q255,170 255,150" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,170 L270,170 L255,150" color="cyan" :duration="2.5" :delay="0.8" />
+    </svg>
+    <FlowBadge text="✓ Ack" color="fuchsia" position="left-330px top-0" size="xs" />
+    <FlowBadge text="✓ Ack" color="cyan" position="left-350px top-55%" size="xs" />
+    <FlowBadge text="✓ Ack" color="cyan" position="left-330px bottom-0" size="xs" />
+    <FlowBadge text=" Entregue" icon="i-ph-check-circle-fill" color="cyan" position="left-0 bottom-0" bordered pulse />
   </div>
-  <div class="nats-node nats-sub nats-sub-2 nats-sub-cyan">
-    <span class="i-ph-gear-six-fill text-base inline-block"></span>
-    <div>Worker 2</div>
-    <span class="nats-node-sub-text">Subscriber</span>
-  </div>
-  <div class="nats-node nats-sub nats-sub-3 nats-sub-cyan">
-    <span class="i-carbon-dashboard text-base inline-block"></span>
-    <div>Monitor</div>
-    <span class="nats-node-sub-text">Subscriber</span>
-  </div>
-  <svg class="nats-svg" viewBox="0 0 820 340" preserveAspectRatio="xMidYMid meet">
-    <line x1="122" y1="170" x2="330" y2="170" class="nats-path nats-path-pub"/>
-    <line x1="490" y1="170" x2="690" y2="42" class="nats-path nats-path-sub1"/>
-    <line x1="490" y1="170" x2="690" y2="170" class="nats-path nats-path-sub2"/>
-    <line x1="490" y1="170" x2="690" y2="298" class="nats-path nats-path-sub3"/>
-    <circle class="nats-dot nats-dot-blue nats-dot-pub" cx="122" cy="170" r="5"/>
-    <circle class="nats-dot nats-dot-blue nats-dot-pub-2" cx="122" cy="170" r="4"/>
-    <circle class="nats-dot nats-dot-blue nats-dot-pub-3" cx="122" cy="170" r="4"/>
-    <circle class="nats-dot nats-dot-fuchsia nats-dot-s1" cx="490" cy="170" r="4"/>
-    <circle class="nats-dot nats-dot-cyan nats-dot-s2" cx="490" cy="170" r="4"/>
-    <circle class="nats-dot nats-dot-cyan nats-dot-s3" cx="490" cy="170" r="4"/>
-  </svg>
 </div>
 
 <v-click>
-<div class="nats-callout">
-  <div class="nats-callout-item">
-    <div class="nats-callout-value text-blue-400">1 publish</div>
-    <div class="nats-callout-label">Protheus envia uma vez</div>
+<div class="flex justify-center gap-4 mt-2">
+  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-blue-500/20">
+    <div class="text-[13px] font-700 text-blue-400">1 publish</div>
+    <div class="text-[9px] text-slate-400">Protheus envia uma vez</div>
   </div>
-  <div class="nats-callout-item">
-    <div class="nats-callout-value text-cyan-400">N subscribers</div>
-    <div class="nats-callout-label">Todos recebem em paralelo</div>
+  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-cyan-500/20">
+    <div class="text-[13px] font-700 text-cyan-400">N subscribers</div>
+    <div class="text-[9px] text-slate-400">Todos recebem em paralelo</div>
   </div>
-  <div class="nats-callout-item">
-    <div class="nats-callout-value text-fuchsia-400">0,2 ms</div>
-    <div class="nats-callout-label">Latência por mensagem</div>
+  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-fuchsia-500/20">
+    <div class="text-[13px] font-700 text-fuchsia-400">0,2 ms</div>
+    <div class="text-[9px] text-slate-400">Latência por mensagem</div>
   </div>
-  <div class="nats-callout-item">
-    <div class="nats-callout-value text-purple-400">Garantido</div>
-    <div class="nats-callout-label">JetStream persiste na fila</div>
+  <div class="text-center px-4 py-2 rounded-10px bg-slate-800/40 border border-purple-500/20">
+    <div class="text-[13px] font-700 text-purple-400">Garantido</div>
+    <div class="text-[9px] text-slate-400">JetStream persiste na fila</div>
   </div>
 </div>
 </v-click>
