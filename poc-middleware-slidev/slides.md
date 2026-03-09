@@ -58,7 +58,7 @@ transition: fade-out
   Modelo Direto — API para API — "Ligação telefônica"
 </div>
 
-<div v-click class="anim-flow max-w-700px h-100px my-6" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+<div class="anim-flow max-w-700px h-100px my-10" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <div class="anim-node left-0 w-130px px-20px py-12px bg-[rgba(30,58,95,0.9)] border-blue-500/60 text-blue-300 text-13px shadow-[0_0_20px_rgba(59,130,246,0.15)]">
     <span class="i-ph-plugs-connected-fill text-2xl mb-1 inline-block"></span>
     <div class="font-bold text-base">Sistema Externo</div>
@@ -80,7 +80,7 @@ transition: fade-out
   </svg>
 </div>
 
-<div v-click class="grid grid-cols-2 gap-6 mt-2">
+<div class="grid grid-cols-2 gap-6 mt-2" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:2000}}">
 <div class="info-card info-card-pink">
 <div class="card-header text-pink-400">Problemas</div>
 <div class="card-body">
@@ -108,7 +108,7 @@ transition: fade-out
 
 
 ---
-transition: slide-left
+transition: slide-top
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -121,9 +121,8 @@ transition: slide-left
   O sistema externo fica bloqueado até o EME4 responder
 </div>
 
-<div class="flex flex-col gap-2 max-w-700px mx-auto">
+<div class="flex flex-col gap-2 max-w-700px mx-auto my-10">
 
-<v-clicks>
 
 <div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-blue-500 text-blue-300">
   <div class="w-28px h-28px rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">1</div>
@@ -150,11 +149,10 @@ transition: slide-left
   <div>Se EME4 estiver fora → <strong>ERRO!</strong> Dados podem se perder</div>
 </div>
 
-</v-clicks>
 
 </div>
 
-<div v-click class="mt-6 p-4 rounded-xl text-center text-sm result-bad">
+<div class="mt-6 p-4 rounded-xl text-center text-sm result-bad" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:800}}">
   <span class="text-pink-400 font-semibold">Total para 3 OPs:</span> 16 segundos (com 1 erro) — tudo sequencial, um esperando o outro
 </div>
 
@@ -269,11 +267,11 @@ transition: slide-left
 <div class="flex flex-col gap-2 max-w-750px mx-auto">
 <div v-click="1" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-blue-500 text-blue-300">
   <div class="w-24px h-24px rounded-full bg-blue-500/20 flex items-center justify-center font-700  shrink-0">1</div>
-  <div>Sistema externo envia os dados para o Kong/APISIX</div>
+  <div>Sistema externo envia os dados para o APIGATEWAY Kong/APISIX</div>
 </div>
 <div v-click="2" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-violet-500 text-violet-300">
   <div class="w-24px h-24px rounded-full bg-violet-500/20 text-purple-300 flex items-center justify-center font-700  shrink-0">2</div>
-  <div>Kong autentica e coloca a mensagem na fila (NATS JetStream)</div>
+  <div>Kong/APISIX autentica e coloca a mensagem na fila (NATS JetStream)</div>
 </div>
 <div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.60em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
   <div class="w-24px h-24px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700  shrink-0">3</div>
@@ -332,7 +330,7 @@ transition: fade
       <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
       <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
     </svg>
-    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
+    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-95 top-15" bordered />
   </div>
   <!-- Animação dos EME4 com as entregas de Sucesso (EME4 1 top + EME4 2 bottom) -->
   <div v-click="2" class="anim-seg">
@@ -496,7 +494,7 @@ transition: fade
       <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia" style="opacity:0.15"/>
     </svg>
-    <FlowBadge v-click.hide="2" text=" sem servidor" icon="i-ph-x-circle-fill" color="pink" position="left-350px top-52px" bordered />
+    <FlowBadge v-click.hide="2" text=" sem servidor" icon="i-ph-x-circle-fill" color="pink" position="left-95 top-15" bordered />
   </div>
   <!-- Click 1→3: Nak contínuo — Worker devolve para NATS (backoff) -->
   <div v-click="[1, 3]" class="anim-seg">
@@ -564,17 +562,120 @@ transition: slide-left
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
+     SLIDE 9 — ANALOGIA: O RESTAURANTE
+     ═══════════════════════════════════════════════════════════ -->
+
+# Analogia: O Restaurante
+
+<div class="accent-bar accent-bar-pink">
+  Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda
+</div>
+
+<ScenarioFlow>
+  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
+  <FlowNode v-click.hide="2" label="Cozinheiro" icon="i-ph-cooking-pot-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-56px" />
+  <!-- Linha direta Cliente → Cozinheiro -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="420" y2="70" class="svg-line svg-stroke-blue"/>
+      <FlowDot d="M100,70 L420,70" color="blue" :duration="3.5" />
+    </svg>
+    <FlowBadge text=" direto / bloqueante" icon="i-ph-arrow-right-fill" color="blue" position="left-180px top-50px" bordered />
+  </div>
+  <!-- Click 1: Problemas — bloqueado esperando -->
+  <div v-click="1" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <FlowDot d="M100,70 L420,70" color="blue" :duration="4" :delay="1" />
+    </svg>
+    <FlowBadge text=" Esperando o prato..." icon="i-ph-hourglass-fill" color="pink" position="left-200px top-15px" bordered />
+    <FlowBadge text=" 50 clientes na fila" icon="i-ph-users-three-fill" color="pink" position="left-200px bottom-15px" bordered />
+  </div>
+  <!-- Click 2: Cozinheiro offline — perde o pedido -->
+  <div v-click="2" class="anim-seg">
+    <FlowNode label="Cozinheiro" icon="i-ph-x-circle-fill" color="pink" position="top-50% -translate-y-50% left-420px w-100px h-56px" pulse />
+    <FlowBadge text=" Cozinha pegou fogo!" icon="i-ph-fire-fill" color="pink" position="left-350px top-5px" bordered />
+    <FlowBadge text=" Pedido perdido" icon="i-ph-trash-fill" color="pink" position="left-350px bottom-5px" bordered />
+  </div>
+</ScenarioFlow>
+
+<div class="flex flex-col gap-1 max-w-580px mx-auto">
+<div class="flex items-center gap-2 py-1 px-3 rounded-[10px] border-l-3 border-l-solid text-[0.52em] bg-slate-800/40 border-l-pink-500 text-pink-300">
+  <div class="w-18px h-18px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[9px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
+  <div><strong>Modelo Atual:</strong> cliente vai direto ao cozinheiro — espera, bloqueio, ponto único de falha</div>
+</div>
+</div>
+
+
+<!-- Modelo Novo -->
+<div v-click="3" class="accent-bar accent-bar-cyan mt-4">
+  Modelo Novo: comanda na fila, expedidor distribui — nenhum pedido se perde
+</div>
+
+<ScenarioFlow v-click="3">
+  <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="nats" sub="fila" persist />
+  <FlowNode label="Expedidor" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz" />
+  <FlowNode label="Cozinha 1" color="cyan" position="eme4-top" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Cozinha 2" color="cyan" position="eme4-bottom" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <!-- Comanda → Expedidor -->
+  <div class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
+      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
+    </svg>
+  </div>
+  <!-- Expedidor → Cozinhas (LB) -->
+  <div v-click="3" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
+      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
+      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
+      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
+    </svg>
+    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-95 top-15" bordered />
+  </div>
+  <!-- Sucesso: retorno dos dois cozinheiros -->
+  <div v-click="3" class="anim-seg">
+    <svg class="anim-svg" viewBox="0 0 580 140">
+      <path d="M420,20 L265,20 Q250,20 250,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,28 L420,20 L265,20 L250,40" color="cyan" :duration="2.5" />
+      <path d="M420,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" :delay="0.5" />
+      <path d="M250,40 Q250,20 235,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2" :delay="1.5" />
+      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
+      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
+    </svg>
+    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
+    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0" />
+    <FlowBadge text=" Nenhum pedido perdido" icon="i-ph-shield-check-fill" color="cyan" position="right-0px bottom-10" bordered pulse />
+  </div>
+</ScenarioFlow>
+
+<div class="flex flex-col gap-1 max-w-580px mx-auto">
+
+<div v-click="3" class="flex items-center gap-2 py-1 px-3 rounded-[10px] border-l-3 border-l-solid text-[0.52em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
+  <div class="w-18px h-18px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[9px]"><span class="i-ph-check-circle-fill inline-block"></span></div>
+  <div><strong>Modelo Novo:</strong> comanda na fila, expedidor distribui — LB + Retry + Zero perda</div>
+</div>
+</div>
+
+---
+transition: slide-up
+---
+
+<!-- ═══════════════════════════════════════════════════════════
      SLIDE 6 — COMO FUNCIONARIA COM O MIDDLEWARE
      ═══════════════════════════════════════════════════════════ -->
 
 <!-- Título -->
 <div class="text-center" v-motion :initial="{opacity:0, y:-15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
-  <div class="text-[20px] font-bold text-white">Como funcionaria com o MIDDLEWARE</div>
-  <div class="text-[12px] text-gray-400 mt-1">Dois modos: o Worker só existe quando há trabalho a fazer</div>
+  <div class="text-[18px] font-bold text-white">Como funcionaria com o MIDDLEWARE</div>
+  <div class="text-[11px] text-gray-400">Dois modos: o Worker só existe quando há trabalho a fazer</div>
 </div>
 
 <!-- MODO 1: PASSAGEM DIRETA -->
-<div class="accent-bar accent-bar-cyan mt-3">
+<div class="accent-bar accent-bar-cyan mt-1">
   Modo 1: Passagem direta — sem fila, sem tradutor, rápido
 </div>
 
@@ -592,23 +693,23 @@ transition: slide-left
     </svg>
   </div>
   <!-- Kong → EME4 1/2 (LB direto) -->
-  <div v-click="1" class="anim-seg">
+  <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-purple"/>
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-purple"/>
       <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="purple" :duration="2.5" />
       <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="purple" :duration="3" :delay="1.5" />
     </svg>
-    <FlowBadge text=" direto, sem fila" icon="i-ph-lightning-fill" color="cyan" position="left-300px top-80px" bordered />
+    <FlowBadge text=" direto, sem fila" icon="i-ph-lightning-fill" color="cyan" position="left-95 top-15" bordered />
   </div>
 </ScenarioFlow>
 
 <!-- MODO 2: COM WORKER -->
-<div v-click="2" class="accent-bar accent-bar-fuchsia mt-1">
+<div v-click="1" class="accent-bar accent-bar-fuchsia mt-0">
   Modo 2: Com Worker — fila + tradução + retry automático
 </div>
 
-<ScenarioFlow v-click="2">
+<ScenarioFlow v-click="1">
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz DE→PARA" />
   <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
@@ -623,33 +724,25 @@ transition: slide-left
     <FlowBadge text=" Protheus → Kong →" icon="i-ph-plugs-connected-fill" color="blue" position="left-0 top-0" bordered size="xs" />
   </div>
   <!-- Worker → EME4 1/2 (LB) -->
-  <div v-click="3" class="anim-seg">
+  <div v-click="1" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
       <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
       <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
       <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
     </svg>
-    <FlowBadge text=" LB + tradução" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
+    <FlowBadge text=" LB + tradução" icon="i-ph-arrows-split" color="fuchsia" position="left-95 top-15" bordered />
   </div>
 </ScenarioFlow>
 
-<!-- Mensagem central -->
-<v-click>
-<div class="text-center mt-3 py-2.5 px-5 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-500px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
-  <div class="font-bold text-white text-[13px]">Worker só existe quando há trabalho real a fazer.</div>
-  <div class="text-gray-400 text-[11px]">Sem tradução necessária = passagem direta. Mais rápido, menos componentes.</div>
-</div>
-</v-click>
-
 <!-- Features -->
 <v-click>
-<div class="flex justify-center gap-3 mt-3" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:300}}">
-  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[10px] font-700"><span class="i-ph-lightning-fill inline-block mr-2px"></span> Load Balancing</div><div class="text-[8px] text-slate-400">Distribui carga</div></div>
-  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-purple-500/20"><div class="text-purple-400 text-[10px] font-700"><span class="i-ph-shield-check-fill inline-block mr-2px"></span> Failover</div><div class="text-[8px] text-slate-400">Servidor cai, outro assume</div></div>
-  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-blue-500/20"><div class="text-blue-400 text-[10px] font-700"><span class="i-ph-lock-key-fill inline-block mr-2px"></span> Auth Centralizada</div><div class="text-[8px] text-slate-400">Uma porta de entrada</div></div>
-  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[10px] font-700"><span class="i-ph-chart-line-up-fill inline-block mr-2px"></span> Rastreabilidade</div><div class="text-[8px] text-slate-400">Tudo registrado</div></div>
-  <div class="text-center px-3 py-1.5 rounded-8px bg-slate-800/40 border border-fuchsia-500/20"><div class="text-fuchsia-400 text-[10px] font-700"><span class="i-ph-heartbeat-fill inline-block mr-2px"></span> Resiliência</div><div class="text-[8px] text-slate-400">Nenhum dado se perde</div></div>
+<div class="flex justify-center gap-2 mt-1" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:300}}">
+  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[9px] font-700"><span class="i-ph-lightning-fill inline-block mr-2px"></span> Load Balancing</div><div class="text-[7px] text-slate-400">Distribui carga</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-purple-500/20"><div class="text-purple-400 text-[9px] font-700"><span class="i-ph-shield-check-fill inline-block mr-2px"></span> Failover</div><div class="text-[7px] text-slate-400">Servidor cai, outro assume</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-blue-500/20"><div class="text-blue-400 text-[9px] font-700"><span class="i-ph-lock-key-fill inline-block mr-2px"></span> Auth Centralizada</div><div class="text-[7px] text-slate-400">Uma porta de entrada</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[9px] font-700"><span class="i-ph-chart-line-up-fill inline-block mr-2px"></span> Rastreabilidade</div><div class="text-[7px] text-slate-400">Tudo registrado</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-fuchsia-500/20"><div class="text-fuchsia-400 text-[9px] font-700"><span class="i-ph-heartbeat-fill inline-block mr-2px"></span> Resiliência</div><div class="text-[7px] text-slate-400">Nenhum dado se perde</div></div>
 </div>
 </v-click>
 
@@ -740,7 +833,7 @@ transition: slide-left
 <!-- Cards das fases -->
 <div class="ve-phase-cards">
   <div class="ve-pcard ve-pcard-blue" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:500}}">
-    <div class="text-gray-300 text-[11px]">Protheus ↔ EME4</div>
+    <div class="text-gray-300 text-[11px]">Outro Sistema ↔ EME4</div>
     <div class="text-gray-500 text-[10px]">Engenharia + OPs</div>
     <div class="text-blue-400 font-semibold text-[12px] mt-1">Centenas/dia</div>
   </div>
@@ -757,12 +850,12 @@ transition: slide-left
 </div>
 
 <!-- Futuro título -->
-<div v-click class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300}}">
+<div v-click="1" class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300}}">
   <div class="text-white font-semibold text-[14px]">Futuro: Uma porta única para todos os sistemas</div>
 </div>
 
 <!-- Arquitetura com ScenarioFlow -->
-<div v-click class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
+<div v-click="1" class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <!-- Produtores (esquerda) -->
   <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="Protheus" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-88px h-34px" size="sm" />
@@ -806,112 +899,18 @@ transition: slide-left
 </div>
 
 <!-- Mensagem final -->
-<v-click>
-<div class="text-center mt-2 py-2.5 px-5 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-500px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
-  <div class="text-[13px] font-700 text-white"><span class="i-ph-rocket-launch-fill text-cyan-400 inline-block mr-4px"></span> A POC é o piloto. O Middleware é a pista de decolagem para a IA.</div>
+<div v-click="2" class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
+  <div class="card-header text-pink-300 text-0.8em">Por que IA precisa de Middleware?</div>
+  <div class="card-body" style="font-size:0.65em;">
+    <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>
+    <div>→ Sem precisar saber a autenticação de cada sistema (sessão, token, API key...)</div>
+    <div>→ Alto volume: centenas de consultas por minuto para montar análises completas</div>
+  </div>
 </div>
-</v-click>
+
 
 ---
 transition: slide-left
----
-
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 9 — ANALOGIA: O RESTAURANTE
-     ═══════════════════════════════════════════════════════════ -->
-
-# Analogia: O Restaurante
-
-<div class="accent-bar accent-bar-pink">
-  Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda
-</div>
-
-<ScenarioFlow>
-  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
-  <FlowNode v-click.hide="2" label="Cozinheiro" icon="i-ph-cooking-pot-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-56px" />
-  <!-- Linha direta Cliente → Cozinheiro -->
-  <div class="anim-seg">
-    <svg class="anim-svg" viewBox="0 0 580 140">
-      <line x1="92" y1="70" x2="420" y2="70" class="svg-line svg-stroke-blue"/>
-      <FlowDot d="M100,70 L420,70" color="blue" :duration="3.5" />
-    </svg>
-    <FlowBadge text=" direto / bloqueante" icon="i-ph-arrow-right-fill" color="blue" position="left-180px top-50px" bordered />
-  </div>
-  <!-- Click 1: Problemas — bloqueado esperando -->
-  <div v-click="1" class="anim-seg">
-    <svg class="anim-svg" viewBox="0 0 580 140">
-      <FlowDot d="M100,70 L420,70" color="blue" :duration="4" :delay="1" />
-    </svg>
-    <FlowBadge text=" Esperando o prato..." icon="i-ph-hourglass-fill" color="pink" position="left-200px top-15px" bordered />
-    <FlowBadge text=" 50 clientes na fila" icon="i-ph-users-three-fill" color="pink" position="left-200px bottom-15px" bordered />
-  </div>
-  <!-- Click 2: Cozinheiro offline — perde o pedido -->
-  <div v-click="2" class="anim-seg">
-    <FlowNode label="Cozinheiro" icon="i-ph-x-circle-fill" color="pink" position="top-50% -translate-y-50% left-420px w-100px h-56px" pulse />
-    <FlowBadge text=" Cozinha pegou fogo!" icon="i-ph-fire-fill" color="pink" position="left-350px top-5px" bordered />
-    <FlowBadge text=" Pedido perdido" icon="i-ph-trash-fill" color="pink" position="left-350px bottom-5px" bordered />
-  </div>
-</ScenarioFlow>
-
-<!-- Modelo Novo -->
-<div v-click="3" class="accent-bar accent-bar-cyan mt-2">
-  Modelo Novo: comanda na fila, expedidor distribui — nenhum pedido se perde
-</div>
-
-<ScenarioFlow v-click="3">
-  <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="nats" sub="fila" persist />
-  <FlowNode label="Expedidor" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz" />
-  <FlowNode label="Cozinha 1" color="cyan" position="eme4-top" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="Cozinha 2" color="cyan" position="eme4-bottom" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
-  <!-- Comanda → Expedidor -->
-  <div class="anim-seg">
-    <svg class="anim-svg" viewBox="0 0 580 140">
-      <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
-      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" />
-      <FlowDot d="M100,70 L210,70" color="cyan" :duration="2" :delay="1" />
-    </svg>
-  </div>
-  <!-- Expedidor → Cozinhas (LB) -->
-  <div v-click="4" class="anim-seg">
-    <svg class="anim-svg" viewBox="0 0 580 140">
-      <path d="M300,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L420,35" class="svg-line svg-stroke-fuchsia"/>
-      <path d="M300,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L420,105" class="svg-line svg-stroke-fuchsia"/>
-      <FlowDot d="M340,70 L360,70 Q370,70 370,63 L370,42 Q370,35 380,35 L430,35" color="fuchsia" :duration="2.5" />
-      <FlowDot d="M340,70 L360,70 Q370,70 370,77 L370,98 Q370,105 380,105 L430,105" color="fuchsia" :duration="3" :delay="1.5" />
-    </svg>
-    <FlowBadge text=" LB distribui" icon="i-ph-arrows-split" color="fuchsia" position="left-300px top-80px" bordered />
-  </div>
-  <!-- Sucesso: retorno dos dois cozinheiros -->
-  <div v-click="5" class="anim-seg">
-    <svg class="anim-svg" viewBox="0 0 580 140">
-      <path d="M420,20 L265,20 Q250,20 250,40" class="svg-line-return svg-stroke-cyan"/>
-      <FlowDot d="M420,28 L420,20 L265,20 L250,40" color="cyan" :duration="2.5" />
-      <path d="M420,120 L265,120 Q250,120 250,100" class="svg-line-return svg-stroke-cyan"/>
-      <FlowDot d="M420,112 L420,120 L265,120 L250,100" color="cyan" :duration="2.5" :delay="0.5" />
-      <path d="M250,40 Q250,20 235,20 L60,20 Q45,20 45,40" class="svg-line-return svg-stroke-cyan"/>
-      <FlowDot d="M250,40 L250,20 L60,20 L45,40" color="cyan" :duration="2" :delay="1.5" />
-      <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
-      <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
-    </svg>
-    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
-    <FlowBadge text=" Pronto!" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0" />
-    <FlowBadge text=" Nenhum pedido perdido" icon="i-ph-shield-check-fill" color="cyan" position="right-0px bottom-10" bordered pulse />
-  </div>
-</ScenarioFlow>
-
-<div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-pink-500 text-pink-300">
-  <div class="w-22px h-22px rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-x-circle-fill inline-block"></span></div>
-  <div><strong>Modelo Atual:</strong> cliente vai direto ao cozinheiro — espera, bloqueio, ponto único de falha</div>
-</div>
-<div v-click="3" class="flex items-center gap-3 py-1.5 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.58em] bg-slate-800/40 border-l-cyan-500 text-cyan-300">
-  <div class="w-22px h-22px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 shrink-0 text-[10px]"><span class="i-ph-check-circle-fill inline-block"></span></div>
-  <div><strong>Modelo Novo:</strong> comanda na fila, expedidor distribui — LB + Retry + Zero perda</div>
-</div>
-</div>
-
----
-transition: slide-up
 ---
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1071,67 +1070,6 @@ transition: slide-left
 
 
 ---
-transition: slide-left
----
-
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 12 — MODO 1: PASSAGEM DIRETA (IA)
-     ═══════════════════════════════════════════════════════════ -->
-
-# Modo 1: Passagem Direta
-
-<div class="accent-bar accent-bar-cyan">
-  Sem tradutor, sem fila — quando quem pede já fala a língua do destino
-</div>
-
-<div v-click class="pipeline my-6 gap-3">
-  <div class="pipe-node pipe-pink px-18px py-12px">
-    <span class="i-carbon-bot text-xl mb-1 inline-block"></span>
-    <div class="font-bold text-sm">Agente IA</div>
-    <span class="pipe-sub">(futuro)</span>
-  </div>
-  <div class="pipe-arrow text-cyan-500 text-xl animate-pulse">━►</div>
-  <div class="pipe-node pipe-purple px-18px py-12px shadow-[0_0_20px_rgba(139,92,246,0.15)]">
-    <span class="i-ph-door-open-fill text-xl mb-1 inline-block"></span>
-    <div class="font-bold text-sm">KONG/APISIX</div>
-    <span class="pipe-sub">portaria + LB</span>
-  </div>
-  <div class="pipe-arrow text-cyan-500 text-xl animate-pulse">━►</div>
-  <div class="pipe-group">
-    <div class="pipe-node pipe-cyan pipe-sm">EME4 Srv 1</div>
-    <div class="pipe-node pipe-cyan pipe-sm">EME4 Srv 2</div>
-  </div>
-</div>
-
-<div class="flex flex-col gap-2 max-w-650px mx-auto">
-<v-clicks>
-
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-violet-500 text-violet-300">
-  <div class="w-28px h-28px rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">1</div>
-  <div>Sistema faz requisição HTTP ao Middleware (Kong/APISIX)</div>
-</div>
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-violet-500 text-violet-300">
-  <div class="w-28px h-28px rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">2</div>
-  <div>Kong autentica, escolhe o servidor EME4 menos ocupado (LB)</div>
-</div>
-<div class="flex items-center gap-3 py-2 px-4 rounded-[10px] border-l-3 border-l-solid text-[0.65em] bg-slate-800/40 border-l-cyan-500 text-cyan-300 font-600">
-  <div class="w-28px h-28px rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-700 text-[0.85em] shrink-0">3</div>
-  <div>EME4 responde → Kong devolve → <strong>Pronto.</strong> Sem fila, sem espera.</div>
-</div>
-
-</v-clicks>
-</div>
-
-<div v-click class="mt-4 grid grid-cols-5 gap-2 text-center text-xs">
-  <div class="benefit-pill"><span class="i-ph-lightning-fill inline-block mr-1"></span>Load Balance</div>
-  <div class="benefit-pill"><span class="i-ph-shield-check-fill inline-block mr-1"></span>Failover</div>
-  <div class="benefit-pill"><span class="i-ph-lock-key-fill inline-block mr-1"></span>Auth Central</div>
-  <div class="benefit-pill"><span class="i-ph-gauge-fill inline-block mr-1"></span>Rate Limit</div>
-  <div class="benefit-pill"><span class="i-ph-list-magnifying-glass-fill inline-block mr-1"></span>Logging</div>
-</div>
-
-
----
 transition: slide-up
 ---
 
@@ -1183,14 +1121,7 @@ transition: slide-up
   </div>
 </div>
 
-<div v-click class="info-card info-card-pink mx-auto mt-4" style="max-width:650px; padding:14px 20px;">
-  <div class="card-header text-pink-300 text-0.9em">Por que IA precisa de Middleware?</div>
-  <div class="card-body" style="font-size:0.78em;">
-    <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>
-    <div>→ Sem precisar saber a autenticação de cada sistema (sessão, token, API key...)</div>
-    <div>→ Alto volume: centenas de consultas por minuto para montar análises completas</div>
-  </div>
-</div>
+
 
 
 ---
@@ -1234,35 +1165,4 @@ transition: fade
 <div v-click class="mt-6 text-center opacity-50 italic text-sm max-w-lg mx-auto">
   "A POC é um investimento pequeno para uma decisão informada.<br>
   Melhor testar antes de comprometer do que comprometer antes de testar."
-</div>
-
-layout: center
-transition: fade
----
-
-<!-- ═══════════════════════════════════════════════════════════
-     SLIDE 14 — RECOMENDAÇÃO
-     ═══════════════════════════════════════════════════════════ -->
-     
-<div>
-  <svg viewBox="0 0 200 200" width="200" height="200">
-    <circle
-      cx="100"
-      cy="100"
-      r="50"
-      fill="blue"
-      v-motion
-      :initial="{ opacity: 0, scale: 0 }"
-      :enter="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
-    />
-    <path
-      d="M20 180 L180 180"
-      stroke="red"
-      stroke-width="5"
-      v-motion
-      :initial="{ strokeDasharray: '0 160', opacity: 0 }"
-      :enter="{ strokeDasharray: '160 0', opacity: 1 }"
-      :hovered="{ strokeWidth: 10, stroke: 'orange' }"
-    />
-  </svg>
 </div>

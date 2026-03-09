@@ -100,8 +100,8 @@
 .accent-bar {
   font-size: 0.85em;
   opacity: 0.7;
-  margin-bottom: 16px;
-  padding: 6px 14px;
+  margin-bottom: 6px;
+  padding: 4px 14px;
   border-radius: 6px;
   border-left: 3px solid;
   background: rgba(30, 41, 59, 0.5);
