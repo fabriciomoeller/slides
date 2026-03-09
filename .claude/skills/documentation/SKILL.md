@@ -1,32 +1,69 @@
 ---
 name: documentation
-description: Skill for maintaining project documentation in the docs/ folder, ensuring naming conventions and README updates are followed.
+description: Skill for creating and maintaining project documentation in the documentacao/ folder. Use this skill whenever the user asks to document a task, create a report, register an implementation, or mentions "documentar", "criar doc", or "registrar implementação". Ensures naming conventions, content structure, and README updates are followed.
 ---
 
 # Documentation Skill
 
-This skill provides instructions on how to handle documentation tasks for the BI EME4 project.
+Handles documentation tasks for the POC Middleware — EME4 project.
 
 ## Core Rules
 
-1.  **File Location**: All documentation files must be stored in the `/docs` directory.
-2.  **Naming Convention**: Every new documentation file must follow the format: `YYYY-MM-DD-HH-MM-SS-slug-name.md`.
-    - Example: `2026-01-27-11-20-00-migracao-icones-unocss.md`
-3.  **README Update**: Whenever a new documentation file is created, the master documentation file `/docs/README.md` must be updated.
-    - Add a new row to the "Histórico de Implementações Detalhadas" table.
-    - Use the format: `| DD/MM/YYYY HH:MM:SS | Title | [Ver Detalhes](filename.md) |`.
-    - Update the "Atualizado em" timestamp at the bottom of the file.
-4.  **Content Structure**: Documentation should include:
-    - **Objetivo**: Why the change was made.
-    - **Alterações Realizadas**: Technical details of the changes.
-    - **Verificação Técnica**: A checklist of what was tested.
-    - **Metadata**: Date, Status, and Type at the end.
+### File Location
+All dated documentation files go in the `documentacao/` folder (relative to project root).
+
+### Naming Convention
+Format: `YYYY-MM-DD_HH-MM-SS-slug-name.md` (underscore separates date from time).
+
+**Example:** `2026-03-08_16-44-42-slides-cenarios-lb-retry-implementacao.md`
+
+### Content Structure
+Every documentation file must follow this template:
+
+```markdown
+# [Data] - [Nome da Tarefa]
+
+## Contexto
+- Por que esta tarefa foi necessária?
+- Qual problema resolve no contexto do Middleware/EME4?
+
+## Implementação
+- O que foi implementado?
+- Quais arquivos foram modificados/criados? (caminhos relativos)
+- Principais decisões técnicas
+
+## Walkthrough
+- Passo a passo de como testar/validar
+- Comandos necessários (ex: `pnpm dev`, `go run .`)
+- Resultados esperados vs. obtidos
+
+## Task Executada
+- [x] Item concluído
+- [ ] Item pendente (se aplicável)
+
+## Validação
+- Critérios de aceitação atendidos
+- Testes realizados
+```
+
+### README Update
+Whenever a new documentation file is created, update `docs/README.md`:
+1. Add a new row to the "Histórico de Implementações Detalhadas" table:
+   `| DD/MM/YYYY HH:MM:SS | Título | [Ver Detalhes](documentacao/filename.md) |`
+2. Update the "Atualizado em" timestamp at the bottom.
+
+### Visual Assets
+If visual proof is needed, save images in `documentacao/assets/[feature-name]/` and reference them with relative paths in the markdown.
 
 ## Workflow
 
-1.  Identify the changes to be documented.
-2.  Capture current date and time in `YYYY-MM-DD-HH-MM-SS` format.
-3.  Create the markdown file in `docs/` with the appropriate prefix.
-4.  If visual proof is needed, save images in `docs/assets/[feature-name]/` and reference them in the markdown.
-5.  Edit `docs/README.md` to include the new record.
-6.  Inform the user about the update.
+1. Identify the changes to be documented.
+2. Capture current date and time in `YYYY-MM-DD_HH-MM-SS` format.
+3. Create the markdown file in `documentacao/` with the correct naming.
+4. Fill in all sections: Contexto, Implementação, Walkthrough, Task Executada, Validação.
+5. Update `docs/README.md` with the new record.
+6. Inform the user about the created documentation.
+
+## Language Rules
+- Content and documentation: Portuguese (Brazilian).
+- Code, file names, variables: English.

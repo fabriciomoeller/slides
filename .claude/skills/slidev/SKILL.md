@@ -336,9 +336,9 @@ Uses absolute-positioned nodes + an SVG overlay with animated `<circle>` dots mo
 ### Dev Commands
 
 ```bash
-npm run dev    # Start dev server (HMR)
-npm run build  # Build for production
-npm run export # Export to PDF
+npx slidev    # Start dev server (HMR)
+npx slidev build  # Build for production
+npx slidev export # Export to PDF
 ```
 
 ### Troubleshooting
