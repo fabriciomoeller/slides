@@ -68,6 +68,7 @@ docs/
 | 09/03/2026 | [Migração font-size inline → UnoCSS](documentacao/2026-03-09-16-18-10-migracao-font-size-inline-para-unocss.md) | Substituição de 6 ocorrências de style="font-size" por classes text-[Xrem] |
 | 09/03/2026 | [UnoCSS Shortcuts e Google Fonts](documentacao/2026-03-09_20-42-20-unocss-shortcuts-e-google-fonts.md) | 5 shortcuts (step-item, num-badge, mini-stat) + fontes explícitas no frontmatter |
 | 09/03/2026 | [Refatoração Final — Itens 10-14](documentacao/2026-03-09_20-53-45-refatoracao-final-itens-10-11-12-14.md) | v-motion :click-N implementado; view-transition, consolidação componentes e layout section descartados |
+| 09/03/2026 | [Correção Linhas Ack — NATS Pub/Sub](documentacao/2026-03-09_21-52-59-correcao-linhas-ack-slide-nats-pubsub.md) | Paths Ack corrigidos para entrar no nó NATS; Worker 2 roteado abaixo da forward line |
 
 ## Apresentacao
 
@@ -120,4 +121,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 09/03/2026 20:53*
+*Atualizado em: 09/03/2026 21:52*
