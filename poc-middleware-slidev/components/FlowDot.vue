@@ -1,3 +1,17 @@
+<!--
+  FlowDot.vue
+  Ponto animado que percorre um caminho SVG (offset-path) para representar
+  o fluxo de mensagens nos diagramas de cenário (pub, ack, fan-out etc.).
+  Usa CSS offset-path + @keyframes followPath para a animação.
+
+  Props:
+    - d        : string do path SVG que o ponto percorre (obrigatório)
+    - color    : cor do ponto — cyan, fuchsia, pink, blue, purple (padrão: cyan)
+    - duration : duração da animação em segundos (padrão: 2.5)
+    - delay    : atraso inicial em segundos (padrão: 0)
+    - loop     : se repete infinitamente (padrão: true)
+    - r        : raio do círculo SVG em px (padrão: 4)
+-->
 <script setup>
 import { computed } from 'vue'
 

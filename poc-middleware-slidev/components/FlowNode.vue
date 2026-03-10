@@ -1,3 +1,21 @@
+<!--
+  FlowNode.vue
+  Nó (caixa) dos diagramas de fluxo representando um componente da arquitetura:
+  NATS, Worker, EME4 (topo/base) etc. Posicionado via classes absolutas nos slides de cenário.
+  Suporta ícone, subtítulo, efeitos de pulse/persist/recover para estados visuais.
+
+  Props:
+    - label    : texto principal do nó (obrigatório) — ex: "NATS", "Worker", "EME4 1"
+    - sub      : subtítulo exibido abaixo do label (opcional)
+    - icon     : classe Iconify do ícone principal (opcional) — ex: "i-carbon-cloud-upload"
+    - subIcon  : classe Iconify do ícone do subtítulo (opcional)
+    - color    : cor do tema — cyan, fuchsia, pink, blue, violet, purple (padrão: cyan)
+    - position : posição predefinida — nats, worker, eme4-top, eme4-bottom, ou classes custom
+    - size     : tamanho — top (menor) ou sm (padrão, calculado pela position)
+    - pulse    : ativa animação pulseAlert para estados de erro (padrão: false)
+    - persist  : ativa estilo visual de persistência NATS (padrão: false)
+    - recover  : ativa estilo visual de recuperação/failover (padrão: false)
+-->
 <script setup>
 const props = defineProps({
   label: { type: String, required: true },

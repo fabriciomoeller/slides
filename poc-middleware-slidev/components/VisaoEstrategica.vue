@@ -1,3 +1,13 @@
+<!--
+  VisaoEstrategica.vue
+  Diagrama SVG completo do slide "Visão Estratégica" que mostra a evolução em 3 fases:
+    1. POC (agora) — ERP Externo ↔ EME4
+    2. Fase 2 — + Outros módulos e sistemas Datainfo
+    3. Fase 3 (IA) — Agentes de IA consultando todos os sistemas
+  Inclui timeline animada, arquitetura futura (produtores → Middleware → sistemas)
+  e mensagem-chave final. Animações sequenciais via classes .a1–.a18 com delays escalonados,
+  ativadas após 600ms (aguarda transição do slide) via flag `ready`.
+-->
 <script setup>
 import { ref, onMounted } from 'vue'
 

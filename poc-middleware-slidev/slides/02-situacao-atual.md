@@ -64,7 +64,7 @@ transition: fade-out
 -->
 
 ---
-transition: slide-top
+transition: slide-up
 ---
 
 # O fluxo passo a passo (Hoje)

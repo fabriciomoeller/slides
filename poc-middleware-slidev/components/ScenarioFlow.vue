@@ -1,3 +1,9 @@
+<!--
+  ScenarioFlow.vue
+  Container wrapper para os diagramas de fluxo dos slides de cenário.
+  Aplica animação de entrada (fade-in via v-motion) ao conteúdo via slot.
+  Cada slide de cenário envolve seu SVG + FlowNodes neste componente.
+-->
 <script setup>
 </script>
 

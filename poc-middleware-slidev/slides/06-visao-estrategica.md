@@ -25,28 +25,28 @@ transition: slide-left
 </div>
 
 <div class="ve-phase-cards">
-  <div class="ve-pcard ve-pcard-blue" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:500}}">
+  <div class="ve-pcard ve-pcard-blue" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
     <div class="text-gray-300 text-[11px]">Outro Sistema ↔ EME4</div>
     <div class="text-gray-500 text-[10px]">Engenharia + OPs</div>
     <div class="text-blue-400 font-semibold text-[12px] mt-1">Centenas/dia</div>
   </div>
-  <div class="ve-pcard ve-pcard-purple" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:650}}">
+  <div class="ve-pcard ve-pcard-purple" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:150}}">
     <div class="text-gray-300 text-[11px]">+ Outros módulos EME4</div>
     <div class="text-gray-500 text-[10px]">+ Sistemas Datainfo</div>
     <div class="text-purple-400 font-semibold text-[12px] mt-1">Milhares/dia</div>
   </div>
-  <div class="ve-pcard ve-pcard-cyan" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:800}}">
+  <div class="ve-pcard ve-pcard-cyan" v-motion :initial="{opacity:0, y:15}" :enter="{opacity:1, y:0, transition:{delay:100}}">
     <div class="text-gray-300 text-[11px]">+ Agentes de IA</div>
     <div class="text-gray-500 text-[10px]">consultando e atuando em todos os sistemas</div>
     <div class="text-cyan-400 font-semibold text-[12px] mt-1">Dezenas de milhares/dia</div>
   </div>
 </div>
 
-<div class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :click-1="{opacity:1, transition:{delay:100, duration:300}}">
+<div class="text-center mt-3 mb-1" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:300, duration:300}}">
   <div class="text-white font-semibold text-[14px]">Futuro: Uma porta única para todos os sistemas</div>
 </div>
 
-<div class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :click-1="{opacity:1, transition:{duration:600}}">
+<div class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:500,duration:600}}">
   <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" />
   <FlowNode label="App Mobile" icon="i-ph-device-mobile-fill" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
@@ -83,7 +83,7 @@ transition: slide-left
   </div>
 </div>
 
-<div class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :click-2="{opacity:1, scale:1, transition:{delay:100, duration:400}}">
+<div class="info-card info-card-pink mx-auto mt-0 w-190" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:800, duration:400}}">
   <div class="card-header text-pink-300 text-0.8em">Por que IA precisa de Middleware?</div>
   <div class="card-body text-[0.65rem]">
     <div>→ Agente fala com <strong>uma porta única</strong> em vez de conhecer cada sistema</div>

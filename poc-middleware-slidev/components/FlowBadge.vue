@@ -1,3 +1,18 @@
+<!--
+  FlowBadge.vue
+  Badge de texto posicionado sobre os diagramas de fluxo SVG dos slides de cenário.
+  Exibe rótulos como "Pub", "Ack", "fan-out", "Entregue" etc. nas animações de fluxo.
+  Suporta ícone opcional, borda estilizada, efeito pulse e dois tamanhos (xs/sm).
+
+  Props:
+    - text     : texto exibido no badge (obrigatório)
+    - icon     : classe Iconify do ícone (opcional)
+    - color    : cor do tema — cyan, fuchsia, pink, blue, purple, slate (padrão: cyan)
+    - position : classe CSS de posicionamento absoluto (obrigatório)
+    - bordered : exibe fundo e borda coloridos (padrão: false)
+    - pulse    : ativa animação de pulso para destaque (padrão: false)
+    - size     : tamanho do texto — xs (8px) ou sm (9px, padrão)
+-->
 <script setup>
 const props = defineProps({
   text: { type: String, required: true },

@@ -1,3 +1,14 @@
+<!--
+  DecoShapes.vue
+  Formas decorativas SVG (pills e círculos) exibidas como background dos slides.
+  Suporta temas dark/light via <LightOrDark>, com cores e opacidade configuráveis via props.
+  Usado para dar textura visual sutil ao fundo dos slides sem interferir no conteúdo.
+
+  Props:
+    - darkStroke1/2/3  : cores dos traços no tema escuro (padrão: fuchsia/pink)
+    - lightStroke1/2/3 : cores dos traços no tema claro (padrão: fuchsia/pink)
+    - opacity          : opacidade geral do SVG (padrão: 0.10)
+-->
 <script setup>
 const props = defineProps({
   darkStroke1: { type: String, default: '#e879f9' },
