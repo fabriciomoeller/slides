@@ -1,11 +1,12 @@
 ---
-transition: slide-left
+transition: slide-up
 ---
 
 # Analogia: O Restaurante
+<div class="gradient-divider mx-auto mt-0 mb-0"></div>
 
-<div class="gradient-subtitle text-[0.9rem]">Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda</div>
-<div class="gradient-divider mx-auto mt-2 mb-4"></div>
+<div class="accent-bar accent-bar-cyan mt-0">Modelo Atual: o cliente vai direto à cozinha — sem garçom, sem comanda</div>
+
 
 <ScenarioFlow>
   <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
@@ -47,8 +48,8 @@ transition: slide-left
   <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-78px h-56px" />
   <FlowNode label="Garçom" icon="i-ph-user-circle-fill" color="fuchsia" position="top-50% -translate-y-50% left-140px w-80px h-56px" sub="anota" />
   <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="top-50% -translate-y-50% left-280px w-80px h-56px" sub="fila" persist />
-  <FlowNode label="Cozinheiro 1" color="cyan" position="top-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="Cozinheiro 2" color="cyan" position="bottom-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Cozinheiro 1" icon="i-ph-cooking-pot-fill" color="cyan" position="top-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Cozinheiro 2" icon="i-ph-cooking-pot-fill" color="cyan" position="bottom-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="80" y1="70" x2="140" y2="70" class="svg-line svg-stroke-blue"/>
@@ -128,8 +129,8 @@ transition: slide-up
 <ScenarioFlow>
   <FlowNode label="Agente IA" icon="i-carbon-bot" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="(futuro)" />
   <FlowNode label="Kong" icon="i-ph-shield-check-fill" color="purple" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="Auth + LB" />
-  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-blue"/>
@@ -155,8 +156,8 @@ transition: slide-up
 <ScenarioFlow v-click="1">
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz DE→PARA" />
-  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -194,7 +195,7 @@ transition: slide-up
 -->
 
 ---
-transition: slide-left
+transition: slide-up
 ---
 
 # Comparação: Cenário a Cenário

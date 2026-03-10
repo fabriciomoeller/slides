@@ -10,8 +10,8 @@ transition: fade
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" />
-  <FlowNode label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -81,8 +81,8 @@ transition: fade
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" />
-  <FlowNode v-click.hide="1" label="EME4 1" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode v-click.hide="1" label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -106,7 +106,7 @@ transition: fade
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
       <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
     </svg>
-    <FlowNode v-click="1" label="EME4 1" color="pink" position="eme4-top" sub="erro 500" pulse />
+    <FlowNode v-click="1" label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="erro 500" pulse />
     <FlowBadge v-click.hide="1" text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
     <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0"/>
     <FlowBadge v-click.hide="1" text="✓ Ack" color="cyan" position="left-120px top-0px" size="xs" />
@@ -150,7 +150,7 @@ transition: fade
 -->
 
 ---
-transition: fade
+transition: slide-up
 ---
 
 # Ambos Fora: A Fila Garante
@@ -183,7 +183,7 @@ transition: fade
     <FlowBadge text=" 5s → 30s → 2min..." icon="i-ph-timer-fill" color="slate" position="left-100px bottom-30px" size="xs" />
   </div>
   <div v-click="2" class="anim-seg">
-    <FlowNode label="EME4 2" color="cyan" position="eme4-bottom" sub=" voltou" subIcon="i-ph-arrow-up-fill" recover />
+    <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" voltou" subIcon="i-ph-arrow-up-fill" recover />
   </div>
   <div v-click="3" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">

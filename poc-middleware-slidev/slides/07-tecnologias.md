@@ -117,7 +117,7 @@ transition: slide-left
 
 <div v-click class="grid grid-cols-3 gap-4 mt-7">
   <div class="info-card border-cyan-500/20 p-14px">
-    <div class="card-header text-cyan-400">NATS</div>
+    <div class="card-header text-cyan-400"><span class="i-ph-cloud-arrow-up-fill inline-block mr-4px"></span> NATS</div>
     <div class="card-body text-[0.78rem]">
       <div>→ Escrito em Go (Google)</div>
       <div>→ Tesla, Mastercard, Walmart</div>
@@ -126,7 +126,7 @@ transition: slide-left
     </div>
   </div>
   <div class="info-card border-violet-500/20 p-14px">
-    <div class="card-header text-purple-400">Kong / APISIX</div>
+    <div class="card-header text-purple-400"><span class="i-ph-shield-check-fill inline-block mr-4px"></span> Kong / APISIX</div>
     <div class="card-body text-[0.78rem]">
       <div>→ Construído sobre <strong>NGINX</strong></div>
       <div>→ NGINX serve 30% da internet mundial</div>

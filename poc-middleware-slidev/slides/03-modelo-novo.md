@@ -1,6 +1,6 @@
 ---
 layout: center
-transition: slide-up
+transition: slide-left
 ---
 
 # Modelo Novo — Middleware
@@ -49,8 +49,8 @@ transition: slide-left
   <FlowNode label="KONG" icon="i-ph-shield-check-fill" color="violet" position="top-50% -translate-y-50% left-160px w-78px h-52px" sub="portaria" />
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" />
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="top-50% -translate-y-50% left-465px w-88px h-52px" sub="tradutor" />
-  <FlowNode label="EME4 1" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" />
-  <FlowNode label="EME4 2" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" />
+  <FlowNode label="EME4 1" v-click.hide="6" icon="i-carbon-bare-metal-server-02" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" />
   <div v-click="1" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <line x1="90" y1="55" x2="160" y2="55" class="svg-line svg-stroke-blue"/>
@@ -90,7 +90,7 @@ transition: slide-left
     </svg>
   </div>
   <div v-click="6" class="anim-seg">
-    <FlowNode label="EME4 1" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" />
+    <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" />
     <svg class="anim-svg" viewBox="0 0 750 90">
       <path d="M630,3 Q630,4 616,4 L524,4 Q510,4 510,18" class="svg-line-return svg-stroke-pink"/>
       <FlowDot d="M630,18 L630,4 L510,4 L510,18" color="pink" :duration="2" />

@@ -69,6 +69,7 @@ docs/
 | 09/03/2026 | [UnoCSS Shortcuts e Google Fonts](documentacao/2026-03-09_20-42-20-unocss-shortcuts-e-google-fonts.md) | 5 shortcuts (step-item, num-badge, mini-stat) + fontes explícitas no frontmatter |
 | 09/03/2026 | [Refatoração Final — Itens 10-14](documentacao/2026-03-09_20-53-45-refatoracao-final-itens-10-11-12-14.md) | v-motion :click-N implementado; view-transition, consolidação componentes e layout section descartados |
 | 09/03/2026 | [Correção Linhas Ack — NATS Pub/Sub](documentacao/2026-03-09_21-52-59-correcao-linhas-ack-slide-nats-pubsub.md) | Paths Ack corrigidos para entrar no nó NATS; Worker 2 roteado abaixo da forward line |
+| 09/03/2026 | [Padronização de Ícones nos FlowNodes](documentacao/2026-03-09_22-14-25-padronizacao-icones-flownodes.md) | Ícones consistentes em todos os FlowNodes (EME4, Cozinheiro) e cards de tecnologias |
 
 ## Apresentacao
 
@@ -121,4 +122,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 09/03/2026 21:52*
+*Atualizado em: 09/03/2026 22:14*
