@@ -76,6 +76,10 @@ src: ./slides/06b-anatomia-middleware.md
 ---
 
 ---
+src: ./slides/06c-n8n-no-ecossistema.md
+---
+
+---
 src: ./slides/07-tecnologias.md
 ---
 

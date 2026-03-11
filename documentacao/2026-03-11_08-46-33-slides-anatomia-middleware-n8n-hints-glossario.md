@@ -88,7 +88,7 @@
 - [x] Definição dos textos de hint para cada FlowNode
 - [x] Priorização das 4 atividades macro
 - [x] Atividade 1: Slide "Anatomia do Middleware"
-- [ ] Atividade 2: Slide "E o N8N?"
+- [x] Atividade 2: Slide "E o N8N?"
 - [ ] Atividade 3: Hints nos FlowNodes
 - [ ] Atividade 4: Slide Glossário Visual
 
