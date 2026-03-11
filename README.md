@@ -71,6 +71,7 @@ docs/
 | 09/03/2026 | [Correção Linhas Ack — NATS Pub/Sub](documentacao/2026-03-09_21-52-59-correcao-linhas-ack-slide-nats-pubsub.md) | Paths Ack corrigidos para entrar no nó NATS; Worker 2 roteado abaixo da forward line |
 | 09/03/2026 | [Padronização de Ícones nos FlowNodes](documentacao/2026-03-09_22-14-25-padronizacao-icones-flownodes.md) | Ícones consistentes em todos os FlowNodes (EME4, Cozinheiro) e cards de tecnologias |
 | 10/03/2026 | [Análise: Slide Workers + N8N como Worker](documentacao/2026-03-10_14-27-50-analise-slide-workers-n8n.md) | Estudo para slide de Workers, N8N como Worker, auth centralizada no Kong e EME4 sem auth |
+| 11/03/2026 | [Slides Anatomia do Middleware, N8N, Hints e Glossário](documentacao/2026-03-11_08-46-33-slides-anatomia-middleware-n8n-hints-glossario.md) | 4 atividades: slide Anatomia (3 camadas), slide N8N, hints nos FlowNodes e glossário visual |
 
 ## Apresentacao
 
