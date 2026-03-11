@@ -49,7 +49,7 @@ transition: slide-left
 <div class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:500,duration:600}}">
   <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" />
-  <FlowNode label="App Mobile" icon="i-ph-device-mobile-fill" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
+  <FlowNode label="Portal Cloud" icon="i-carbon-cloud" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" />
   <FlowNode label="Dashboard" icon="i-ph-chart-line-up-fill" color="blue" position="top-132px left-0 w-88px h-34px" size="sm" />
   <div class="absolute top-50% -translate-y-50% left-230px w-160px h-130px rounded-14px border-2 border-solid border-purple-500/40 bg-purple-500/10 flex flex-col items-center justify-center z-2 gap-2px" style="animation: natsPersistGlow 3s ease-in-out infinite">
     <span class="i-ph-shield-check-fill text-purple-400 text-lg inline-block"></span>
@@ -59,7 +59,7 @@ transition: slide-left
   </div>
   <FlowNode label="EME4" icon="i-ph-buildings-fill" color="cyan" position="top-6px left-530px w-88px h-34px" size="sm" />
   <FlowNode label="Gesti" icon="i-ph-database-fill" color="cyan" position="top-48px left-530px w-88px h-34px" size="sm" />
-  <FlowNode label="Sistema X" icon="i-ph-cube-fill" color="cyan" position="top-90px left-530px w-88px h-34px" size="sm" />
+  <FlowNode label="N8N" icon="i-carbon-chart-network" color="cyan" position="top-90px left-530px w-88px h-34px" size="sm" />
   <FlowNode label="Sistema Y" icon="i-ph-cube-fill" color="cyan" position="top-132px left-530px w-88px h-34px" size="sm" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 640 170">
