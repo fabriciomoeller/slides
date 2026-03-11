@@ -60,6 +60,10 @@ src: ./slides/03-modelo-novo.md
 ---
 
 ---
+src: ./slides/03b-glossario-visual.md
+---
+
+---
 src: ./slides/04-cenarios.md
 ---
 

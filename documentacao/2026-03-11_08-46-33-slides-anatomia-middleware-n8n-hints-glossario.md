@@ -50,9 +50,13 @@
 - **Posicionamento**: `getBoundingClientRect()` + `position: fixed` + `<Teleport to="body">` para escapar do transform scale do Slidev
 
 #### Atividade 4 — Slide Glossário Visual
-- **Posição**: Antes dos cenários (slide 04)
-- **Conteúdo**: Todos os FlowNodes com ícone + cor + hint, tipo legenda de mapa
-- **Usa os mesmos textos dos hints** da Atividade 3
+- **Posição**: Entre slide 03 (Modelo Novo) e 04 (Cenários) — `slides/03b-glossario-visual.md`
+- **Conteúdo**: Legenda completa de todos os elementos visuais dos diagramas
+- **Layout**: Grid 2 colunas (Consumidores blue | Provedores cyan) + seção Middleware (purple/cyan/fuchsia)
+- **Legenda de linhas**: Conexão tracejada, dot de mensagem em trânsito, Ack, Nak
+- **Decisão**: Não diferenciar ida/volta por estilo de linha — nos slides reais ambas são tracejadas
+- **Arquivo criado**: `slides/03b-glossario-visual.md`
+- **Arquivo modificado**: `slides.md` — adicionado `src: ./slides/03b-glossario-visual.md`
 
 ### Análise de Padrão de Cores (documentado)
 | Cor | Significado |
@@ -94,10 +98,12 @@
 - [x] Priorização das 4 atividades macro
 - [x] Atividade 1: Slide "Anatomia do Middleware"
 - [x] Atividade 2: Slide "E o N8N?"
-- [x] Atividade 3: Hints nos FlowNodes
-- [ ] Atividade 4: Slide Glossário Visual
+- [x] Atividade 3: Hints nos FlowNodes (FlowHintLayer + Teleport + event delegation)
+- [x] Atividade 4: Slide Glossário Visual (legenda do mapa antes dos cenários)
 
 ## Validação
 - Análise validada pelo usuário antes de iniciar implementação
 - Priorização aprovada: Anatomia → N8N → Hints → Glossário
 - Abordagem para N8N aprovada: posicionar como Worker, não confrontar
+- Atividade 3 aprovada: tooltips estilizados com FlowHintLayer + Teleport
+- Atividade 4 aprovada: glossário sem distinção ida/volta (ambas tracejadas nos slides)
