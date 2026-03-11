@@ -8,10 +8,10 @@ transition: fade
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="Message Broker — recebe mensagens e garante que não se percam (JetStream)" />
-  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="Consome da fila e executa a lógica: transforma formatos, mapeia campos (DE→PARA)" />
-  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
-  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -79,10 +79,10 @@ transition: fade
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="Message Broker — recebe mensagens e garante que não se percam (JetStream)" />
-  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="Consome da fila e executa a lógica: transforma formatos, mapeia campos (DE→PARA)" />
-  <FlowNode v-click.hide="1" label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
-  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
+  <FlowNode v-click.hide="1" label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -106,7 +106,7 @@ transition: fade
       <path d="M250,100 Q250,120 235,120 L60,120 Q45,120 45,100" class="svg-line-return svg-stroke-cyan"/>
       <FlowDot d="M250,100 L250,120 L60,120 L45,100" color="cyan" :duration="2" :delay="2" />
     </svg>
-    <FlowNode v-click="1" label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="erro 500" pulse hint="EME4 1 com erro 500 — Worker devolve à fila (Nak) para retry automático" />
+    <FlowNode v-click="1" label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="erro 500" pulse hint="<strong>EME4 1 — Erro 500</strong><br>Worker devolve à fila (<strong>Nak</strong>)<br>NATS retenta com backoff exponencial" />
     <FlowBadge v-click.hide="1" text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px top-0" />
     <FlowBadge text=" Sucesso" icon="i-ph-check-circle-fill" color="cyan" position="left-300px bottom-0"/>
     <FlowBadge v-click.hide="1" text="✓ Ack" color="cyan" position="left-120px top-0px" size="xs" />
@@ -159,10 +159,10 @@ transition: slide-up
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="Message Broker — mensagens persistidas em disco, não se perdem mesmo com tudo fora" />
-  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="Consome da fila e executa a lógica: transforma formatos, mapeia campos (DE→PARA)" />
-  <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="offline" pulse hint="EME4 1 indisponível — mensagens aguardam na fila NATS" />
-  <FlowNode v-click.hide="2" label="EME4 2" icon="i-ph-x-circle-fill" color="pink" position="eme4-bottom" sub="offline" pulse hint="EME4 2 indisponível — mensagens aguardam na fila NATS" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Resiliência Total</strong><br>Mensagens persistidas em disco<br>Não se perdem mesmo com tudo fora<br>Backoff: 5s → 30s → 2min..." />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
+  <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="offline" pulse hint="<strong>EME4 1 — Offline</strong><br>Mensagens aguardam na fila NATS<br>Serão entregues quando voltar" />
+  <FlowNode v-click.hide="2" label="EME4 2" icon="i-ph-x-circle-fill" color="pink" position="eme4-bottom" sub="offline" pulse hint="<strong>EME4 2 — Offline</strong><br>Mensagens aguardam na fila NATS<br>Serão entregues quando voltar" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>
@@ -183,7 +183,7 @@ transition: slide-up
     <FlowBadge text=" 5s → 30s → 2min..." icon="i-ph-timer-fill" color="slate" position="left-100px bottom-30px" size="xs" />
   </div>
   <div v-click="2" class="anim-seg">
-    <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" voltou" subIcon="i-ph-arrow-up-fill" recover hint="EME4 2 voltou — mensagens da fila são processadas automaticamente" />
+    <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" voltou" subIcon="i-ph-arrow-up-fill" recover hint="<strong>EME4 2 — Recuperado</strong><br>Voltou ao ar automaticamente<br>Mensagens da fila são processadas<br>Zero intervenção manual" />
   </div>
   <div v-click="3" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">

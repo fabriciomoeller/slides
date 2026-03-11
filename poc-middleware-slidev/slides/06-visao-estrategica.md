@@ -47,20 +47,20 @@ transition: slide-left
 </div>
 
 <div class="scenario-flow-arch my-2" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:500,duration:600}}">
-  <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" hint="Sistema consumidor futuro — agentes de IA consultando todos os sistemas" />
-  <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" hint="Sistema externo que envia ou consulta dados no EME4 (ERP, Portal, App)" />
-  <FlowNode label="Portal Cloud" icon="i-carbon-cloud" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" hint="Sistema consumidor futuro — portal cloud acessando dados via middleware" />
-  <FlowNode label="Dashboard" icon="i-ph-chart-line-up-fill" color="blue" position="top-132px left-0 w-88px h-34px" size="sm" hint="Sistema consumidor futuro — dashboards consumindo dados em tempo real" />
+  <FlowNode label="Agentes IA" icon="i-carbon-bot" color="blue" position="top-6px left-0 w-88px h-34px" size="sm" hint="<strong>Agentes de IA</strong> (futuro)<br>Consultam todos os sistemas via porta única<br>Sem saber a auth de cada sistema" />
+  <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-48px left-0 w-95px h-34px" size="sm" hint="<strong>ERP Externo</strong><br>Sistema externo que envia ou consulta dados<br>Ex: ERP, Portal, App Mobile" />
+  <FlowNode label="Portal Cloud" icon="i-carbon-cloud" color="blue" position="top-90px left-0 w-88px h-34px" size="sm" hint="<strong>Portal Cloud</strong> (futuro)<br>Acesso via middleware a todos os sistemas<br>Autenticação centralizada" />
+  <FlowNode label="Dashboard" icon="i-ph-chart-line-up-fill" color="blue" position="top-132px left-0 w-88px h-34px" size="sm" hint="<strong>Dashboards</strong> (futuro)<br>Dados em tempo real de todos os sistemas<br>Via passagem direta pelo Kong" />
   <div class="absolute top-50% -translate-y-50% left-230px w-160px h-130px rounded-14px border-2 border-solid border-purple-500/40 bg-purple-500/10 flex flex-col items-center justify-center z-2 gap-2px" style="animation: natsPersistGlow 3s ease-in-out infinite">
     <span class="i-ph-shield-check-fill text-purple-400 text-lg inline-block"></span>
     <div class="text-white font-700 text-12px">MIDDLEWARE</div>
     <div class="text-purple-400 text-[9px]">Kong/APISIX + NATS</div>
     <div class="text-gray-400 text-[8px]">Auth | LB | Fila | Tradução</div>
   </div>
-  <FlowNode label="EME4" icon="i-ph-buildings-fill" color="cyan" position="top-6px left-530px w-88px h-34px" size="sm" hint="Sistema provedor — ERP de manufatura da Datainfo" />
-  <FlowNode label="Gesti" icon="i-ph-database-fill" color="cyan" position="top-48px left-530px w-88px h-34px" size="sm" hint="Sistema provedor — outro sistema interno da Datainfo" />
-  <FlowNode label="N8N" icon="i-carbon-chart-network" color="cyan" position="top-90px left-530px w-88px h-34px" size="sm" hint="Automação visual — aqui como sistema provedor/destino, o middleware roteia para ele" />
-  <FlowNode label="Sistema Y" icon="i-ph-cube-fill" color="cyan" position="top-132px left-530px w-88px h-34px" size="sm" hint="Qualquer sistema futuro — o middleware conecta sem alterar os demais" />
+  <FlowNode label="EME4" icon="i-ph-buildings-fill" color="cyan" position="top-6px left-530px w-88px h-34px" size="sm" hint="<strong>EME4</strong><br>ERP de manufatura da Datainfo<br>Principal sistema provedor da POC" />
+  <FlowNode label="Gesti" icon="i-ph-database-fill" color="cyan" position="top-48px left-530px w-88px h-34px" size="sm" hint="<strong>Gesti</strong><br>Sistema interno da Datainfo<br>Futuro destino via middleware" />
+  <FlowNode label="N8N" icon="i-carbon-chart-network" color="cyan" position="top-90px left-530px w-88px h-34px" size="sm" hint="<strong>N8N</strong> — Automação visual<br>Aqui como sistema provedor/destino<br>O middleware roteia mensagens para ele" />
+  <FlowNode label="Sistema Y" icon="i-ph-cube-fill" color="cyan" position="top-132px left-530px w-88px h-34px" size="sm" hint="<strong>Sistema Y</strong> (qualquer futuro)<br>O middleware conecta novos sistemas<br>Sem alterar os demais" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 640 170">
       <line x1="90" y1="23" x2="230" y2="70" class="svg-line svg-stroke-blue" style="opacity:0.4"/>

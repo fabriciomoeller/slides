@@ -30,19 +30,24 @@
   - Analogia: "Chef versátil no food truck vs restaurante com 500 mesas"
 
 #### Atividade 3 — Hints (Tooltips) nos FlowNodes
-- **Escopo**: Adicionar atributo `title` ou componente tooltip no FlowNode.vue
-- **Cobertura**: Todos os 13 tipos de FlowNodes identificados nos slides:
-  - ORIGEM/ERP Externo: "Qualquer sistema externo que precisa enviar ou consultar dados no EME4"
-  - KONG: "API Gateway — valida credenciais, distribui carga, limita requisições"
-  - NATS: "Message Broker — recebe mensagens e garante que não se percam"
-  - Worker: "Consome mensagens da fila e executa a lógica de integração"
-  - EME4: "Sistema provedor (destino). Recebe chamadas normais da API"
-  - Monitor: "Assinante que consome eventos para gerar métricas e alertas"
-  - Garçom (analogia): "Equivale ao Kong — recebe o pedido e encaminha para a cozinha"
-  - Comanda (analogia): "Equivale ao NATS — o pedido não se perde na fila"
-  - Cozinheiro (analogia): "Equivale ao Worker — pega a comanda e prepara o prato"
-  - N8N: "Ferramenta de automação visual — aqui aparece como sistema provedor/destino"
-- **Prop nova no FlowNode.vue**: `hint` (String, opcional) — renderiza como `title` no div principal
+- **Escopo**: Tooltips estilizados com HTML rico em todos os FlowNodes
+- **Arquitetura final**: Event delegation + Teleport (3 tentativas até chegar na solução)
+  - ❌ Tentativa 1: `title` nativo — tooltip feio, sem formatação
+  - ❌ Tentativa 2: `<Teleport>` dentro do FlowNode — quebrou `v-click.hide` (mudança DOM)
+  - ✅ Tentativa 3: `FlowHintLayer.vue` (global) — event delegation em `[data-hint]`, zero alteração DOM
+- **Arquivos criados**:
+  - `components/FlowHintLayer.vue` — Camada global de tooltips, usa `mouseenter`/`mouseleave` com `capture: true` via event delegation. Teleportado para `<body>` para escapar do `transform: scale()` do Slidev
+  - `global-top.vue` — Monta FlowHintLayer acima de todos os slides (convenção Slidev)
+- **Arquivos modificados**:
+  - `components/FlowNode.vue` — Nova prop `hint`, renderiza como `data-hint`/`data-hint-color`, `cursor: help`
+  - `style.css` — CSS `.flow-hint` com fundo sólido `#0f172a`, borda colorida, seta, animação fade-in
+  - `slides/03-modelo-novo.md` — Hints em todos FlowNodes (ORIGEM, KONG, NATS, Worker, EME4)
+  - `slides/04-cenarios.md` — Hints nos cenários LB/Retry (EME4 online/offline/erro)
+  - `slides/05-analogia-comparacao.md` — Hints na analogia restaurante (Garçom, Comanda, Cozinheiro)
+  - `slides/06-visao-estrategica.md` — Hints nos sistemas futuros (Agente IA, Portal, Dashboard, N8N)
+  - `slides/07-tecnologias.md` — Hints no Pub/Sub (Publisher, NATS JetStream, Subscribers, Monitor)
+- **Decisão crítica**: Nunca adicionar wrapper div no FlowNode — v-click.hide depende da estrutura DOM
+- **Posicionamento**: `getBoundingClientRect()` + `position: fixed` + `<Teleport to="body">` para escapar do transform scale do Slidev
 
 #### Atividade 4 — Slide Glossário Visual
 - **Posição**: Antes dos cenários (slide 04)

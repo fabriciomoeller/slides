@@ -45,12 +45,12 @@ transition: slide-left
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <div class="anim-flow max-w-750px h-120px my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
-  <FlowNode label="ORIGEM" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-88px h-52px" sub="ex: ERP" hint="Sistema externo que envia ou consulta dados no EME4 (ERP, Portal, App)" />
-  <FlowNode label="KONG" icon="i-ph-shield-check-fill" color="violet" position="top-50% -translate-y-50% left-160px w-78px h-52px" sub="portaria" hint="API Gateway — valida credenciais, distribui carga e limita requisições abusivas" />
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" hint="Message Broker — recebe mensagens e garante que não se percam (JetStream)" />
-  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="top-50% -translate-y-50% left-465px w-88px h-52px" sub="tradutor" hint="Consome da fila e executa a lógica: transforma formatos (XML→JSON), mapeia campos (DE→PARA)" />
-  <FlowNode label="EME4 1" v-click.hide="6" icon="i-carbon-bare-metal-server-02" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
-  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
+  <FlowNode label="ORIGEM" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-88px h-52px" sub="ex: ERP" hint="<strong>Sistema Consumidor</strong><br>Qualquer sistema externo que precisa enviar ou consultar dados no EME4.<br>Ex: ERP, Portal, App Mobile" />
+  <FlowNode label="KONG" icon="i-ph-shield-check-fill" color="violet" position="top-50% -translate-y-50% left-160px w-78px h-52px" sub="portaria" hint="<strong>API Gateway — Porta de Entrada</strong><br>Valida credenciais (JWT, API Key)<br>Distribui carga (Load Balancing)<br>Limita requisições abusivas (Rate Limit)" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="top-50% -translate-y-50% left-465px w-88px h-52px" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
+  <FlowNode label="EME4 1" v-click.hide="6" icon="i-carbon-bare-metal-server-02" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <div v-click="1" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
       <line x1="90" y1="55" x2="160" y2="55" class="svg-line svg-stroke-blue"/>
@@ -90,7 +90,7 @@ transition: slide-left
     </svg>
   </div>
   <div v-click="6" class="anim-seg">
-    <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" hint="EME4 1 com erro — Worker devolve à fila (Nak) para retry automático" />
+    <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" hint="<strong>EME4 1 — Erro</strong><br>Worker devolve à fila (<strong>Nak</strong>)<br>NATS retenta com backoff exponencial" />
     <svg class="anim-svg" viewBox="0 0 750 90">
       <path d="M630,3 Q630,4 616,4 L524,4 Q510,4 510,18" class="svg-line-return svg-stroke-pink"/>
       <FlowDot d="M630,18 L630,4 L510,4 L510,18" color="pink" :duration="2" />
