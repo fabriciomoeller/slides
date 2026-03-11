@@ -9,8 +9,8 @@ transition: slide-up
 
 
 <ScenarioFlow>
-  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" />
-  <FlowNode v-click.hide="2" label="Cozinheiro" icon="i-ph-cooking-pot-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-56px" />
+  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" hint="Sistema consumidor — quem faz o pedido (requisição)" />
+  <FlowNode v-click.hide="2" label="Cozinheiro" icon="i-ph-cooking-pot-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-56px" hint="Equivale ao EME4 — quem prepara o pedido (processa a requisição)" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="420" y2="70" class="svg-line svg-stroke-blue"/>
@@ -26,7 +26,7 @@ transition: slide-up
     <FlowBadge text=" 50 clientes na fila" icon="i-ph-users-three-fill" color="pink" position="left-200px bottom-15px" bordered />
   </div>
   <div v-click="2" class="anim-seg">
-    <FlowNode label="Cozinheiro" icon="i-ph-x-circle-fill" color="pink" position="top-50% -translate-y-50% left-420px w-100px h-56px" pulse />
+    <FlowNode label="Cozinheiro" icon="i-ph-x-circle-fill" color="pink" position="top-50% -translate-y-50% left-420px w-100px h-56px" pulse hint="Cozinheiro fora — sem comanda, pedido é perdido (ponto único de falha)" />
     <FlowBadge text=" Cozinha pegou fogo!" icon="i-ph-fire-fill" color="pink" position="left-350px top-5px" bordered />
     <FlowBadge text=" Pedido perdido" icon="i-ph-trash-fill" color="pink" position="left-350px bottom-5px" bordered />
   </div>
@@ -45,11 +45,11 @@ transition: slide-up
 </div>
 
 <ScenarioFlow v-click="3">
-  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-78px h-56px" />
-  <FlowNode label="Garçom" icon="i-ph-user-circle-fill" color="fuchsia" position="top-50% -translate-y-50% left-140px w-80px h-56px" sub="anota" />
-  <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="top-50% -translate-y-50% left-280px w-80px h-56px" sub="fila" persist />
-  <FlowNode label="Cozinheiro 1" icon="i-ph-cooking-pot-fill" color="cyan" position="top-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="Cozinheiro 2" icon="i-ph-cooking-pot-fill" color="cyan" position="bottom-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Cliente" icon="i-ph-user-fill" color="blue" position="top-50% -translate-y-50% left-0 w-78px h-56px" hint="Sistema consumidor — quem faz o pedido (requisição)" />
+  <FlowNode label="Garçom" icon="i-ph-user-circle-fill" color="fuchsia" position="top-50% -translate-y-50% left-140px w-80px h-56px" sub="anota" hint="Equivale ao Kong — recebe o pedido e encaminha para a cozinha" />
+  <FlowNode label="Comanda" icon="i-ph-clipboard-text-fill" color="cyan" position="top-50% -translate-y-50% left-280px w-80px h-56px" sub="fila" persist hint="Equivale ao NATS — o pedido anotado não se perde mesmo com cozinheiros ocupados" />
+  <FlowNode label="Cozinheiro 1" icon="i-ph-cooking-pot-fill" color="cyan" position="top-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" hint="Equivale ao Worker — pega a comanda e prepara o prato (processamento paralelo)" />
+  <FlowNode label="Cozinheiro 2" icon="i-ph-cooking-pot-fill" color="cyan" position="bottom-6px left-430px w-95px h-42px" sub=" ativo" subIcon="i-svg-spinners-pulse-3" hint="Equivale ao Worker — pega a comanda e prepara o prato (processamento paralelo)" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="80" y1="70" x2="140" y2="70" class="svg-line svg-stroke-blue"/>
@@ -127,10 +127,10 @@ transition: slide-up
 </div>
 
 <ScenarioFlow>
-  <FlowNode label="Agente IA" icon="i-carbon-bot" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="(futuro)" />
-  <FlowNode label="Kong" icon="i-ph-shield-check-fill" color="purple" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="Auth + LB" />
-  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="Agente IA" icon="i-carbon-bot" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="(futuro)" hint="Sistema consumidor futuro — agente de IA consultando dados via middleware" />
+  <FlowNode label="Kong" icon="i-ph-shield-check-fill" color="purple" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="Auth + LB" hint="API Gateway — valida credenciais, distribui carga e limita requisições abusivas" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-blue"/>
@@ -154,10 +154,10 @@ transition: slide-up
 </div>
 
 <ScenarioFlow v-click="1">
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist />
-  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz DE→PARA" />
-  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" />
-  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="Message Broker — recebe mensagens e garante que não se percam (JetStream)" />
+  <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="traduz DE→PARA" hint="Consome da fila e executa a lógica: transforma formatos (XML→JSON), mapeia campos (DE→PARA)" />
+  <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
+  <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="Sistema provedor (destino). Recebe chamadas normais da API" />
   <div class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 580 140">
       <line x1="92" y1="70" x2="200" y2="70" class="svg-line svg-stroke-cyan"/>

@@ -15,6 +15,7 @@
     - pulse    : ativa animação pulseAlert para estados de erro (padrão: false)
     - persist  : ativa estilo visual de persistência NATS (padrão: false)
     - recover  : ativa estilo visual de recuperação/failover (padrão: false)
+    - hint     : texto do tooltip (title) exibido ao hover (opcional)
 -->
 <script setup>
 const props = defineProps({
@@ -28,6 +29,7 @@ const props = defineProps({
   pulse: { type: Boolean, default: false },
   persist: { type: Boolean, default: false },
   recover: { type: Boolean, default: false },
+  hint: { type: String, default: '' },
 })
 
 const colorMap = {
@@ -64,6 +66,7 @@ const sizeClass = props.size === 'top'
       'anim-node-recover': recover,
       'z-5': recover,
     }]"
+    :title="hint || undefined"
     :style="pulse ? 'animation: pulseAlert 2.5s ease-in-out infinite' : undefined"
   >
     <span v-if="icon" :class="[icon, sizeClass === 'anim-node-top' ? 'text-xs mr-2px' : 'text-base', 'inline-block']"></span>
