@@ -87,7 +87,7 @@
 - [x] Catálogo completo dos 13 FlowNodes com papel no ecossistema
 - [x] Definição dos textos de hint para cada FlowNode
 - [x] Priorização das 4 atividades macro
-- [ ] Atividade 1: Slide "Anatomia do Middleware"
+- [x] Atividade 1: Slide "Anatomia do Middleware"
 - [ ] Atividade 2: Slide "E o N8N?"
 - [ ] Atividade 3: Hints nos FlowNodes
 - [ ] Atividade 4: Slide Glossário Visual

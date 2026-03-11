@@ -72,6 +72,10 @@ src: ./slides/06-visao-estrategica.md
 ---
 
 ---
+src: ./slides/06b-anatomia-middleware.md
+---
+
+---
 src: ./slides/07-tecnologias.md
 ---
 
