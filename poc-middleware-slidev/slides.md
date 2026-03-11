@@ -60,37 +60,33 @@ src: ./slides/03-modelo-novo.md
 ---
 
 ---
-src: ./slides/05-analogia-comparacao.md
+src: ./slides/04-analogia-comparacao.md
 ---
 
 ---
-src: ./slides/06b-anatomia-middleware.md
+src: ./slides/05-anatomia-middleware.md
 ---
 
 ---
-src: ./slides/03b-glossario-visual.md
+src: ./slides/06-glossario-visual.md
 ---
 
 ---
-src: ./slides/04-cenarios.md
+src: ./slides/07-cenarios.md
 ---
 
 ---
-src: ./slides/06c-n8n-no-ecossistema.md
+src: ./slides/08-n8n-no-ecossistema.md
 ---
 
 ---
-src: ./slides/07-tecnologias.md
+src: ./slides/09-tecnologias.md
 ---
 
 ---
-src: ./slides/06-visao-estrategica.md
+src: ./slides/10-visao-estrategica.md
 ---
 
 ---
-src: ./slides/08-dimensionamento.md
----
-
----
-src: ./slides/09-recomendacao.md
+src: ./slides/11-recomendacao.md
 ---

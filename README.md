@@ -74,6 +74,7 @@ docs/
 | 11/03/2026 | [Slides Anatomia do Middleware, N8N, Hints e Glossário](documentacao/2026-03-11_08-46-33-slides-anatomia-middleware-n8n-hints-glossario.md) | 4 atividades: slide Anatomia (3 camadas), slide N8N, hints nos FlowNodes e glossário visual |
 | 11/03/2026 | [Reorganização da Ordem dos Slides](documentacao/2026-03-11_11-58-05-reorganizacao-ordem-slides.md) | Reordenação dos slides para fluidez narrativa: analogia antes dos cenários, visão após métricas |
 | 11/03/2026 | [Componente FlowMsgStack — Pilha Visual de Mensagens](documentacao/2026-03-11_16-39-17-componente-flowmsgstack-pilha-mensagens.md) | Componente Vue reutilizável com barras animadas dentro do FlowNode NATS, slots #left/#right |
+| 11/03/2026 | [Renomeação Sequencial dos Arquivos de Slides](documentacao/2026-03-11_17-17-55-renomeacao-sequencial-slides.md) | Numeração dos arquivos em slides/ alinhada com a ordem em slides.md |
 
 ## Apresentacao
 
@@ -126,4 +127,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 11/03/2026 16:39*
+*Atualizado em: 11/03/2026 17:17*

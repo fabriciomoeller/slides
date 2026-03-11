@@ -46,14 +46,14 @@ transition: slide-left
     <div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-cyan-500/8 border border-solid border-cyan-500/15">
       <span class="i-carbon-bare-metal-server-02 text-cyan-400 text-base inline-block shrink-0"></span>
       <div>
-        <span class="text-cyan-300 font-600 text-[11px]">EME4</span>
+        <span class="text-cyan-300 font-600 text-[11px]">EME4 / BRC /Previva</span>
         <span class="text-[9px] text-slate-400 ml-2">Sistema destino — não sabe que existe middleware</span>
       </div>
     </div>
     <div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-cyan-500/8 border border-solid border-cyan-500/15">
       <span class="i-carbon-chart-network text-cyan-400 text-base inline-block shrink-0"></span>
       <div>
-        <span class="text-cyan-300 font-600 text-[11px]">N8N / Gesti / Sistema Y</span>
+        <span class="text-cyan-300 font-600 text-[11px]">N8N / Gesti / Service</span>
         <span class="text-[9px] text-slate-400 ml-2">Outros destinos — o middleware conecta qualquer um</span>
       </div>
     </div>

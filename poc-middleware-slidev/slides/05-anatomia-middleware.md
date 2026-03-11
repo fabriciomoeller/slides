@@ -56,7 +56,7 @@ transition: slide-left
     <div class="text-[10px] text-slate-300"><span class="i-ph-shuffle-fill inline-block text-fuchsia-400 mr-1"></span> Transformação DE→PARA (XML↔JSON)</div>
     <div class="text-[10px] text-slate-300"><span class="i-ph-plugs-connected-fill inline-block text-fuchsia-400 mr-1"></span> Chamadas ao sistema destino</div>
     <div class="text-[10px] text-slate-300"><span class="i-ph-copy-fill inline-block text-fuchsia-400 mr-1"></span> Escalável: 1, 5 ou 50 instâncias</div>
-    <div class="text-[10px] text-slate-300"><span class="i-ph-wrench-fill inline-block text-fuchsia-400 mr-1"></span> Go, Python, N8N... qualquer tech</div>
+    <div class="text-[10px] text-slate-300"><span class="i-ph-wrench-fill inline-block text-fuchsia-400 mr-1"></span> Go, Python, C#, N8N, RPA... qualquer tech</div>
   </div>
   <div class="mt-3 pt-2 border-t border-solid border-fuchsia-500/20 text-[9px] text-slate-500">
     <span class="i-ph-arrow-bend-down-right-fill inline-block text-fuchsia-400 mr-1"></span> Consome da fila, entrega no destino
