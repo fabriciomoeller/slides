@@ -60,6 +60,14 @@ src: ./slides/03-modelo-novo.md
 ---
 
 ---
+src: ./slides/05-analogia-comparacao.md
+---
+
+---
+src: ./slides/06b-anatomia-middleware.md
+---
+
+---
 src: ./slides/03b-glossario-visual.md
 ---
 
@@ -68,23 +76,15 @@ src: ./slides/04-cenarios.md
 ---
 
 ---
-src: ./slides/05-analogia-comparacao.md
----
-
----
-src: ./slides/06-visao-estrategica.md
----
-
----
-src: ./slides/06b-anatomia-middleware.md
----
-
----
 src: ./slides/06c-n8n-no-ecossistema.md
 ---
 
 ---
 src: ./slides/07-tecnologias.md
+---
+
+---
+src: ./slides/06-visao-estrategica.md
 ---
 
 ---
