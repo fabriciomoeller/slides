@@ -14,21 +14,21 @@ const color = ref('cyan')
 const style = ref({})
 
 const colorBorders = {
-  cyan: '1px solid rgba(6, 182, 212, 0.5)',
-  fuchsia: '1px solid rgba(217, 70, 239, 0.5)',
-  pink: '1px solid rgba(236, 72, 153, 0.5)',
-  blue: '1px solid rgba(59, 130, 246, 0.5)',
-  violet: '1px solid rgba(139, 92, 246, 0.5)',
-  purple: '1px solid rgba(139, 92, 246, 0.5)',
+  cyan: '1px solid rgba(6, 182, 212, 0.6)',
+  fuchsia: '1px solid rgba(217, 70, 239, 0.6)',
+  pink: '1px solid rgba(236, 72, 153, 0.6)',
+  blue: '1px solid rgba(59, 130, 246, 0.6)',
+  violet: '1px solid rgba(139, 92, 246, 0.6)',
+  purple: '1px solid rgba(139, 92, 246, 0.6)',
 }
 
 const colorArrows = {
-  cyan: 'rgba(6, 182, 212, 0.5)',
-  fuchsia: 'rgba(217, 70, 239, 0.5)',
-  pink: 'rgba(236, 72, 153, 0.5)',
-  blue: 'rgba(59, 130, 246, 0.5)',
-  violet: 'rgba(139, 92, 246, 0.5)',
-  purple: 'rgba(139, 92, 246, 0.5)',
+  cyan: 'rgba(6, 182, 212, 0.6)',
+  fuchsia: 'rgba(217, 70, 239, 0.6)',
+  pink: 'rgba(236, 72, 153, 0.6)',
+  blue: 'rgba(59, 130, 246, 0.6)',
+  violet: 'rgba(139, 92, 246, 0.6)',
+  purple: 'rgba(139, 92, 246, 0.6)',
 }
 
 const tipRef = ref(null)

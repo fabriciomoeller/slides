@@ -11,14 +11,14 @@ transition: slide-left
 
 <div class="grid grid-cols-2 gap-8 w-full max-w-3xl">
   <div class="mode-card mode-card-cyan">
-    <div class="mode-number bg-cyan-500/15 text-cyan-400"><span class="i-ph-arrow-right-bold inline-block text-[1.2em]"></span></div>
-    <div class="mode-title text-cyan-300">Passagem Direta</div>
+    <div class="mode-number bg-cyan-500/15 text-cyan-600 dark:text-cyan-400"><span class="i-ph-arrow-right-bold inline-block text-[1.2em]"></span></div>
+    <div class="mode-title text-cyan-700 dark:text-cyan-300">Passagem Direta</div>
     <div class="mode-desc">Sem tradutor. Sem fila.<br>Direto e rápido.</div>
     <div class="mode-use">IA, Dashboards, Consultas</div>
   </div>
   <div class="mode-card mode-card-fuchsia">
     <div class="mode-number"><span class="i-ph-arrows-clockwise-bold inline-block text-[1.2em]"></span></div>
-    <div class="mode-title text-fuchsia-300">Com Tradutor</div>
+    <div class="mode-title text-fuchsia-700 dark:text-fuchsia-300">Com Tradutor</div>
     <div class="mode-desc">Fila NATS + Worker<br>Tradução DE-PARA + Garantia de entrega</div>
     <div class="mode-use">Ex: ERP → EME4 (com tradução)</div>
   </div>
@@ -39,7 +39,7 @@ transition: slide-left
 transition: slide-left
 ---
 
-# <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-400 align-middle"></span> Com Tradutor (Worker)
+# <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-600 dark:text-fuchsia-400 align-middle"></span> Com Tradutor (Worker)
 
 <div class="gradient-subtitle text-[0.9rem]">Quando há trabalho real — tradução, orquestração, garantia de entrega</div>
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
@@ -105,28 +105,28 @@ transition: slide-left
 </div>
 
 <div class="flex flex-col gap-2 max-w-750px mx-auto">
-<div v-click="1" class="step-item-sm text-[0.60em] border-l-blue-500 text-blue-300">
-  <div class="num-badge w-24px h-24px bg-blue-500/20">1</div>
+<div v-click="1" class="step-item-sm text-[0.60em] border-l-blue-500 text-blue-700 dark:text-blue-300">
+  <div class="num-badge w-24px h-24px bg-blue-500/20 text-blue-600 dark:text-blue-400">1</div>
   <div>Sistema externo envia os dados para o APIGATEWAY Kong/APISIX</div>
 </div>
-<div v-click="2" class="step-item-sm text-[0.60em] border-l-violet-500 text-violet-300">
-  <div class="num-badge w-24px h-24px bg-violet-500/20 text-purple-300">2</div>
+<div v-click="2" class="step-item-sm text-[0.60em] border-l-violet-500 text-violet-700 dark:text-violet-300">
+  <div class="num-badge w-24px h-24px bg-violet-500/20 text-purple-600 dark:text-purple-300">2</div>
   <div>Kong/APISIX autentica e coloca a mensagem na fila (NATS JetStream)</div>
 </div>
-<div v-click="3" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-300 font-600">
-  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-400">3</div>
+<div v-click="3" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300 font-600">
+  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">3</div>
   Sistema origem recebe "Recebido!" (202 Accepted) e segue em frente.<br> Desacoplamento total para enviar outras mensagens
 </div>
-<div v-click="4" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-300">
-  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-400">4</div>
+<div v-click="4" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-700 dark:text-fuchsia-300">
+  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-600 dark:text-fuchsia-400">4</div>
   <div>Worker pega da fila e traduz campos (DE-PARA: SG1 → ListaMateriaisProduto)</div>
 </div>
-<div v-click="5" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-300">
-  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-400">5</div>
+<div v-click="5" class="step-item-sm text-[0.60em] border-l-fuchsia-500 text-fuchsia-700 dark:text-fuchsia-300">
+  <div class="num-badge w-24px h-24px bg-fuchsia-500/20 text-fuchsia-600 dark:text-fuchsia-400">5</div>
   <div>Load Balancer escolhe a melhor instância do EME4 (menos ocupada)</div>
 </div>
-<div v-click="6" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-300">
-  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-400">6</div>
+<div v-click="6" class="step-item-sm text-[0.60em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300">
+  <div class="num-badge w-24px h-24px bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">6</div>
   <div>Se der erro → Worker devolve à fila (<strong>Nak</strong>) → NATS retenta com backoff exponencial</div>
 </div>
 </div>

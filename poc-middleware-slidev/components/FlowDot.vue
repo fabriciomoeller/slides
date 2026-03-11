@@ -14,6 +14,7 @@
 -->
 <script setup>
 import { computed } from 'vue'
+import { useDark } from '@vueuse/core'
 
 const props = defineProps({
   d: { type: String, required: true },
@@ -24,27 +25,23 @@ const props = defineProps({
   r: { type: Number, default: 4 },
 })
 
-const fillMap = {
-  cyan: '#22d3ee',
-  fuchsia: '#e879f9',
-  pink: '#f472b6',
-  blue: '#60a5fa',
-  purple: '#c4b5fd',
-}
+const isDark = useDark()
 
-const shadowMap = {
-  cyan: '#06b6d4',
-  fuchsia: '#d946ef',
-  pink: '#ec4899',
-  blue: '#3b82f6',
-  purple: '#8b5cf6',
-}
+const fillMap = computed(() => isDark.value
+  ? { cyan: '#22d3ee', fuchsia: '#e879f9', pink: '#f472b6', blue: '#60a5fa', purple: '#c4b5fd' }
+  : { cyan: '#0891b2', fuchsia: '#c026d3', pink: '#a21caf', blue: '#2563eb', purple: '#7c3aed' }
+)
+
+const shadowMap = computed(() => isDark.value
+  ? { cyan: '#06b6d4', fuchsia: '#d946ef', pink: '#ec4899', blue: '#3b82f6', purple: '#8b5cf6' }
+  : { cyan: '#0e7490', fuchsia: '#a21caf', pink: '#86198f', blue: '#1d4ed8', purple: '#6d28d9' }
+)
 
 const dotStyle = computed(() => ({
   offsetPath: `path('${props.d}')`,
   offsetRotate: '0deg',
   animation: `followPath ${props.duration}s ease-in-out ${props.delay}s ${props.loop ? 'infinite' : '1 forwards'}`,
-  filter: `drop-shadow(0 0 4px ${shadowMap[props.color]})`,
+  filter: `drop-shadow(0 0 4px ${shadowMap.value[props.color]})`,
 }))
 </script>
 

@@ -2,6 +2,75 @@
    GLOBAL STYLES - POC Middleware Slidev
    ══════════════════════════════════════════════════════ */
 
+/* ── Light / Dark custom properties ── */
+:root {
+  --card-bg: #ffffff;
+  --card-border: rgba(148, 163, 184, 0.18);
+  --card-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --accent-bar-bg: #f8fafc;
+  --hint-bg: #ffffff;
+  --hint-text: #334155;
+  --hint-strong: #0f172a;
+  --hint-shadow: rgba(0, 0, 0, 0.12);
+  --subtitle-color: #475569;
+  --badge-text-blue: #2563eb;
+  --badge-text-purple: #7c3aed;
+  --badge-text-cyan: #0891b2;
+  --tl-line: #cbd5e1;
+  --tb-blue-t: #2563eb;
+  --tb-purple-t: #7c3aed;
+  --tb-cyan-t: #0891b2;
+  --fill-blue: #2563eb;
+  --shadow-blue: #1d4ed8;
+  --fill-cyan: #0891b2;
+  --shadow-cyan: #0e7490;
+  --fill-purple: #7c3aed;
+  --shadow-purple: #6d28d9;
+  --fill-fuchsia: #c026d3;
+  --shadow-fuchsia: #a21caf;
+  --fill-pink: #a21caf;
+  --shadow-pink: #86198f;
+  --stroke-slate: #475569;
+  --pink-accent: #d946ef;
+  --pink-accent-rgb: 217, 70, 239;
+  --line-opacity: 0.5;
+  --label-opacity: 0.6;
+}
+
+.dark {
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --card-border: rgba(148, 163, 184, 0.12);
+  --card-shadow: none;
+  --accent-bar-bg: rgba(30, 41, 59, 0.5);
+  --hint-bg: #0f172a;
+  --hint-text: #cbd5e1;
+  --hint-strong: #f1f5f9;
+  --hint-shadow: rgba(0, 0, 0, 0.8);
+  --subtitle-color: #94a3b8;
+  --badge-text-blue: #60a5fa;
+  --badge-text-purple: #a78bfa;
+  --badge-text-cyan: #22d3ee;
+  --tl-line: #334155;
+  --tb-blue-t: #60a5fa;
+  --tb-purple-t: #a78bfa;
+  --tb-cyan-t: #22d3ee;
+  --fill-blue: #60a5fa;
+  --shadow-blue: #3b82f6;
+  --fill-cyan: #22d3ee;
+  --shadow-cyan: #06b6d4;
+  --fill-purple: #c4b5fd;
+  --shadow-purple: #8b5cf6;
+  --fill-fuchsia: #e879f9;
+  --shadow-fuchsia: #d946ef;
+  --fill-pink: #f472b6;
+  --shadow-pink: #ec4899;
+  --stroke-slate: #64748b;
+  --pink-accent: #ec4899;
+  --pink-accent-rgb: 236, 72, 153;
+  --line-opacity: 0.4;
+  --label-opacity: 0.5;
+}
+
 /* ── Decorative backgrounds ── */
 .slide-bg {
   position: absolute;
@@ -9,11 +78,6 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-}
-.slide-bg svg {
-  filter: none !important;
-  -webkit-filter: none !important;
-  color-scheme: none !important;
 }
 
 /* ── Company badge ── */
@@ -29,7 +93,7 @@
   border: 1px solid rgba(59, 130, 246, 0.2);
   font-size: 14px;
   font-weight: 600;
-  color: #60a5fa;
+  color: var(--badge-text-blue);
   letter-spacing: 2px;
   margin-bottom: 12px;
 }
@@ -38,7 +102,7 @@
 .gradient-subtitle {
   font-size: 1.4em;
   font-weight: 400;
-  color: #94a3b8;
+  color: var(--subtitle-color);
   margin-top: -8px;
 }
 .gradient-divider {
@@ -66,15 +130,15 @@
 }
 .tech-badge-blue {
   --tb: 59 130 246;
-  --tb-t: #60a5fa;
+  --tb-t: var(--tb-blue-t);
 }
 .tech-badge-purple {
   --tb: 139 92 246;
-  --tb-t: #a78bfa;
+  --tb-t: var(--tb-purple-t);
 }
 .tech-badge-cyan {
   --tb: 6 182 212;
-  --tb-t: #22d3ee;
+  --tb-t: var(--tb-cyan-t);
 }
 [class*="tech-badge-"] {
   background: rgb(var(--tb) / 0.1);
@@ -93,7 +157,7 @@
   padding: 4px 14px;
   border-radius: 6px;
   border-left: 3px solid;
-  background: rgba(30, 41, 59, 0.5);
+  background: var(--accent-bar-bg);
 }
 .accent-bar-blue {
   border-left-color: #3b82f6;
@@ -108,17 +172,18 @@
   border-left-color: #8b5cf6;
 }
 .accent-bar-pink {
-  border-left-color: #ec4899;
+  border-left-color: var(--pink-accent);
 }
 
 /* ══════════════════════════════════════════════════════
    INFO CARDS (shared across multiple slides)
    ══════════════════════════════════════════════════════ */
 .info-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 .info-card-cyan {
   border-color: rgba(6, 182, 212, 0.25);
@@ -130,7 +195,7 @@
   border-color: rgba(59, 130, 246, 0.25);
 }
 .info-card-pink {
-  border-color: rgba(236, 72, 153, 0.25);
+  border-color: rgba(var(--pink-accent-rgb) / 0.25);
 }
 
 .card-header {
@@ -163,12 +228,14 @@
   }
 }
 .result-bad {
-  background: rgba(236, 72, 153, 0.12);
-  border: 1px solid rgba(236, 72, 153, 0.2);
+  background: rgba(var(--pink-accent-rgb) / 0.12);
+  border: 1px solid rgba(var(--pink-accent-rgb) / 0.2);
+  box-shadow: var(--card-shadow);
 }
 .result-good {
   background: rgba(6, 182, 212, 0.12);
   border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: var(--card-shadow);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -177,9 +244,10 @@
 .stat-card {
   text-align: center;
   padding: 14px 20px;
-  background: rgba(30, 41, 59, 0.7);
+  background: var(--card-bg);
   border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   min-width: 150px;
   transition:
     transform 0.3s,
@@ -207,7 +275,7 @@
 }
 .stat-label {
   font-size: 0.7em;
-  opacity: 0.5;
+  opacity: var(--label-opacity);
   margin-top: 4px;
   line-height: 1.3;
 }
@@ -222,14 +290,14 @@
   fill: none;
   stroke-width: 1.5;
   stroke-dasharray: 6, 4;
-  opacity: 0.4;
+  opacity: var(--line-opacity);
   animation: dashFlowIn 1s linear infinite;
 }
 .svg-line-return {
   fill: none;
   stroke-width: 1.5;
   stroke-dasharray: 6, 4;
-  opacity: 0.4;
+  opacity: var(--line-opacity);
   animation: dashFlowReturn 1s linear infinite;
 }
 
@@ -247,10 +315,10 @@
   stroke: #d946ef;
 }
 .svg-stroke-pink {
-  stroke: #ec4899;
+  stroke: var(--pink-accent);
 }
 .svg-stroke-slate {
-  stroke: #64748b;
+  stroke: var(--stroke-slate);
 }
 
 /* ── Dots (base) ── */
@@ -261,24 +329,24 @@
 
 /* ── Fill+Color (for dots) ── */
 .svg-fill-blue {
-  fill: #60a5fa;
-  color: #3b82f6;
+  fill: var(--fill-blue);
+  color: var(--shadow-blue);
 }
 .svg-fill-purple {
-  fill: #c4b5fd;
-  color: #8b5cf6;
+  fill: var(--fill-purple);
+  color: var(--shadow-purple);
 }
 .svg-fill-cyan {
-  fill: #22d3ee;
-  color: #06b6d4;
+  fill: var(--fill-cyan);
+  color: var(--shadow-cyan);
 }
 .svg-fill-fuchsia {
-  fill: #e879f9;
-  color: #d946ef;
+  fill: var(--fill-fuchsia);
+  color: var(--shadow-fuchsia);
 }
 .svg-fill-pink {
-  fill: #f472b6;
-  color: #ec4899;
+  fill: var(--fill-pink);
+  color: var(--shadow-pink);
 }
 
 /* ── Dash flow keyframes ── */
@@ -412,8 +480,8 @@
   max-width: 280px;
   padding: 10px 14px;
   border-radius: 10px;
-  background: #0f172a;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  background: var(--hint-bg);
+  box-shadow: 0 8px 32px var(--hint-shadow);
   pointer-events: none;
   z-index: 9999;
   animation: flowHintIn 0.15s ease-out both;
@@ -432,12 +500,12 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.55;
-  color: #cbd5e1;
+  color: var(--hint-text);
   text-align: left;
   white-space: normal;
 }
 .flow-hint-body strong {
-  color: #f1f5f9;
+  color: var(--hint-strong);
   font-weight: 700;
 }
 .flow-hint-arrow {
@@ -460,6 +528,7 @@
   padding: 28px;
   text-align: center;
   border: 1px solid;
+  box-shadow: var(--card-shadow);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
@@ -516,7 +585,8 @@
   padding: 8px 16px;
   text-align: center;
   margin-top: 6px;
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
 }
 
 /* ══════════════════════════════════════════════════════
@@ -526,10 +596,11 @@
   border-radius: 14px;
   padding: 20px;
   border: 1px solid;
+  box-shadow: var(--card-shadow);
 }
 .comp-panel-pink {
-  background: rgba(236, 72, 153, 0.1);
-  border-color: rgba(236, 72, 153, 0.2);
+  background: rgba(var(--pink-accent-rgb) / 0.1);
+  border-color: rgba(var(--pink-accent-rgb) / 0.2);
 }
 .comp-panel-cyan {
   background: rgba(6, 182, 212, 0.1);
@@ -556,7 +627,7 @@
   left: 5%;
   right: 5%;
   height: 3px;
-  background: #334155;
+  background: var(--tl-line);
 }
 .ve-tl-phases {
   display: flex;
@@ -625,6 +696,7 @@
   padding: 22px;
   text-align: center;
   border: 1px solid;
+  box-shadow: var(--card-shadow);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
@@ -771,12 +843,24 @@
 
 /* ── Message queue bars: accumulate & drain (FlowMsgStack) ── */
 @keyframes msgBarIn {
-  from { opacity: 0; transform: translateX(-18px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes msgBarOut {
-  from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(30px); }
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
 }
 .msg-bar-in {
   animation: msgBarIn 0.45s ease-out both;

@@ -75,6 +75,7 @@ docs/
 | 11/03/2026 | [Reorganização da Ordem dos Slides](documentacao/2026-03-11_11-58-05-reorganizacao-ordem-slides.md) | Reordenação dos slides para fluidez narrativa: analogia antes dos cenários, visão após métricas |
 | 11/03/2026 | [Componente FlowMsgStack — Pilha Visual de Mensagens](documentacao/2026-03-11_16-39-17-componente-flowmsgstack-pilha-mensagens.md) | Componente Vue reutilizável com barras animadas dentro do FlowNode NATS, slots #left/#right |
 | 11/03/2026 | [Renomeação Sequencial dos Arquivos de Slides](documentacao/2026-03-11_17-17-55-renomeacao-sequencial-slides.md) | Numeração dos arquivos em slides/ alinhada com a ordem em slides.md |
+| 11/03/2026 | [Suporte a Light Mode no Slidev](documentacao/2026-03-11_19-36-32-suporte-light-mode-slidev.md) | CSS custom properties, componentes Vue reativos, pastéis sólidos, pink→fuchsia para daltonismo |
 
 ## Apresentacao
 
@@ -127,4 +128,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 11/03/2026 17:17*
+*Atualizado em: 11/03/2026 19:36*

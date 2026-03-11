@@ -25,12 +25,12 @@ const props = defineProps({
 })
 
 const colorTextMap = {
-  cyan: 'text-cyan-400',
-  fuchsia: 'text-fuchsia-400',
-  pink: 'text-pink-400',
-  blue: 'text-blue-400',
-  purple: 'text-purple-400',
-  slate: 'text-slate-400',
+  cyan: 'text-cyan-600 dark:text-cyan-400',
+  fuchsia: 'text-fuchsia-600 dark:text-fuchsia-400',
+  pink: 'text-fuchsia-700 dark:text-pink-400',
+  blue: 'text-blue-600 dark:text-blue-400',
+  purple: 'text-purple-600 dark:text-purple-400',
+  slate: 'text-slate-500 dark:text-slate-400',
 }
 
 const borderMap = {

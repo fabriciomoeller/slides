@@ -50,16 +50,16 @@ transition: fade
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400"><span class="i-svg-spinners-pulse-3 inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400"><span class="i-svg-spinners-pulse-3 inline-block"></span></div>
   <div>Ambos EME4 <strong>online</strong> — NATS entrega mensagens ao Worker</div>
 </div>
-<div v-click="1" class="step-item-sm text-[0.58em] border-l-fuchsia-500 text-fuchsia-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-fuchsia-500/20 text-fuchsia-400">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-fuchsia-500 text-fuchsia-700 dark:text-fuchsia-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-fuchsia-500/20 text-fuchsia-600 dark:text-fuchsia-400">1</div>
   <div>Load Balancer <strong>distribui</strong> entre EME4 1 e EME4 2 (Round Robin / Health Check)</div>
 </div>
-<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300 font-600">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">2</div>
+<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300 font-600">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">2</div>
   <div><strong>Sucesso</strong> — EME4 responde OK → Worker faz <strong>Ack</strong> → mensagem removida da fila</div>
 </div>
 </div>
@@ -82,7 +82,7 @@ transition: fade
 
 <ScenarioFlow>
   <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff">
-    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="1" :drain-at="1" /></template>
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="0" :drain-at="1" /></template>
   </FlowNode>
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
   <FlowNode v-click.hide="1" label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
@@ -135,12 +135,12 @@ transition: fade
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400"><span class="i-ph-check-circle-fill inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400"><span class="i-ph-check-circle-fill inline-block"></span></div>
   <div>LB distribui entre ambos EME4 com <strong>sucesso</strong> (igual cenário anterior)</div>
 </div>
-<div v-click="1" class="step-item-sm text-[0.58em] border-l-pink-500 text-pink-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-pink-500/20 text-pink-400">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-fuchsia-500 text-fuchsia-800 dark:text-pink-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-fuchsia-500/20 text-fuchsia-700 dark:text-pink-400">1</div>
   <div>EME4 1 <strong>erro 500</strong> → Worker faz <strong>Nak</strong> → mensagem volta para a fila NATS</div>
 </div>
 </div>
@@ -209,27 +209,27 @@ transition: slide-up
 </ScenarioFlow>
 
 <div class="flex flex-col gap-2 max-w-580px mx-auto">
-<div class="step-item-sm text-[0.58em] border-l-pink-500 text-pink-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-pink-500/20 text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
+<div class="step-item-sm text-[0.58em] border-l-fuchsia-500 text-fuchsia-800 dark:text-pink-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-fuchsia-500/20 text-fuchsia-700 dark:text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
   <div><strong>Ambos</strong> EME4 1 e EME4 2 estão fora — LB não tem para onde mandar</div>
 </div>
-<div v-click="1" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">1</div>
+<div v-click="1" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">1</div>
   <div>Mensagem <strong>não se perde</strong> — NATS persiste em disco. Backoff: 5s → 30s → 2min...</div>
 </div>
-<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">2</div>
+<div v-click="2" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">2</div>
   <div>Minutos depois, <strong>EME4 2 é reiniciado</strong> e volta ao ar</div>
 </div>
-<div v-click="3" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-300 font-600">
-  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-400">3</div>
+<div v-click="3" class="step-item-sm text-[0.58em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300 font-600">
+  <div class="num-badge w-22px h-22px text-[10px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">3</div>
   <div><strong>Nenhuma mensagem se perdeu</strong> — EME4 2 responde sucesso → Worker faz Ack</div>
 </div>
 </div>
 
 <div v-click="4" class="text-center mt-4 py-3 px-6 rounded-12px border-1.5 border-solid border-cyan-500/30 bg-cyan-500/8 max-w-400px mx-auto" v-motion :initial="{opacity:0, scale:0.9}" :enter="{opacity:1, scale:1, transition:{delay:300}}">
-  <div class="text-[13px] font-700 text-white"><span class="i-ph-shield-check-fill text-cyan-400 inline-block mr-4px"></span> LB + Retry = Zero mensagens perdidas</div>
-  <div class="text-[10px] text-slate-400 mt-1">LB previne · Retry recupera · Fila persiste</div>
+  <div class="text-[13px] font-700 text-slate-900 dark:text-white"><span class="i-ph-shield-check-fill text-cyan-600 dark:text-cyan-400 inline-block mr-4px"></span> LB + Retry = Zero mensagens perdidas</div>
+  <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">LB previne · Retry recupera · Fila persiste</div>
 </div>
 
 <!--

@@ -33,8 +33,8 @@ transition: slide-up
 </ScenarioFlow>
 
 <div class="flex flex-col gap-1 max-w-580px mx-auto">
-<div class="step-item-xs text-[0.52em] border-l-pink-500 text-pink-300">
-  <div class="num-badge w-18px h-18px text-[9px] bg-pink-500/20 text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
+<div class="step-item-xs text-[0.52em] border-l-fuchsia-500 text-fuchsia-800 dark:text-pink-300">
+  <div class="num-badge w-18px h-18px text-[9px] bg-fuchsia-500/20 text-fuchsia-700 dark:text-pink-400"><span class="i-ph-x-circle-fill inline-block"></span></div>
   <div><strong>Modelo Atual:</strong> cliente vai direto ao cozinheiro — espera, bloqueio, ponto único de falha</div>
 </div>
 </div>
@@ -92,12 +92,12 @@ transition: slide-up
 </ScenarioFlow>
 
 <div class="flex flex-col gap-1 max-w-580px mx-auto">
-<div v-click="3" class="step-item-xs text-[0.52em] border-l-fuchsia-500 text-fuchsia-300">
-  <div class="num-badge w-18px h-18px text-[9px] bg-fuchsia-500/20 text-fuchsia-400">1</div>
+<div v-click="3" class="step-item-xs text-[0.52em] border-l-fuchsia-500 text-fuchsia-700 dark:text-fuchsia-300">
+  <div class="num-badge w-18px h-18px text-[9px] bg-fuchsia-500/20 text-fuchsia-600 dark:text-fuchsia-400">1</div>
   <div><strong>Cliente</strong> pede → <strong>Garçom</strong> anota e coloca na comanda (fila) — cliente não espera</div>
 </div>
-<div v-click="5" class="step-item-xs text-[0.52em] border-l-cyan-500 text-cyan-300 font-600">
-  <div class="num-badge w-18px h-18px text-[9px] bg-cyan-500/20 text-cyan-400">2</div>
+<div v-click="5" class="step-item-xs text-[0.52em] border-l-cyan-500 text-cyan-700 dark:text-cyan-300 font-600">
+  <div class="num-badge w-18px h-18px text-[9px] bg-cyan-500/20 text-cyan-600 dark:text-cyan-400">2</div>
   <div><strong>Cozinheiro</strong> pega a comanda e prepara — nenhum pedido se perde</div>
 </div>
 </div>
@@ -123,7 +123,7 @@ transition: slide-up
 <div class="gradient-divider mx-auto mt-2 mb-2"></div>
 
 <div class="accent-bar accent-bar-cyan mt-1">
-  <span class="i-ph-arrow-right-bold inline-block text-cyan-400 align-middle"></span> Passagem direta — sem fila, sem tradutor, rápido
+  <span class="i-ph-arrow-right-bold inline-block text-cyan-600 dark:text-cyan-400 align-middle"></span> Passagem direta — sem fila, sem tradutor, rápido
 </div>
 
 <ScenarioFlow>
@@ -150,7 +150,7 @@ transition: slide-up
 </ScenarioFlow>
 
 <div v-click="1" class="accent-bar accent-bar-fuchsia mt-0">
-  <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-400 align-middle"></span> Com Worker — fila + tradução + retry automático
+  <span class="i-ph-arrows-clockwise-bold inline-block text-fuchsia-600 dark:text-fuchsia-400 align-middle"></span> Com Worker — fila + tradução + retry automático
 </div>
 
 <ScenarioFlow v-click="1">
@@ -181,11 +181,11 @@ transition: slide-up
 
 <v-click>
 <div class="flex justify-center gap-2 mt-1" v-motion :initial="{opacity:0, y:10}" :enter="{opacity:1, y:0, transition:{delay:300}}">
-  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[9px] font-700"><span class="i-ph-lightning-fill inline-block mr-2px"></span> Load Balancing</div><div class="text-[7px] text-slate-400">Distribui carga</div></div>
-  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-purple-500/20"><div class="text-purple-400 text-[9px] font-700"><span class="i-ph-shield-check-fill inline-block mr-2px"></span> Failover</div><div class="text-[7px] text-slate-400">Servidor cai, outro assume</div></div>
-  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-blue-500/20"><div class="text-blue-400 text-[9px] font-700"><span class="i-ph-lock-key-fill inline-block mr-2px"></span> Auth Centralizada</div><div class="text-[7px] text-slate-400">Uma porta de entrada</div></div>
-  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-400 text-[9px] font-700"><span class="i-ph-chart-line-up-fill inline-block mr-2px"></span> Rastreabilidade</div><div class="text-[7px] text-slate-400">Tudo registrado</div></div>
-  <div class="text-center px-2 py-1 rounded-8px bg-slate-800/40 border border-fuchsia-500/20"><div class="text-fuchsia-400 text-[9px] font-700"><span class="i-ph-heartbeat-fill inline-block mr-2px"></span> Resiliência</div><div class="text-[7px] text-slate-400">Nenhum dado se perde</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-white shadow-sm dark:shadow-none dark:bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-600 dark:text-cyan-400 text-[9px] font-700"><span class="i-ph-lightning-fill inline-block mr-2px"></span> Load Balancing</div><div class="text-[7px] text-slate-500 dark:text-slate-400">Distribui carga</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-white shadow-sm dark:shadow-none dark:bg-slate-800/40 border border-purple-500/20"><div class="text-purple-600 dark:text-purple-400 text-[9px] font-700"><span class="i-ph-shield-check-fill inline-block mr-2px"></span> Failover</div><div class="text-[7px] text-slate-500 dark:text-slate-400">Servidor cai, outro assume</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-white shadow-sm dark:shadow-none dark:bg-slate-800/40 border border-blue-500/20"><div class="text-blue-600 dark:text-blue-400 text-[9px] font-700"><span class="i-ph-lock-key-fill inline-block mr-2px"></span> Auth Centralizada</div><div class="text-[7px] text-slate-500 dark:text-slate-400">Uma porta de entrada</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-white shadow-sm dark:shadow-none dark:bg-slate-800/40 border border-cyan-500/20"><div class="text-cyan-600 dark:text-cyan-400 text-[9px] font-700"><span class="i-ph-chart-line-up-fill inline-block mr-2px"></span> Rastreabilidade</div><div class="text-[7px] text-slate-500 dark:text-slate-400">Tudo registrado</div></div>
+  <div class="text-center px-2 py-1 rounded-8px bg-white shadow-sm dark:shadow-none dark:bg-slate-800/40 border border-fuchsia-500/20"><div class="text-fuchsia-600 dark:text-fuchsia-400 text-[9px] font-700"><span class="i-ph-heartbeat-fill inline-block mr-2px"></span> Resiliência</div><div class="text-[7px] text-slate-500 dark:text-slate-400">Nenhum dado se perde</div></div>
 </div>
 </v-click>
 
@@ -208,7 +208,7 @@ transition: slide-up
 <div class="grid grid-cols-2 gap-6 mt-4">
 
 <div v-click class="comp-panel comp-panel-pink">
-<div class="comp-title text-pink-400">Modelo Atual (Direto)</div>
+<div class="comp-title text-fuchsia-700 dark:text-pink-400">Modelo Atual (Direto)</div>
 
 <v-clicks>
 
@@ -224,7 +224,7 @@ transition: slide-up
 </div>
 
 <div v-click="1" class="comp-panel comp-panel-cyan">
-<div class="comp-title text-cyan-400">Modelo Novo (Middleware)</div>
+<div class="comp-title text-cyan-600 dark:text-cyan-400">Modelo Novo (Middleware)</div>
 
 <v-clicks at="2">
 
@@ -240,7 +240,7 @@ transition: slide-up
 </div>
 </div>
 
-<div v-click class="mt-4 p-3 rounded-xl text-center text-sm result-good text-cyan-300">
+<div v-click class="mt-4 p-3 rounded-xl text-center text-sm result-good text-cyan-700 dark:text-cyan-300">
   Nenhum dado se perde. Se um cai, o outro continua. Cada sistema evolui independentemente.
 </div>
 

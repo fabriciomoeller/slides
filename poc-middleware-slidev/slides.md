@@ -9,7 +9,7 @@ class: text-center
 drawings:
   persist: false
 transition: slide-left
-colorSchema: dark
+colorSchema: auto
 exportFilename: POC-Middleware-EME4
 fonts:
   sans: Nunito Sans

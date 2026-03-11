@@ -37,12 +37,12 @@ const props = defineProps({
 });
 
 const colorMap = {
-  cyan: "bg-cyan-500/12 border-cyan-500/40 text-cyan-400",
-  fuchsia: "bg-fuchsia-500/12 border-fuchsia-500/40 text-fuchsia-400",
-  pink: "bg-pink-500/15 border-pink-500/50 text-pink-400",
-  blue: "bg-blue-500/12 border-blue-500/40 text-blue-400",
-  violet: "bg-violet-500/12 border-violet-500/40 text-violet-400",
-  purple: "bg-purple-500/12 border-purple-500/40 text-purple-400",
+  cyan: "bg-cyan-50 dark:bg-cyan-500/12 border-cyan-300 dark:border-cyan-500/40 text-cyan-700 dark:text-cyan-400",
+  fuchsia: "bg-fuchsia-50 dark:bg-fuchsia-500/12 border-fuchsia-300 dark:border-fuchsia-500/40 text-fuchsia-700 dark:text-fuchsia-400",
+  pink: "bg-fuchsia-50 dark:bg-pink-500/15 border-fuchsia-300 dark:border-pink-500/50 text-fuchsia-800 dark:text-pink-400",
+  blue: "bg-blue-50 dark:bg-blue-500/12 border-blue-300 dark:border-blue-500/40 text-blue-700 dark:text-blue-400",
+  violet: "bg-violet-50 dark:bg-violet-500/12 border-violet-300 dark:border-violet-500/40 text-violet-700 dark:text-violet-400",
+  purple: "bg-purple-50 dark:bg-purple-500/12 border-purple-300 dark:border-purple-500/40 text-purple-700 dark:text-purple-400",
 };
 
 const positionMap = {
@@ -97,7 +97,7 @@ const sizeClass =
     <span v-if="sub" class="anim-sub">
       <span
         v-if="subIcon"
-        :class="[subIcon, `text-${color}-400`, 'text-[7px] inline-block']"
+        :class="[subIcon, `text-${color}-700`, `dark:text-${color}-400`, 'text-[7px] inline-block']"
       ></span>
       {{ sub }}
     </span>
