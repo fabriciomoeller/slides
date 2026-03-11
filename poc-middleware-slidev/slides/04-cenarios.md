@@ -8,7 +8,9 @@ transition: fade
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff">
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="0" :drain-at="2" /></template>
+  </FlowNode>
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
   <FlowNode label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
@@ -79,7 +81,9 @@ transition: fade
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff">
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="1" :drain-at="1" /></template>
+  </FlowNode>
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
   <FlowNode v-click.hide="1" label="EME4 1" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-top" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="eme4-bottom" sub=" online" subIcon="i-svg-spinners-pulse-3" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
@@ -159,7 +163,9 @@ transition: slide-up
 <div class="gradient-divider mx-auto mt-2 mb-4"></div>
 
 <ScenarioFlow>
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Resiliência Total</strong><br>Mensagens persistidas em disco<br>Não se perdem mesmo com tudo fora<br>Backoff: 5s → 30s → 2min..." />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="nats" sub="fila" persist hint="<strong>Message Broker — Resiliência Total</strong><br>Mensagens persistidas em disco<br>Não se perdem mesmo com tudo fora<br>Backoff: 5s → 30s → 2min...">
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="1" :drain-at="3" /></template>
+  </FlowNode>
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="worker" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
   <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="eme4-top" sub="offline" pulse hint="<strong>EME4 1 — Offline</strong><br>Mensagens aguardam na fila NATS<br>Serão entregues quando voltar" />
   <FlowNode v-click.hide="2" label="EME4 2" icon="i-ph-x-circle-fill" color="pink" position="eme4-bottom" sub="offline" pulse hint="<strong>EME4 2 — Offline</strong><br>Mensagens aguardam na fila NATS<br>Serão entregues quando voltar" />

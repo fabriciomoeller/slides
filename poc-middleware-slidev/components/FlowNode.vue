@@ -16,6 +16,10 @@
     - persist  : ativa estilo visual de persistência NATS (padrão: false)
     - recover  : ativa estilo visual de recuperação/failover (padrão: false)
     - hint     : texto do tooltip (title) exibido ao hover (opcional)
+
+  Slots:
+    - #left  : conteúdo posicionado à esquerda do nó (ex: FlowMsgStack side="left")
+    - #right : conteúdo posicionado à direita do nó (ex: FlowMsgStack side="right")
 -->
 <script setup>
 const props = defineProps({
@@ -77,8 +81,10 @@ const sizeClass =
     :style="[
       pulse ? 'animation: pulseAlert 2.5s ease-in-out infinite' : '',
       hint ? 'cursor: help' : '',
+      'overflow: visible',
     ]"
   >
+    <slot name="left" />
     <span
       v-if="icon"
       :class="[
@@ -95,5 +101,6 @@ const sizeClass =
       ></span>
       {{ sub }}
     </span>
+    <slot name="right" />
   </div>
 </template>

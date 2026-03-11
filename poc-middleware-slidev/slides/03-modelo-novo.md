@@ -47,7 +47,9 @@ transition: slide-left
 <div class="anim-flow max-w-750px h-120px my-4" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <FlowNode label="ORIGEM" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-88px h-52px" sub="ex: ERP" hint="<strong>Sistema Consumidor</strong><br>Qualquer sistema externo que precisa enviar ou consultar dados no EME4.<br>Ex: ERP, Portal, App Mobile" />
   <FlowNode label="KONG" icon="i-ph-shield-check-fill" color="violet" position="top-50% -translate-y-50% left-160px w-78px h-52px" sub="portaria" hint="<strong>API Gateway — Porta de Entrada</strong><br>Valida credenciais (JWT, API Key)<br>Distribui carga (Load Balancing)<br>Limita requisições abusivas (Rate Limit)" />
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-310px w-78px h-52px" sub="fila" hint="<strong>Message Broker — Sistema Nervoso</strong><br>Recebe mensagens e garante entrega<br>Persiste em disco (JetStream)<br>Retry automático com backoff">
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="2" :drain-at="4" /></template>
+  </FlowNode>
   <FlowNode label="Worker" icon="i-ph-gear-six-fill" color="fuchsia" position="top-50% -translate-y-50% left-465px w-88px h-52px" sub="tradutor" hint="<strong>Executor de Lógica</strong><br>Consome mensagens da fila NATS<br>Transforma formatos (XML→JSON)<br>Mapeia campos DE→PARA" />
   <FlowNode label="EME4 1" v-click.hide="6" icon="i-carbon-bare-metal-server-02" color="cyan" position="top-4px left-630px w-88px h-38px" size="top" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
   <FlowNode label="EME4 2" icon="i-carbon-bare-metal-server-02" color="cyan" position="bottom-4px left-630px w-88px h-38px" size="top" hint="<strong>Sistema Provedor</strong> (destino)<br>Recebe chamadas normais da API<br>Não sabe que existe middleware" />
@@ -81,11 +83,11 @@ transition: slide-left
   </div>
   <div v-click="5" class="anim-seg">
     <svg class="anim-svg" viewBox="0 0 750 110">
-      <path d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="svg-line svg-stroke-fuchsia"/>
+      <path v-click.hide="6" d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" class="svg-line svg-stroke-fuchsia"/>
       <path d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" class="svg-line svg-stroke-fuchsia"/>
-      <FlowDot d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" />
+      <FlowDot v-click.hide="6" d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" />
       <FlowDot d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" color="fuchsia" :duration="5" :delay="1.25" />
-      <FlowDot d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" :delay="2.5" />
+      <FlowDot v-click.hide="6" d="M553,55 L573,55 Q580,55 580,48 L580,30 Q580,23 587,23 L630,23" color="fuchsia" :duration="5" :delay="2.5" />
       <FlowDot d="M553,55 L573,55 Q580,55 580,62 L580,80 Q580,87 587,87 L630,87" color="fuchsia" :duration="5" :delay="3.75" />
     </svg>
   </div>
@@ -93,9 +95,9 @@ transition: slide-left
     <FlowNode label="EME4 1" icon="i-ph-x-circle-fill" color="pink" position="top-4px left-630px w-88px h-38px z-5" size="top" hint="<strong>EME4 1 — Erro</strong><br>Worker devolve à fila (<strong>Nak</strong>)<br>NATS retenta com backoff exponencial" />
     <svg class="anim-svg" viewBox="0 0 750 90">
       <path d="M630,3 Q630,4 616,4 L524,4 Q510,4 510,18" class="svg-line-return svg-stroke-pink"/>
-      <FlowDot d="M630,18 L630,4 L510,4 L510,18" color="pink" :duration="2" />
+      <FlowDot d="M630,18 L630,4 L510,4 L510,18" color="pink" :duration="2" :loop="false"/>
       <path d="M509,70 Q509,85 495,85 L364,85 Q350,85 350,70" class="svg-line-return svg-stroke-cyan"/>
-      <FlowDot d="M509,70 L509,85 L350,85 L350,70" color="cyan" :duration="2" :delay="2" />
+      <FlowDot d="M509,70 L509,85 L350,85 L350,70" color="cyan" :duration="2" :loop="false" delay="2"/>
     </svg>
     <FlowBadge text="✕ erro/timeout" color="pink" position="right-140px top-0px" />
     <FlowBadge text="Nak → refila" icon="i-ph-arrow-counter-clockwise-fill" color="cyan" position="left-380px bottom-20px" />

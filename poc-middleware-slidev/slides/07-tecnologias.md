@@ -11,7 +11,9 @@ transition: slide-left
 
 <div class="scenario-flow-tall my-3" v-motion :initial="{opacity:0}" :enter="{opacity:1, transition:{delay:200, duration:600}}">
   <FlowNode label="ERP Externo" icon="i-ph-plugs-connected-fill" color="blue" position="top-50% -translate-y-50% left-0 w-90px h-56px" sub="Publisher" hint="<strong>Publisher</strong> (quem publica)<br>Envia a mensagem uma única vez<br>O NATS entrega para todos os interessados" />
-  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="JetStream" persist hint="<strong>NATS JetStream</strong><br>Distribui a mensagem para N assinantes<br>Fan-out: 1 publish → todos recebem<br>Persistência garantida em disco" />
+  <FlowNode label="NATS" icon="i-ph-cloud-arrow-up-fill" color="cyan" position="top-50% -translate-y-50% left-200px w-95px h-56px" sub="JetStream" persist hint="<strong>NATS JetStream</strong><br>Distribui a mensagem para N assinantes<br>Fan-out: 1 publish → todos recebem<br>Persistência garantida em disco">
+    <template #right><FlowMsgStack :clicks="$clicks" :fill-at="0" :drain-at="2" /></template>
+  </FlowNode>
   <FlowNode label="Worker 1" icon="i-ph-gear-six-fill" color="fuchsia" position="top-2px left-420px w-100px h-42px" sub="Subscriber" size="top" hint="<strong>Subscriber</strong> (Worker)<br>Consome mensagens e executa a lógica<br>Confirma recebimento (Ack)" />
   <FlowNode label="Worker 2" icon="i-ph-gear-six-fill" color="cyan" position="top-50% -translate-y-50% left-420px w-100px h-42px" sub="Subscriber" size="top" hint="<strong>Subscriber</strong> (Worker)<br>Consome mensagens e executa a lógica<br>Confirma recebimento (Ack)" />
   <FlowNode label="Monitor" icon="i-carbon-dashboard" color="cyan" position="bottom-2px left-420px w-100px h-42px" sub="Subscriber" size="top" hint="<strong>Monitor</strong> (Subscriber especial)<br>Consome eventos para métricas e alertas<br>Não interfere no fluxo principal" />
