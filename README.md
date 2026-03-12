@@ -76,6 +76,7 @@ docs/
 | 11/03/2026 | [Componente FlowMsgStack — Pilha Visual de Mensagens](documentacao/2026-03-11_16-39-17-componente-flowmsgstack-pilha-mensagens.md) | Componente Vue reutilizável com barras animadas dentro do FlowNode NATS, slots #left/#right |
 | 11/03/2026 | [Renomeação Sequencial dos Arquivos de Slides](documentacao/2026-03-11_17-17-55-renomeacao-sequencial-slides.md) | Numeração dos arquivos em slides/ alinhada com a ordem em slides.md |
 | 11/03/2026 | [Suporte a Light Mode no Slidev](documentacao/2026-03-11_19-36-32-suporte-light-mode-slidev.md) | CSS custom properties, componentes Vue reativos, pastéis sólidos, pink→fuchsia para daltonismo |
+| 12/03/2026 | [Logo Datainfo para Light Mode no Slide de Capa](documentacao/2026-03-12_07-46-05-logo-light-mode-slide-capa.md) | Alternância automática do logo (branco/colorido) conforme tema ativo via classes UnoCSS |
 
 ## Apresentacao
 
@@ -128,4 +129,4 @@ Acesse `http://localhost:3030`
 
 ---
 
-*Atualizado em: 11/03/2026 19:36*
+*Atualizado em: 12/03/2026 07:46*
