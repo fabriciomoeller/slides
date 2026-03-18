@@ -1,0 +1,111 @@
+<svg viewBox="50 20 1100 620" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="shadow">
+        <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+      </filter>
+      <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8b5cf6"/>
+        <stop offset="100%" stop-color="#6366f1"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Title -->
+    <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="white">Visão Estratégica: O Middleware como base para IA</text>
+    <text x="600" y="75" text-anchor="middle" font-size="15" fill="#94a3b8">Não é exagero. É o primeiro passo de algo muito maior.</text>
+
+    <!-- Timeline -->
+    <line x1="100" y1="160" x2="1100" y2="160" stroke="#334155" stroke-width="3"/>
+
+    <!-- POC (now) -->
+    <circle cx="200" cy="160" r="14" fill="#3b82f6" filter="url(#glow)"/>
+    <text x="200" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">1</text>
+    <text x="200" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">POC (agora)</text>
+    <rect x="110" y="185" width="180" height="90" rx="8" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="200" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">ERP Externo ↔ EME4</text>
+    <text x="200" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">Engenharia + OPs</text>
+    <text x="200" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#60a5fa">Centenas/dia</text>
+
+    <!-- Phase 2 -->
+    <circle cx="550" cy="160" r="14" fill="#8b5cf6"/>
+    <text x="550" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">2</text>
+    <text x="550" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">Fase 2</text>
+    <rect x="430" y="185" width="240" height="90" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="550" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">+ Outros módulos EME4</text>
+    <text x="550" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">+ Sistemas Datainfo</text>
+    <text x="550" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#a78bfa">Milhares/dia</text>
+
+    <!-- Phase 3 (AI) -->
+    <circle cx="900" cy="160" r="14" fill="#10b981" filter="url(#glow)"/>
+    <text x="900" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="white">3</text>
+    <text x="900" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">Fase 3 (IA)</text>
+    <rect x="760" y="185" width="280" height="90" rx="8" fill="none" stroke="#10b981" stroke-width="1.5"/>
+    <text x="900" y="210" text-anchor="middle" font-size="12" fill="#cbd5e1">+ Agentes de IA</text>
+    <text x="900" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">consultando e atuando em todos os sistemas</text>
+    <text x="900" y="255" text-anchor="middle" font-size="13" font-weight="600" fill="#34d399">Dezenas de milhares/dia</text>
+
+    <!-- Future architecture title -->
+    <text x="600" y="320" text-anchor="middle" font-size="18" font-weight="600" fill="white">Futuro: Uma porta única para todos os sistemas</text>
+
+    <!-- Producers (left side) -->
+    <g transform="translate(80, 350)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Agentes IA</text>
+    </g>
+    <g transform="translate(80, 400)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">ERP Externo</text>
+    </g>
+    <g transform="translate(80, 450)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">App Mobile</text>
+    </g>
+    <g transform="translate(80, 500)">
+      <rect width="140" height="40" rx="8" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="white">Dashboard</text>
+    </g>
+
+    <!-- Dashed arrows to middleware -->
+    <line x1="225" y1="370" x2="420" y2="410" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="225" y1="420" x2="420" y2="425" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="225" y1="470" x2="420" y2="440" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="225" y1="520" x2="420" y2="455" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+
+    <!-- Middleware box -->
+    <rect x="420" y="370" width="260" height="110" rx="12" fill="#1e1b4b" stroke="url(#accentGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="550" y="405" text-anchor="middle" font-size="16" font-weight="700" fill="white">MIDDLEWARE</text>
+    <text x="550" y="425" text-anchor="middle" font-size="12" fill="#a78bfa">Kong/APISIX + NATS</text>
+    <text x="550" y="450" text-anchor="middle" font-size="11" fill="#94a3b8">Auth | LB | Fila | Tradução</text>
+    <text x="550" y="468" text-anchor="middle" font-size="10" fill="#64748b">Worker quando precisa | Direto quando não</text>
+
+    <!-- Dashed arrows to systems -->
+    <line x1="685" y1="410" x2="830" y2="370" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="685" y1="425" x2="830" y2="420" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="685" y1="440" x2="830" y2="470" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+    <line x1="685" y1="455" x2="830" y2="520" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+
+    <!-- Backend systems (right side) -->
+    <g transform="translate(835, 350)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">EME4</text>
+    </g>
+    <g transform="translate(835, 400)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">ERP Externo</text>
+    </g>
+    <g transform="translate(835, 450)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema X</text>
+    </g>
+    <g transform="translate(835, 500)">
+      <rect width="140" height="40" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">Sistema Y</text>
+    </g>
+
+    <!-- Key message -->
+    <rect x="200" y="575" width="800" height="45" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="600" y="603" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">A POC é o piloto. O Middleware é a pista de decolagem para a IA.</text>
+</svg>

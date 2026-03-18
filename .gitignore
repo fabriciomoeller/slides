@@ -1,0 +1,5 @@
+poc-middleware-slidev/node_modules
+poc-middleware-slidev/dist
+poc-middleware-slidev/.slidev
+*.local
+.DS_Store
